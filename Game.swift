@@ -53,6 +53,7 @@ class Personnage {
 class Game {
     func bienvenue (){
         print("bienvenue dans le jeu")
+        menuPrinc()
     }
     func menuPrinc (){
         print("quel action voulez vous faire ?"
@@ -74,9 +75,16 @@ class Game {
     }
     func donnerNomEquipe1() -> String? {
         print("Quel nom voulez vous donner à l'équipe ?")
-        let name = readLine()
-        return name
+        if let choice = readLine() {
+            if let name = String(choice){
+                return name
+            }
+        }
+        print("je n'ai pas compris")
+        return nil
     }
+    
 }
 
-
+var game = Game()
+game.bienvenue()
