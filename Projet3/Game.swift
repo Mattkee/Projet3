@@ -29,74 +29,66 @@ class Game {
         
         
         for i in 0 ... (players.count - 1){
-            print(players[i].getTeamName())
+            print("joueur \(i + 1) s'appelle " + players[i].getTeamName())
         }
     }
     private func initializeTeamsCharacters(playerNumber : Int){
         // Il faudra demander à chaque équipe de choisir 3 personnages parmis la liste
         //des types de personnages proposés : 1. Combattant 2. Mage 3. Colosse 4. Nain
-        let mavar = players[playerNumber].getTeamMembersNumber()
-        print(mavar)
         
-        self.players = [Player]()
-        let player = Player()
-        
-        var name : String? = "Character"
-        
-        while players[playerNumber].getTeamMembersNumber() < 2  {
-            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber()) de votre équipe parmis les choix suivants : 1. Combattant 2. Mage 3. Colosse 4. Nain")
+        while players[playerNumber].getTeamMembersNumber() < 3 {
+            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : 1. Combattant 2. Mage 3. Colosse 4. Nain")
             var choixPersonnage : Int? = 0
             choixPersonnage = Int(readLine()!)
             switch choixPersonnage! {
             case 1:
-                
+                var name : String? = "Character"
                 repeat{
                     name = String(readLine()!)
                 } while((name?.characters.count)! <= 3)
                 
-                let personnage = Warrior(name: name!)
+                let personnage = Warrior()
+                personnage.name = name!
+                players[playerNumber].setTeamMember(member: personnage)
                 
-                print("le nom de ce combattant est \(name!)")
-                
-                player.setTeamMember(member: personnage)
-                players.append(player)
-                
+                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name!)")
+                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
             case 2:
-                
+                var name : String? = "Character"
                 repeat{
                     name = String(readLine()!)
                 } while((name?.characters.count)! <= 3)
                 
-                print("le nom de ce Mage est \(name!)")
+                let personnage = Wizard()
+                personnage.name = name!
+                players[playerNumber].setTeamMember(member: personnage)
                 
-                let personnage = Wizard(name: name!)
-                player.setTeamMember(member: personnage)
-                players.append(player)
-                
+                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name!)")
+                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
             case 3:
-                
+                var name : String? = "Character"
                 repeat{
                     name = String(readLine()!)
-                }while((name?.characters.count)! <= 3)
+                } while((name?.characters.count)! <= 3)
                 
-                print("le nom de ce colosse est \(name!)")
+                let personnage = Colossus()
+                personnage.name = name!
+                players[playerNumber].setTeamMember(member: personnage)
                 
-                let personnage = Colossus(name: name!)
-                player.setTeamMember(member: personnage)
-                players.append(player)
+                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name!)")
+                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
             case 4:
-                
+                var name : String? = "Character"
                 repeat{
                     name = String(readLine()!)
-                }while((name?.characters.count)! <= 3)
+                } while((name?.characters.count)! <= 3)
                 
-                let personnage = Dwarf(name: name!)
+                let personnage = Dwarf()
+                personnage.name = name!
+                players[playerNumber].setTeamMember(member: personnage)
                 
-                print("le nom de ce nain est \(name!)")
-                
-                player.setTeamMember(member: personnage)
-                players.append(player)
-                
+                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name!)")
+                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
             default:
                 print("Je n'ai pas compris")
             }
