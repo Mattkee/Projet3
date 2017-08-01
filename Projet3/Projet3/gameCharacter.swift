@@ -10,3 +10,4 @@ class Character {
         self.attack = attack
     }
 }
+// créer une methode namecharacter

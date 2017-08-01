@@ -17,9 +17,9 @@ class Game {
         let player = Player()
         
         print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
-        
+
         var name : String? = "Player"
-        
+  // penser à changer la manière de déballer les optionnels, pour éviter les bugs.
         repeat{
             name = readLine()
         } while((name?.characters.count)! <= 3)
@@ -27,6 +27,7 @@ class Game {
         player.setTeamName(name : name!)
         players.append(player)
         
+ // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
         
         for i in 0 ... (players.count - 1){
             print("joueur \(i + 1) s'appelle " + players[i].getTeamName())
@@ -42,6 +43,7 @@ class Game {
             choixPersonnage = Int(readLine()!)
             switch choixPersonnage! {
             case 1:
+                // remplacer par une methode nameCharacter.
                 var name : String? = "Character"
                 repeat{
                     name = String(readLine()!)
@@ -49,7 +51,7 @@ class Game {
                 
                 let personnage = Warrior()
                 personnage.name = name!
-                players[playerNumber].setTeamMember(member: personnage)
+                players[playerNumber].setTeamMember(name : name! , member: personnage)
                 
                 print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name!)")
                 print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
@@ -61,7 +63,7 @@ class Game {
                 
                 let personnage = Wizard()
                 personnage.name = name!
-                players[playerNumber].setTeamMember(member: personnage)
+                players[playerNumber].setTeamMember(name : name! , member: personnage)
                 
                 print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name!)")
                 print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
@@ -73,7 +75,7 @@ class Game {
                 
                 let personnage = Colossus()
                 personnage.name = name!
-                players[playerNumber].setTeamMember(member: personnage)
+                players[playerNumber].setTeamMember(name : name! , member: personnage)
                 
                 print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name!)")
                 print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
@@ -85,7 +87,7 @@ class Game {
                 
                 let personnage = Dwarf()
                 personnage.name = name!
-                players[playerNumber].setTeamMember(member: personnage)
+                players[playerNumber].setTeamMember(name : name! , member: personnage)
                 
                 print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name!)")
                 print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
