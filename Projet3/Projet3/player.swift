@@ -1,6 +1,6 @@
 class Player{
     private var teamName : String = ""
-    private var teamCharacter = [String:Character]()
+    private var teamCharacter = [Character]()
 
     //init(teamName : String,teamCharacter : Dictionary<String , Character>){
         //self.teamName = teamName
@@ -12,8 +12,8 @@ class Player{
     public func getTeamName() -> String {
         return self.teamName
     }
-    public func setTeamMember(name : String , member : Character) {
-        self.teamCharacter[name] = member
+    public func setTeamMember(member : Character) {
+        self.teamCharacter.append(member)
     }
     public func getTeamMembersNumber() -> Int {
         return self.teamCharacter.count
