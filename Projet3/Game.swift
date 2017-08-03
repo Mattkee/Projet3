@@ -46,10 +46,11 @@ class Game {
             switch choixPersonnage! {
             case 1:
                 // remplacer par une methode nameCharacter.
-                
+
                 let name = character.nameCharacter()
                 
                 let personnage = Warrior()
+
                 
                 players[playerNumber].setTeamMember(name : name , member: personnage)
                 

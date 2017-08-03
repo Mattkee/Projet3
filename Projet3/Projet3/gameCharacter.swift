@@ -1,6 +1,6 @@
 class Character {
     // création des paramètres commun à tous les personnages.
-    //var name : String = ""
+    var name : String = ""
     var health : Int
     var attack : Int
     
@@ -10,15 +10,13 @@ class Character {
         self.attack = attack
     }
     func nameCharacter() -> String {
-        var name : String? = "Character"
-        
         repeat{
-            name = String(readLine()!)
-        } while((name?.characters.count)! <= 3)
+            if let setName = readLine(){
+                name = String(setName)
+            }
+        } while((name.characters.count) <= 3)
         
-        name = name!
-        
-        return name!
+        return name
     }
 }
 // créer une methode namecharacter
