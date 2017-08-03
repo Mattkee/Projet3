@@ -19,13 +19,9 @@ class Game {
         
         print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
 
-        var name : String? = "Player"
-  // penser à changer la manière de déballer les optionnels, pour éviter les bugs.
-        repeat{
-            name = readLine()
-        } while((name?.characters.count)! <= 3)
+        let teamName = team.playerName()
         
-        team.setTeamName(name : name!)
+        team.setTeamName(name : teamName)
         players.append(team)
         
  // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.

@@ -16,14 +16,14 @@ class Player{
         return self.teamCharacter.count
     }
     public func playerName() -> String {
-        var name : String = ""
+
         repeat{
             if let setName = readLine(){
-                name = String(setName)
+                teamName = String(setName)
             }
-        } while((name.characters.count) <= 3)
+        } while((teamName.characters.count) <= 3)
         
-        return name
+        return teamName
     }
     public func displayPlayers() {
         print("le joueur 1 est \(game.players[1])")
