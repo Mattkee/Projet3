@@ -37,59 +37,59 @@ class Game {
         
         while players[playerNumber].getTeamMembersNumber() < 3 {
             print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : 1. Combattant 2. Mage 3. Colosse 4. Nain")
-            var choixPersonnage : Int? = 0
-            choixPersonnage = Int(readLine()!)
-            switch choixPersonnage! {
-            case 1:
-                // remplacer par une methode nameCharacter.
 
-                let name = character.nameCharacter()
+            if let choixPersonnage = Int(readLine()!) {
+            
+                switch choixPersonnage {
+                case 1:
+                    // remplacer par une methode nameCharacter.
+
+                    let name = character.nameCharacter()
                 
-                let personnage = Warrior()
+                    let personnage = Warrior()
 
                 
-                players[playerNumber].setTeamMember(name : name , member: personnage)
+                    players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name)")
-                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name)")
+                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-            case 2:
+                case 2:
                 
-                let name = character.nameCharacter()
+                    let name = character.nameCharacter()
                 
-                let personnage = Wizard()
+                    let personnage = Wizard()
                 
-                players[playerNumber].setTeamMember(name : name , member: personnage)
+                    players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name)")
-                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name)")
+                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-            case 3:
+                case 3:
                 
-                let name = character.nameCharacter()
+                    let name = character.nameCharacter()
                 
-                let personnage = Colossus()
+                    let personnage = Colossus()
                 
-                players[playerNumber].setTeamMember(name : name , member: personnage)
+                    players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name)")
-                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name)")
+                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-            case 4:
+                case 4:
                 
-                let name = character.nameCharacter()
+                    let name = character.nameCharacter()
                 
-                let personnage = Dwarf()
+                    let personnage = Dwarf()
                 
-                players[playerNumber].setTeamMember(name : name , member: personnage)
+                    players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name)")
-                print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
-            default:
-                print("Je n'ai pas compris")
+                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name)")
+                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                default:
+                    print("Je n'ai pas compris")
+                }
             }
-            
-            
         }
     }
 }
