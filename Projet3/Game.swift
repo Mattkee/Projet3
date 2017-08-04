@@ -33,6 +33,7 @@ class Game {
     private func initializeTeamsCharacters(playerNumber : Int){
         // Il faudra demander à chaque équipe de choisir 3 personnages parmis la liste
         //des types de personnages proposés : 1. Combattant 2. Mage 3. Colosse 4. Nain
+        // améliorer les avertissements quand les choix sont erronés.
         let character = Character(health : 0 , attack : 0)
         
         while players[playerNumber].getTeamMembersNumber() < 3 {
@@ -52,7 +53,7 @@ class Game {
                     let name = character.nameCharacter()
                 
                     let personnage = Warrior()
-
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 

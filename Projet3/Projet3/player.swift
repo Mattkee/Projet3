@@ -1,7 +1,7 @@
 class Player{
     private var teamName : String = ""
     private var teamCharacter = [String : Character]()
-// il serait bon de réutiliser un dictionnaire, afin de facilité le travail plus tard, en particulier sur l'utilisation de nom unique.
+// trouver le moyen de verifier la liste des noms dans le dictionnaire.
 
     public func setTeamName(name:String){
         self.teamName = name
@@ -16,7 +16,7 @@ class Player{
         return self.teamCharacter.count
     }
     public func playerName() -> String {
-
+// trouver le moyen de verifier si le nom est déjà utilisé
         repeat{
             print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){

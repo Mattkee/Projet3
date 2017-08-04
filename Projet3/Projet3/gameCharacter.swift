@@ -10,6 +10,7 @@ class Character {
         self.attack = attack
     }
     func nameCharacter() -> String {
+        // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{
             print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
@@ -20,4 +21,3 @@ class Character {
         return name
     }
 }
-// créer une methode namecharacter
