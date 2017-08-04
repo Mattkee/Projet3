@@ -36,12 +36,17 @@ class Game {
         let character = Character(health : 0 , attack : 0)
         
         while players[playerNumber].getTeamMembersNumber() < 3 {
-            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : 1. Combattant 2. Mage 3. Colosse 4. Nain")
+            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : "
+                + "\n1. Combattant"
+                + "\n2. Mage"
+                + "\n3. Colosse"
+                + "\n4. Nain")
+            print("quel est votre choix?")
 
-            if let choixPersonnage = Int(readLine()!) {
-            
+            if let choixPersonnage = readLine() {
+                
                 switch choixPersonnage {
-                case 1:
+                case "1":
                     // remplacer par une methode nameCharacter.
 
                     let name = character.nameCharacter()
@@ -54,7 +59,7 @@ class Game {
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name)")
                     print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-                case 2:
+                case "2":
                 
                     let name = character.nameCharacter()
                 
@@ -65,7 +70,7 @@ class Game {
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name)")
                     print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-                case 3:
+                case "3":
                 
                     let name = character.nameCharacter()
                 
@@ -76,7 +81,7 @@ class Game {
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name)")
                     print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 
-                case 4:
+                case "4":
                 
                     let name = character.nameCharacter()
                 
@@ -87,7 +92,7 @@ class Game {
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name)")
                     print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
                 default:
-                    print("Je n'ai pas compris")
+                    print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 4 selon le personnage choisi.")
                 }
             }
         }

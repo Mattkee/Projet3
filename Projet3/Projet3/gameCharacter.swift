@@ -11,6 +11,7 @@ class Character {
     }
     func nameCharacter() -> String {
         repeat{
+            print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
                 name = String(setName)
             }

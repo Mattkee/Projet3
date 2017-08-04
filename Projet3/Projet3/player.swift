@@ -18,15 +18,12 @@ class Player{
     public func playerName() -> String {
 
         repeat{
+            print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
                 teamName = String(setName)
             }
         } while((teamName.characters.count) <= 3)
         
         return teamName
-    }
-    public func displayPlayers() {
-        print("le joueur 1 est \(game.players[1])")
-        print("il a ")
     }
 }
