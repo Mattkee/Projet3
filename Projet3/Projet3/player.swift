@@ -15,6 +15,15 @@ class Player{
     public func getTeamMembersNumber() -> Int {
         return self.teamCharacter.count
     }
+    // essayer de regarder comment afficher correctement le type.
+    public func seeTeamMembers() {
+        
+        for (name, type) in teamCharacter {
+            
+        print("\(name) est un \(type)")
+            
+        }
+    }
     public func playerName() -> String {
 // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{

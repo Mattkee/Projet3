@@ -58,7 +58,7 @@ class Game {
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name)")
-                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    players[playerNumber].seeTeamMembers()
                 
                 case "2":
                 
@@ -69,7 +69,7 @@ class Game {
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name)")
-                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    players[playerNumber].seeTeamMembers()
                 
                 case "3":
                 
@@ -80,7 +80,7 @@ class Game {
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name)")
-                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    players[playerNumber].seeTeamMembers()
                 
                 case "4":
                 
@@ -91,7 +91,8 @@ class Game {
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
                     print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name)")
-                    print(" le nombre de personnage est \(players[playerNumber].getTeamMembersNumber())")
+                    players[playerNumber].seeTeamMembers()
+                    
                 default:
                     print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 4 selon le personnage choisi.")
                 }
