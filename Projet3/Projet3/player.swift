@@ -19,11 +19,22 @@ class Player{
     public func seeTeamMembers() {
         
         for (name, type) in teamCharacter {
-            
-        print("\(name) est un \(type)")
-            
-        }
+                if type is Warrior {
+                    let characterType = "combattant"
+                    print("\(name) est un \(characterType)")
+                } else if type is Wizard {
+                    let characterType = "mage"
+                    print("\(name) est un \(characterType)")
+                } else if type is Colossus {
+                    let characterType = "colosse"
+                    print("\(name) est un \(characterType)")
+                } else {
+                    let characterType = "nain"
+                    print("\(name) est un \(characterType)")
+                }
+            }
     }
+    
     public func playerName() -> String {
 // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{
