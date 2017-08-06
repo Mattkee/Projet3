@@ -27,7 +27,7 @@ class Game {
  // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
         
         for i in 0 ... (players.count - 1){
-            print("joueur \(i + 1) s'appelle " + players[i].getTeamName())
+            print("Le joueur \(i + 1) s'appelle " + players[i].getTeamName())
         }
     }
     private func initializeTeamsCharacters(playerNumber : Int){
@@ -57,7 +57,8 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un combattant du nom de \(name)")
+                    print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
+                    
                     players[playerNumber].seeTeamMembers()
                 
                 case "2":
@@ -68,7 +69,8 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Mage du nom de \(name)")
+                    print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
+                    
                     players[playerNumber].seeTeamMembers()
                 
                 case "3":
@@ -79,7 +81,8 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Colosse du nom de \(name)")
+                    print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
+                    
                     players[playerNumber].seeTeamMembers()
                 
                 case "4":
@@ -90,7 +93,8 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
-                    print("Votre personnage \(players[playerNumber].getTeamMembersNumber()) est un Nain du nom de \(name)")
+                    print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
+                    
                     players[playerNumber].seeTeamMembers()
                     
                 default:

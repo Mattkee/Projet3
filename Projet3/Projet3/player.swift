@@ -17,20 +17,20 @@ class Player{
     }
     // essayer de regarder comment afficher correctement le type.
     public func seeTeamMembers() {
-        
+        print("Voici la liste des ses personnages :")
         for (name, type) in teamCharacter {
                 if type is Warrior {
                     let characterType = "combattant"
-                    print("\(name) est un \(characterType)")
+                    print("le personnage \(name) qui est un \(characterType)")
                 } else if type is Wizard {
                     let characterType = "mage"
-                    print("\(name) est un \(characterType)")
+                    print("le personnage \(name) qui est un \(characterType)")
                 } else if type is Colossus {
                     let characterType = "colosse"
-                    print("\(name) est un \(characterType)")
+                    print("le personnage \(name) qui est un \(characterType)")
                 } else {
                     let characterType = "nain"
-                    print("\(name) est un \(characterType)")
+                    print("le personnage \(name) qui est un \(characterType)")
                 }
             }
     }
