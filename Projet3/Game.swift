@@ -6,6 +6,7 @@ class Game {
     
     public func initializeGame() {
         print("Bienvenue dans notre super jeu de combat.")
+        print("")
         for i in 0 ... 1 {
             playerNumber += 1
             self.initializeTeamsName(playerNumber: i)
@@ -25,7 +26,7 @@ class Game {
         players.append(team)
         
  // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
-        
+        print("")
         for i in 0 ... (players.count - 1){
             print("Le joueur \(i + 1) s'appelle " + players[i].getTeamName())
         }
@@ -37,6 +38,7 @@ class Game {
         let character = Character(health : 0 , attack : 0)
         
         while players[playerNumber].getTeamMembersNumber() < 3 {
+            print("")
             print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : "
                 + "\n1. Combattant"
                 + "\n2. Mage"
@@ -57,6 +59,7 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
+                    print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
                     
                     players[playerNumber].seeTeamMembers()
@@ -69,6 +72,7 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
+                    print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
                     
                     players[playerNumber].seeTeamMembers()
@@ -81,6 +85,7 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
+                    print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
                     
                     players[playerNumber].seeTeamMembers()
@@ -93,11 +98,14 @@ class Game {
                 
                     players[playerNumber].setTeamMember(name : name , member: personnage)
                 
+                    print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
                     
                     players[playerNumber].seeTeamMembers()
                     
                 default:
+                    
+                    print("")
                     print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 4 selon le personnage choisi.")
                 }
             }

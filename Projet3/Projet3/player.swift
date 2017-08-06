@@ -18,6 +18,7 @@ class Player{
     // essayer de regarder comment afficher correctement le type.
     public func seeTeamMembers() {
         print("Voici la liste des ses personnages :")
+        print("")
         for (name, type) in teamCharacter {
                 if type is Warrior {
                     let characterType = "combattant"
