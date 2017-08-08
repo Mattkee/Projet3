@@ -35,8 +35,7 @@ class Game {
         // Il faudra demander à chaque équipe de choisir 3 personnages parmis la liste
         //des types de personnages proposés : 1. Combattant 2. Mage 3. Colosse 4. Nain
         // améliorer les avertissements quand les choix sont erronés.
-        let character = Character(health : 0 , attack : 0)
-        
+                
         while players[playerNumber].getTeamMembersNumber() < 3 {
             print("")
             print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(players[playerNumber].getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : "
@@ -51,13 +50,12 @@ class Game {
                 switch choixPersonnage {
                 case "1":
                     // remplacer par une methode nameCharacter.
-
-                    let name = character.nameCharacter()
                 
                     let personnage = Warrior()
+                    personnage.nameCharacter()
                     // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                 
-                    players[playerNumber].setTeamMember(name : name , member: personnage)
+                    players[playerNumber].setTeamMember(name : personnage.name , member: personnage)
                 
                     print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
@@ -66,11 +64,11 @@ class Game {
                 
                 case "2":
                 
-                    let name = character.nameCharacter()
-                
                     let personnage = Wizard()
-                
-                    players[playerNumber].setTeamMember(name : name , member: personnage)
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    players[playerNumber].setTeamMember(name : personnage.name , member: personnage)
                 
                     print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
@@ -79,11 +77,11 @@ class Game {
                 
                 case "3":
                 
-                    let name = character.nameCharacter()
-                
                     let personnage = Colossus()
-                
-                    players[playerNumber].setTeamMember(name : name , member: personnage)
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    players[playerNumber].setTeamMember(name : personnage.name , member: personnage)
                 
                     print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")
@@ -92,11 +90,11 @@ class Game {
                 
                 case "4":
                 
-                    let name = character.nameCharacter()
-                
                     let personnage = Dwarf()
-                
-                    players[playerNumber].setTeamMember(name : name , member: personnage)
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    players[playerNumber].setTeamMember(name : personnage.name , member: personnage)
                 
                     print("")
                     print("\(players[playerNumber].getTeamName()) a \(players[playerNumber].getTeamMembersNumber()) personnage.")

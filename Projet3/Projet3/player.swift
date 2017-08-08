@@ -41,7 +41,7 @@ class Player{
         repeat{
             print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
-                teamName = String(setName)
+                self.teamName = String(setName)
             }
         } while((teamName.characters.count) <= 3)
         

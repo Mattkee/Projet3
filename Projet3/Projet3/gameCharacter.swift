@@ -9,15 +9,13 @@ class Character {
         self.health = health
         self.attack = attack
     }
-    func nameCharacter() -> String {
+    func nameCharacter() {
         // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{
             print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
-                name = String(setName)
+                self.name = String(setName)
             }
         } while((name.characters.count) <= 3)
-        
-        return name
     }
 }
