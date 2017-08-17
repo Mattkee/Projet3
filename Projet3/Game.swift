@@ -1,14 +1,14 @@
 //The game class will allow us to manage the different stages of the game
 class Game {
-    var players = [Player]()
-    var playerNumber = 0
+    var players = [String : Player]()
+    
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     
     public func initializeGame() {
         print("Bienvenue dans notre super jeu de combat.")
         print("")
         for i in 0 ... 1 {
-            playerNumber += 1
+            
             self.initializeTeamsName(playerNumber: i)
             self.initializeTeamsCharacters(playerNumber: i)
         }
@@ -23,7 +23,7 @@ class Game {
         let teamName = team.playerName()
         
         team.setTeamName(name : teamName)
-        players.append(team)
+        players[teamName] = team
         
  // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
         print("")
