@@ -47,4 +47,7 @@ class Player{
         
         return teamName
     }
+    public func checkName() {
+        if teamName = 
+    }
 }
