@@ -31,7 +31,7 @@ class Game {
  // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
         print("")
         for i in 1 ... (players.count){
-            selectPlayer = playersName[i]
+            selectPlayer = playersName[i - 1]
             print("Le joueur \(i) s'appelle " + (players[selectPlayer]!.getTeamName()))
         }
     }

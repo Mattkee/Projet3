@@ -39,15 +39,29 @@ class Player{
     public func playerName() -> String {
 // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{
-            print("veuillez donner un nom correct de minimum 4 caractères.")
+            repeat { print("veuillez donner un nom correct de minimum 4 caractères.")
             if let setName = readLine(){
                 self.teamName = String(setName)
             }
+            } while (Player.checkName(nameChoice: teamName) == true)
         } while((teamName.characters.count) <= 3)
         
         return teamName
     }
-    public func checkName() {
-        if teamName = 
+    public static func checkName(nameChoice : String) -> Bool{
+        for (name, _) in game.players {
+            if nameChoice == name {
+                return true
+            } else {
+                for (_, player) in game.players {
+                    for (name , _) in player.teamCharacter {
+                        if nameChoice == name {
+                            return true
+                        }
+                    }
+                }
+            }
+        }
+        return false
     }
 }
