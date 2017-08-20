@@ -1,7 +1,6 @@
 class Player{
     private var teamName : String = ""
     private var teamCharacter = [String : Character]()
-// trouver le moyen de verifier la liste des noms dans le dictionnaire.
 
     public func setTeamName(name:String){
         self.teamName = name
@@ -15,7 +14,6 @@ class Player{
     public func getTeamMembersNumber() -> Int {
         return self.teamCharacter.count
     }
-    // essayer de regarder comment afficher correctement le type.
     public func seeTeamMembers() {
         print("Voici la liste des ses personnages :")
         print("")
@@ -109,7 +107,6 @@ class Player{
                     
                     let personnage = Warrior()
                     personnage.nameCharacter()
-                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -122,7 +119,6 @@ class Player{
                     
                     let personnage = Wizard()
                     personnage.nameCharacter()
-                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -135,7 +131,6 @@ class Player{
                     
                     let personnage = Colossus()
                     personnage.nameCharacter()
-                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -148,7 +143,6 @@ class Player{
                     
                     let personnage = Dwarf()
                     personnage.nameCharacter()
-                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -165,4 +159,5 @@ class Player{
             }
         }
     }
+    // faire une func pour afficher la liste des équipes.
 }

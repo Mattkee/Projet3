@@ -14,4 +14,9 @@ class Game {
             Player.initializeTeamsCharacters(playerNumber: i)
         }
     }
+    public func beginGame() {
+        print("Que le jeu commence !!!")
+        print("")
+       // créer les fonction pour commencer le jeu.
+    }
 }
