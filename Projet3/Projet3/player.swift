@@ -64,4 +64,105 @@ class Player{
         }
         return false
     }
+    public static func initializeTeamsName(playerNumber : Int){
+        
+        let team = Player()
+        
+        print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
+        
+        let teamName = team.playerName()
+        
+        team.setTeamName(name : teamName)
+        game.players[teamName] = team
+        game.playersName.append(teamName)
+        
+        game.selectPlayer = game.playersName[playerNumber]
+        
+        // changer la boucle pour qu'elle soit plus compréhensible, en démarrant de 1 et en changer l'appelation i.
+        print("")
+        for i in 1 ... (game.players.count){
+            game.selectPlayer = game.playersName[i - 1]
+            print("Le joueur \(i) s'appelle " + (game.players[game.selectPlayer]!.getTeamName()))
+        }
+    }
+
+    public static func initializeTeamsCharacters(playerNumber : Int){
+        // Il faudra demander à chaque équipe de choisir 3 personnages parmis la liste
+        //des types de personnages proposés : 1. Combattant 2. Mage 3. Colosse 4. Nain
+        // améliorer les avertissements quand les choix sont erronés.
+        game.selectPlayer = game.playersName[playerNumber]
+        
+        while (game.players[game.selectPlayer]!.getTeamMembersNumber()) < 3 {
+            print("")
+            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(game.players[game.selectPlayer]!.getTeamMembersNumber() + 1) de votre équipe parmis les choix suivants : "
+                + "\n1. Combattant"
+                + "\n2. Mage"
+                + "\n3. Colosse"
+                + "\n4. Nain")
+            print("quel est votre choix?")
+            
+            if let choixPersonnage = readLine() {
+                
+                switch choixPersonnage {
+                case "1":
+                    // remplacer par une methode nameCharacter.
+                    
+                    let personnage = Warrior()
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
+                    
+                    print("")
+                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
+                    
+                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    
+                case "2":
+                    
+                    let personnage = Wizard()
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
+                    
+                    print("")
+                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
+                    
+                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    
+                case "3":
+                    
+                    let personnage = Colossus()
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
+                    
+                    print("")
+                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
+                    
+                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    
+                case "4":
+                    
+                    let personnage = Dwarf()
+                    personnage.nameCharacter()
+                    // Trouver un moyen de vérifier si le nom n'est pas déjà utilisé.
+                    
+                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
+                    
+                    print("")
+                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
+                    
+                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    
+                default:
+                    
+                    print("")
+                    print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 4 selon le personnage choisi.")
+                }
+            }
+        }
+    }
 }
