@@ -35,21 +35,23 @@ class Player{
     }
     public static func seeAllTeamCharacter() {
         for (name, _) in game.players {
+            print("")
             print("pour l'équipe de \(name) voici la liste des personnages :")
+            print("")
             for player in game.players.values {
                 for (characterName, character) in player.teamCharacter {
-                    if character is Warrior {
+                    if character is Warrior && player.teamName == name {
                         let characterType = "combattant"
-                        print("le joueur \(name) a comme personnage \(characterName) qui est un \(characterType)")
-                    } else if character is Wizard {
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else if character is Wizard && player.teamName == name {
                         let characterType = "mage"
-                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
-                    } else if character is Colossus {
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else if character is Colossus && player.teamName == name {
                         let characterType = "colosse"
-                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
-                    } else {
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else if character is Dwarf && player.teamName == name {
                         let characterType = "nain"
-                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
+                        print("le personnage \(characterName) qui est un \(characterType)")
                     }
                 }
             }
