@@ -40,16 +40,16 @@ class Player{
                 for (characterName, character) in player.teamCharacter {
                     if character is Warrior {
                         let characterType = "combattant"
-                        print("le personnage \(characterName) qui est un \(characterType)")
+                        print("le joueur \(name) a comme personnage \(characterName) qui est un \(characterType)")
                     } else if character is Wizard {
                         let characterType = "mage"
-                        print("le personnage \(characterName) qui est un \(characterType)")
+                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
                     } else if character is Colossus {
                         let characterType = "colosse"
-                        print("le personnage \(characterName) qui est un \(characterType)")
+                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
                     } else {
                         let characterType = "nain"
-                        print("le personnage \(characterName) qui est un \(characterType)")
+                        print("le joueur \(name) personnage \(characterName) qui est un \(characterType)")
                     }
                 }
             }

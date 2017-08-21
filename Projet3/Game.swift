@@ -17,7 +17,7 @@ class Game {
     public func beginGame() {
         print("Que le jeu commence !!!")
         print("")
-            
+        Player.seeAllTeamCharacter()
        // créer les fonction pour commencer le jeu.
     }
 }
