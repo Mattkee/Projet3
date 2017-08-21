@@ -33,7 +33,28 @@ class Player{
                 }
             }
     }
-    
+    public static func seeAllTeamCharacter() {
+        for (name, _) in game.players {
+            print("pour l'équipe de \(name) voici la liste des personnages :")
+            for player in game.players.values {
+                for (characterName, character) in player.teamCharacter {
+                    if character is Warrior {
+                        let characterType = "combattant"
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else if character is Wizard {
+                        let characterType = "mage"
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else if character is Colossus {
+                        let characterType = "colosse"
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    } else {
+                        let characterType = "nain"
+                        print("le personnage \(characterName) qui est un \(characterType)")
+                    }
+                }
+            }
+        }
+    }
     public func playerName() -> String {
 // trouver le moyen de verifier si le nom est déjà utilisé
         repeat{

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF5732601F4ABE9D005C8379 /* gameFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF57325F1F4ABE9D005C8379 /* gameFight.swift */; };
 		AF7BD41E1F27B65A004C233C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD41D1F27B65A004C233C /* main.swift */; };
 		AF7BD4251F27B723004C233C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD4241F27B723004C233C /* Game.swift */; };
 		AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD43B1F27E207004C233C /* gameCharacter.swift */; };
 		AF7BD43E1F27E2B1004C233C /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD43D1F27E2B1004C233C /* player.swift */; };
-		AFFDA0621F30C320001ADB95 /* gameFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDA0611F30C320001ADB95 /* gameFight.swift */; };
 		AFFDA0641F30C505001ADB95 /* gameCharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,12 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		AF57325F1F4ABE9D005C8379 /* gameFight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameFight.swift; sourceTree = "<group>"; };
 		AF7BD41A1F27B65A004C233C /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7BD41D1F27B65A004C233C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AF7BD4241F27B723004C233C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = SOURCE_ROOT; };
 		AF7BD43B1F27E207004C233C /* gameCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameCharacter.swift; sourceTree = "<group>"; };
 		AF7BD43D1F27E2B1004C233C /* player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
-		AFFDA0611F30C320001ADB95 /* gameFight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameFight.swift; sourceTree = "<group>"; };
 		AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameCharacterType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,7 +72,7 @@
 				AF7BD43D1F27E2B1004C233C /* player.swift */,
 				AF7BD43B1F27E207004C233C /* gameCharacter.swift */,
 				AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */,
-				AFFDA0611F30C320001ADB95 /* gameFight.swift */,
+				AF57325F1F4ABE9D005C8379 /* gameFight.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -139,7 +139,7 @@
 				AFFDA0641F30C505001ADB95 /* gameCharacterType.swift in Sources */,
 				AF7BD41E1F27B65A004C233C /* main.swift in Sources */,
 				AF7BD4251F27B723004C233C /* Game.swift in Sources */,
-				AFFDA0621F30C320001ADB95 /* gameFight.swift in Sources */,
+				AF5732601F4ABE9D005C8379 /* gameFight.swift in Sources */,
 				AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
