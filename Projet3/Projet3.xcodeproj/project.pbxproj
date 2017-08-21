@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF5732631F4B4151005C8379 /* gameFight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5732621F4B4151005C8379 /* gameFight.swift */; };
 		AF7BD41E1F27B65A004C233C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD41D1F27B65A004C233C /* main.swift */; };
 		AF7BD4251F27B723004C233C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD4241F27B723004C233C /* Game.swift */; };
 		AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD43B1F27E207004C233C /* gameCharacter.swift */; };
@@ -28,7 +27,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AF5732621F4B4151005C8379 /* gameFight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameFight.swift; sourceTree = "<group>"; };
 		AF7BD41A1F27B65A004C233C /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		AF7BD41D1F27B65A004C233C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		AF7BD4241F27B723004C233C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = SOURCE_ROOT; };
@@ -72,7 +70,6 @@
 				AF7BD43D1F27E2B1004C233C /* player.swift */,
 				AF7BD43B1F27E207004C233C /* gameCharacter.swift */,
 				AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */,
-				AF5732621F4B4151005C8379 /* gameFight.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -139,7 +136,6 @@
 				AFFDA0641F30C505001ADB95 /* gameCharacterType.swift in Sources */,
 				AF7BD41E1F27B65A004C233C /* main.swift in Sources */,
 				AF7BD4251F27B723004C233C /* Game.swift in Sources */,
-				AF5732631F4B4151005C8379 /* gameFight.swift in Sources */,
 				AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

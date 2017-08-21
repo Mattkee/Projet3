@@ -1,4 +1,7 @@
+import Foundation
+
 //The game class will allow us to manage the different stages of the game
+
 class Game {
     var players = [String : Player]()
     var playersName = [String]()
@@ -18,6 +21,9 @@ class Game {
         print("Que le jeu commence !!!")
         print("")
         Player.seeAllTeamCharacter()
-       // créer les fonction pour commencer le jeu.
+        // créer les fonction pour commencer le jeu.
+        let playerBeginAttack = Int(arc4random_uniform(1))
+        selectPlayer = playersName[playerBeginAttack]
+        players[selectPlayer]?.seeTeamMembers()
     }
 }
