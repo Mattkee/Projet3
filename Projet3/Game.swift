@@ -18,12 +18,38 @@ class Game {
         }
     }
     public func beginGame() {
+        print("")
         print("Que le jeu commence !!!")
         print("")
         Player.seeAllTeamCharacter()
         // créer les fonction pour commencer le jeu.
+        
         let playerBeginAttack = Int(arc4random_uniform(1))
         selectPlayer = playersName[playerBeginAttack]
-        players[selectPlayer]?.seeTeamMembers()
+        var numberCharacter : Int = 0
+        print("\(selectPlayer) vous débutez le combat")
+        print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
+        print("")
+        
+        // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
+        // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
+        for (name, type) in (players[selectPlayer]?.getTeamCharacter())! {
+            numberCharacter += 1
+            if type is Warrior {
+                let characterType = "combattant"
+                print("\(numberCharacter). le personnage \(name) qui est un \(characterType)")
+            } else if type is Wizard {
+                let characterType = "mage"
+                print("\(numberCharacter). le personnage \(name) qui est un \(characterType)")
+            } else if type is Colossus {
+                let characterType = "colosse"
+                print("\(numberCharacter). le personnage \(name) qui est un \(characterType)")
+            } else {
+                let characterType = "nain"
+                print("\(numberCharacter). le personnage \(name) qui est un \(characterType)")
+            }
+        }
+        numberCharacter = 0
+        
     }
 }

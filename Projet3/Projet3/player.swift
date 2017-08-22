@@ -8,6 +8,9 @@ class Player{
     public func getTeamName() -> String {
         return self.teamName
     }
+    public func getTeamCharacter() -> [String : Character]{
+        return self.teamCharacter
+    }
     public func setTeamMember(name : String , member : Character) {
         self.teamCharacter[name] = member
     }
