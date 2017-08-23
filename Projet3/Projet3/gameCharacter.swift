@@ -3,6 +3,7 @@ class Character {
     var name : String = ""
     var health : Int
     var attack : Int
+    var characterNumber : Int = 0
     
     init(health : Int, attack : Int) {
         //self.name = ""
@@ -19,5 +20,21 @@ class Character {
             }
             } while (Player.checkName(nameChoice: name) == true)
         } while((name.characters.count) <= 3)
+    }
+    public static func findCharacter(type : Character) -> String {
+        
+        if type is Warrior {
+            return "combattant"
+            
+        } else if type is Wizard {
+            return "mage"
+            
+        } else if type is Colossus {
+            return "colosse"
+            
+        } else {
+            return "nain"
+            
+        }
     }
 }

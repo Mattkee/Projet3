@@ -21,19 +21,7 @@ class Player{
         print("Voici la liste des ses personnages :")
         print("")
         for (name, type) in teamCharacter {
-                if type is Warrior {
-                    let characterType = "combattant"
-                    print("le personnage \(name) qui est un \(characterType)")
-                } else if type is Wizard {
-                    let characterType = "mage"
-                    print("le personnage \(name) qui est un \(characterType)")
-                } else if type is Colossus {
-                    let characterType = "colosse"
-                    print("le personnage \(name) qui est un \(characterType)")
-                } else {
-                    let characterType = "nain"
-                    print("le personnage \(name) qui est un \(characterType)")
-                }
+                print("le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
     }
     public static func seeAllTeamCharacter() {
@@ -42,19 +30,9 @@ class Player{
             print("pour l'équipe de \(name) voici la liste des personnages :")
             print("")
             for player in game.players.values {
-                for (characterName, character) in player.teamCharacter {
-                    if character is Warrior && player.teamName == name {
-                        let characterType = "combattant"
-                        print("le personnage \(characterName) qui est un \(characterType)")
-                    } else if character is Wizard && player.teamName == name {
-                        let characterType = "mage"
-                        print("le personnage \(characterName) qui est un \(characterType)")
-                    } else if character is Colossus && player.teamName == name {
-                        let characterType = "colosse"
-                        print("le personnage \(characterName) qui est un \(characterType)")
-                    } else if character is Dwarf && player.teamName == name {
-                        let characterType = "nain"
-                        print("le personnage \(characterName) qui est un \(characterType)")
+                for (nameCharacter, type) in player.teamCharacter {
+                    if player.teamName == name {
+                        print("le personnage \(nameCharacter) qui est un \(Character.findCharacter(type: type))")
                     }
                 }
             }
@@ -133,6 +111,7 @@ class Player{
                     
                     let personnage = Warrior()
                     personnage.nameCharacter()
+                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -145,6 +124,7 @@ class Player{
                     
                     let personnage = Wizard()
                     personnage.nameCharacter()
+                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -157,6 +137,7 @@ class Player{
                     
                     let personnage = Colossus()
                     personnage.nameCharacter()
+                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
@@ -169,6 +150,7 @@ class Player{
                     
                     let personnage = Dwarf()
                     personnage.nameCharacter()
+                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
                     
                     game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
                     
