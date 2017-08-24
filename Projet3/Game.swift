@@ -34,7 +34,7 @@ class Game {
     }
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
-    public func selectCharacterForBattle() -> Character {
+    public func selectCharacterForBattle() -> Character? {
         var characterAttack : Character
         
         for (name, type) in (players[selectPlayer]?.getTeamCharacter())! {
@@ -72,9 +72,9 @@ class Game {
                 
                 print("")
                 print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 3 selon le personnage choisi.")
-                    return nil
             }
         }
+        return nil
     }
 }
 
