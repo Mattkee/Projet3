@@ -6,7 +6,8 @@ class Game {
     var players = [String : Player]()
     var playersName = [String]()
     var selectPlayer : String = ""
-    
+    var playerAttack : String = ""
+    var playerDefender : String = ""
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     
     public func initializeGame() {
@@ -26,57 +27,22 @@ class Game {
         // créer les fonction pour commencer le jeu.
         
         let playerBeginAttack = Int(arc4random_uniform(UInt32(game.players.count)))
-        selectPlayer = playersName[playerBeginAttack]
+        playerAttack = playersName[playerBeginAttack]
         
-        print("\(selectPlayer) vous débutez le combat")
+        if playerBeginAttack == 1 {
+            playerDefender = playersName[playerBeginAttack - 1]
+        } else {
+            playerDefender = playersName[playerBeginAttack + 1]
+        }
+        
+        print("\(playerAttack) vous débutez le combat")
         
     }
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
-    public func selectCharacterAttack() -> Character? {
-        var characterAttack : Character
-        
-        print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
-        print("")
-        for (name, type) in (players[selectPlayer]?.getTeamCharacter())! {
-            
-            print("\(type.characterNumber). le personnage \(name) qui est un \(Character.findCharacter(type: type))")
-        }
-        
-        if let choixPersonnage = readLine() {
-            
-            switch choixPersonnage {
-            case "1":
-                
-                for (_, type) in (players[selectPlayer]?.getTeamCharacter())! {
-                    if type.characterNumber == 1 {
-                        characterAttack = type
-                        return characterAttack
-                    }
-                }
-            case "2":
-                
-                for (_, type) in (players[selectPlayer]?.getTeamCharacter())! {
-                    if type.characterNumber == 2 {
-                        characterAttack = type
-                        return characterAttack
-                    }
-                }
-            case "3":
-                
-                for (_, type) in (players[selectPlayer]?.getTeamCharacter())! {
-                    if type.characterNumber == 3 {
-                        characterAttack = type
-                        return characterAttack
-                    }
-                }
-            default:
-                
-                print("")
-                print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 3 selon le personnage choisi.")
-            }
-        }
-        return nil
+    public func battle() {
+        let playerOne = Character.selectCharacter(player : playerAttack)
+        let playerTwo = Character.selectCharacter(player : playerDefender)
+        playerTwo?.health -= (playerOne?.attack)!
     }
 }
-

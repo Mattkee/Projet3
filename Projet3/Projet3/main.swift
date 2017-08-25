@@ -12,3 +12,4 @@ import Foundation
 var game = Game()
 game.initializeGame()
 game.beginGame()
+game.battle()
