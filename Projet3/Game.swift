@@ -29,18 +29,20 @@ class Game {
         selectPlayer = playersName[playerBeginAttack]
         
         print("\(selectPlayer) vous débutez le combat")
-        print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
-        print("")
+        
     }
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
-    public func selectCharacterForBattle() -> Character? {
+    public func selectCharacterAttack() -> Character? {
         var characterAttack : Character
         
+        print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
+        print("")
         for (name, type) in (players[selectPlayer]?.getTeamCharacter())! {
             
             print("\(type.characterNumber). le personnage \(name) qui est un \(Character.findCharacter(type: type))")
         }
+        
         if let choixPersonnage = readLine() {
             
             switch choixPersonnage {
