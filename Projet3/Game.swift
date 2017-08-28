@@ -41,8 +41,18 @@ class Game {
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
-        let playerOne = Character.selectCharacter(player : playerAttack)
-        let playerTwo = Character.selectCharacter(player : playerDefender)
-        playerTwo?.health -= (playerOne?.attack)!
+        var playerOne : Character
+        var playerTwo : Character
+        
+        repeat {
+        playerOne = Character.selectCharacter(player : playerAttack)!
+        } while playerOne.characterNumber > 0 && playerOne.characterNumber < 4
+        
+        repeat {
+        playerTwo = Character.selectCharacter(player : playerDefender)!
+        } while playerTwo.characterNumber > 0 && playerTwo.characterNumber < 4
+        
+        playerTwo.health -= (playerOne.attack)
+        Player.remoteCharacter()
     }
 }

@@ -57,11 +57,11 @@ class Character {
                 print("\(type.characterNumber). le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
         }
-        repeat {
-        if let choixPersonnage = readLine() {
+        
+        if let choixPersonnage = Int(readLine()!) {
             
             switch choixPersonnage {
-            case "1":
+            case 1:
                 
                 for (_, type) in (game.players[player]?.getTeamCharacter())! {
                     if type.characterNumber == 1 {
@@ -69,7 +69,7 @@ class Character {
                         return characterSelected
                     }
                 }
-            case "2":
+            case 2:
                 
                 for (_, type) in (game.players[player]?.getTeamCharacter())! {
                     if type.characterNumber == 2 {
@@ -77,7 +77,7 @@ class Character {
                         return characterSelected
                     }
                 }
-            case "3":
+            case 3:
                 
                 for (_, type) in (game.players[player]?.getTeamCharacter())! {
                     if type.characterNumber == 3 {
@@ -89,10 +89,11 @@ class Character {
                 
                 print("")
                 print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 3 selon le personnage choisi.")
-                }
             }
-            return nil
-        } while true
+        }
+        
+        return nil
     }
+    
 }
 

@@ -24,6 +24,16 @@ class Player{
                 print("le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
     }
+    public static func remoteCharacter() {
+        for player in game.players.values {
+            for (nameCharacter, type) in player.teamCharacter {
+                if type.health < 1 {
+                    player.teamCharacter.removeValue(forKey: nameCharacter)
+                }
+            }
+        }
+    }
+    
     public static func seeAllTeamCharacter() {
         for (name, _) in game.players {
             print("")
