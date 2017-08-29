@@ -37,8 +37,7 @@ class Character {
             
         }
     }
-    public static func selectCharacter (player : String) -> Character? {
-        var characterSelected : Character
+    public static func viewCharacterBattle (player : String) {
         
         print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
         print("")
@@ -57,43 +56,6 @@ class Character {
                 print("\(type.characterNumber). le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
         }
-        
-        if let choixPersonnage = Int(readLine()!) {
-            
-            switch choixPersonnage {
-            case 1:
-                
-                for (_, type) in (game.players[player]?.getTeamCharacter())! {
-                    if type.characterNumber == 1 {
-                        characterSelected = type
-                        return characterSelected
-                    }
-                }
-            case 2:
-                
-                for (_, type) in (game.players[player]?.getTeamCharacter())! {
-                    if type.characterNumber == 2 {
-                        characterSelected = type
-                        return characterSelected
-                    }
-                }
-            case 3:
-                
-                for (_, type) in (game.players[player]?.getTeamCharacter())! {
-                    if type.characterNumber == 3 {
-                        characterSelected = type
-                        return characterSelected
-                    }
-                }
-            default:
-                
-                print("")
-                print("Je n'ai pas compris, veuillez choisir un numéro de 1 à 3 selon le personnage choisi.")
-            }
-        }
-        
-        return nil
     }
-    
 }
 

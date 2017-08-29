@@ -8,6 +8,7 @@ class Game {
     var selectPlayer : String = ""
     var playerAttack : String = ""
     var playerDefender : String = ""
+    
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     
     public func initializeGame() {
@@ -41,18 +42,43 @@ class Game {
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
-        var playerOne : Character
-        var playerTwo : Character
+        var characterBattle = [Character]()
         
         repeat {
-        playerOne = Character.selectCharacter(player : playerAttack)!
-        } while playerOne.characterNumber > 0 && playerOne.characterNumber < 4
+            Character.viewCharacterBattle(player: playerAttack)
+            let choiceCharacter = readLine()
+            
+            for (_, type) in (game.players[playerAttack]?.getTeamCharacter())! {
+            if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
+                if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
+                    characterBattle.append(type)
+                }
+            } else if choiceCharacter == type.name {
+                characterBattle.append(type)
+                }
+            }
+        } while characterBattle.count < 2
         
         repeat {
-        playerTwo = Character.selectCharacter(player : playerDefender)!
-        } while playerTwo.characterNumber > 0 && playerTwo.characterNumber < 4
+            Character.viewCharacterBattle(player: playerDefender)
+            let choiceCharacter = readLine()
+            
+            for (_, type) in (game.players[playerAttack]?.getTeamCharacter())! {
+                if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
+                    if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
+                        characterBattle.append(type)
+                    }
+                } else if choiceCharacter == type.name {
+                    characterBattle.append(type)
+                }
+            }
+        } while characterBattle.count < 3
         
-        playerTwo.health -= (playerOne.attack)
+            
+        characterBattle[1].health -= characterBattle[0].attack
+        
         Player.remoteCharacter()
+            
+        
     }
 }
