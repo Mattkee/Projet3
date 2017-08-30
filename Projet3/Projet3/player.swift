@@ -117,57 +117,25 @@ class Player{
                 
                 switch choixPersonnage {
                 case "1":
-                    // remplacer par une methode nameCharacter.
+                    // optimiser les cases suivants
                     
                     let personnage = Warrior()
-                    personnage.nameCharacter()
-                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
-                    
-                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
-                    
-                    print("")
-                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
-                    
-                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    Character.addNewCharacter(personnage: personnage)
                     
                 case "2":
                     
                     let personnage = Wizard()
-                    personnage.nameCharacter()
-                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
-                    
-                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
-                    
-                    print("")
-                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
-                    
-                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    Character.addNewCharacter(personnage: personnage)
                     
                 case "3":
                     
                     let personnage = Colossus()
-                    personnage.nameCharacter()
-                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
-                    
-                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
-                    
-                    print("")
-                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
-                    
-                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    Character.addNewCharacter(personnage: personnage)
                     
                 case "4":
                     
                     let personnage = Dwarf()
-                    personnage.nameCharacter()
-                    personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
-                    
-                    game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
-                    
-                    print("")
-                    print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
-                    
-                    game.players[game.selectPlayer]!.seeTeamMembers()
+                    Character.addNewCharacter(personnage: personnage)
                     
                 default:
                     

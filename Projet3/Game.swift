@@ -47,8 +47,8 @@ class Game {
         repeat {
             Character.viewCharacterBattle(player: playerAttack)
             let choiceCharacter = readLine()
-            
-            for (_, type) in (game.players[playerAttack]?.getTeamCharacter())! {
+            // optimiser la boucle for
+            for (_, type) in (players[playerAttack]?.getTeamCharacter())! {
             if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
                 if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
                     characterBattle.append(type)
@@ -57,13 +57,13 @@ class Game {
                 characterBattle.append(type)
                 }
             }
-        } while characterBattle.count < 2
+        } while characterBattle.count == 1
         
         repeat {
             Character.viewCharacterBattle(player: playerDefender)
             let choiceCharacter = readLine()
             
-            for (_, type) in (game.players[playerAttack]?.getTeamCharacter())! {
+            for (_, type) in (players[playerAttack]?.getTeamCharacter())! {
                 if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
                     if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
                         characterBattle.append(type)
@@ -72,13 +72,11 @@ class Game {
                     characterBattle.append(type)
                 }
             }
-        } while characterBattle.count < 3
+        } while characterBattle.count == 2
         
-            
         characterBattle[1].health -= characterBattle[0].attack
         
         Player.remoteCharacter()
-            
-        
+        // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
     }
 }

@@ -57,5 +57,18 @@ class Character {
             }
         }
     }
+    static func addNewCharacter(personnage : Character) {
+        
+        personnage.nameCharacter()
+        personnage.characterNumber = game.players[game.selectPlayer]!.getTeamMembersNumber() + 1
+        
+        game.players[game.selectPlayer]!.setTeamMember(name : personnage.name , member: personnage)
+        
+        print("")
+        print("\(game.players[game.selectPlayer]!.getTeamName()) a \(game.players[game.selectPlayer]!.getTeamMembersNumber()) personnage.")
+        
+        game.players[game.selectPlayer]!.seeTeamMembers()
+        
+    }
 }
 
