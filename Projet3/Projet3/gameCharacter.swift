@@ -71,6 +71,7 @@ class Character {
         
     }
     static func selectCharacter(player : String) {
+    
         if let choiceCharacter = readLine() {
         // optimiser la boucle for
             for (_, type) in (game.players[player]?.getTeamCharacter())! {
@@ -78,8 +79,6 @@ class Character {
                         game.characterBattle.append(type)
                     } else if choiceCharacter == type.name {
                         game.characterBattle.append(type)
-                    } else {
-                    print("je n'ai pas compris pouvez vous répéter")
                 }
             }
         }

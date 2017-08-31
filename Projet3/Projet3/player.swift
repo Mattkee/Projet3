@@ -1,6 +1,6 @@
 class Player{
     private var teamName : String = ""
-    private var teamCharacter = [String : Character]()
+     var teamCharacter = [String : Character]()
 
     public func setTeamName(name:String){
         self.teamName = name
@@ -24,16 +24,20 @@ class Player{
                 print("le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
     }
-    public static func battleCharacter (playerSelected : String , choiceCharacter : Character) {
-        for player in game.players.values {
-            if player.teamName == playerSelected {
-                for (_ , personnage) in player.teamCharacter {
-                    if personnage.name == choiceCharacter.name {
-                        personnage.health = choiceCharacter.health
-                    }
-                }
-            }
+    public static func battleCharacter (playerOne : String , playerTwo : String) {
+        
+        while game.characterBattle.count != 1 {
+            Character.viewCharacterBattle(player: playerOne)
+            Character.selectCharacter(player: playerOne)
         }
+        
+        while game.characterBattle.count != 2 {
+            Character.viewCharacterBattle(player: playerTwo)
+            Character.selectCharacter(player: playerTwo)
+        }
+        game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
+        game.characterBattle = [Character]()
+        
     }
     public static func remoteCharacter() {
         for player in game.players.values {

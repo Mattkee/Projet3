@@ -45,37 +45,9 @@ class Game {
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
         
-        while characterBattle.count != 1 {
-            Character.viewCharacterBattle(player: playerAttack)
-            Character.selectCharacter(player: playerAttack)
-            }
+        Player.battleCharacter(playerOne: playerAttack, playerTwo: playerDefender)
         
-        while characterBattle.count != 2 {
-            Character.viewCharacterBattle(player: playerDefender)
-            Character.selectCharacter(player: playerDefender)
-            }
-        
-        while characterBattle.count != 2 {
-        self.characterBattle[1].health -= self.characterBattle[0].attack
-        Player.battleCharacter(playerSelected : playerDefender , choiceCharacter : (self.characterBattle[1]))
-            }
-        
-        characterBattle = [Character]()
-        
-        while characterBattle.count != 1 {
-            Character.viewCharacterBattle(player: playerDefender)
-            Character.selectCharacter(player: playerDefender)
-            }
-        
-        while characterBattle.count != 2 {
-            Character.viewCharacterBattle(player: playerAttack)
-            Character.selectCharacter(player: playerAttack)
-            }
-        
-        while characterBattle.count != 2 {
-        self.characterBattle[1].health -= self.characterBattle[0].attack
-        Player.battleCharacter(playerSelected : playerDefender , choiceCharacter : (self.characterBattle[1]))
-            }
+        Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
         
         Player.remoteCharacter()
         Player.remotePlayer()
