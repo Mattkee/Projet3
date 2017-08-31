@@ -70,5 +70,25 @@ class Character {
         game.players[game.selectPlayer]!.seeTeamMembers()
         
     }
+    static func selectCharacter(player : String) {
+        if let choiceCharacter = readLine() {
+        // optimiser la boucle for
+            for (_, type) in (game.players[player]?.getTeamCharacter())! {
+                if choiceCharacter == "1" {
+                    if type.characterNumber == 1 {
+                    game.characterBattle.append(type)
+                    } else if type.characterNumber == 2 {
+                    game.characterBattle.append(type)
+                    } else if type.characterNumber == 3 {
+                    game.characterBattle.append(type)
+                    } else if choiceCharacter == type.name {
+                    game.characterBattle.append(type)
+                    } else {
+                    print("je n'ai pas compris pouvez vous répéter")
+                    }
+                }
+            }
+        }
+    }
 }
 

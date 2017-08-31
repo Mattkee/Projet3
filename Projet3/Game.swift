@@ -5,6 +5,7 @@ import Foundation
 class Game {
     var players = [String : Player]()
     var playersName = [String]()
+    var characterBattle = [Character]()
     var selectPlayer : String = ""
     var playerAttack : String = ""
     var playerDefender : String = ""
@@ -36,47 +37,49 @@ class Game {
             playerDefender = playersName[playerBeginAttack + 1]
         }
         
+        print("")
         print("\(playerAttack) vous débutez le combat")
         
     }
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
-        var characterBattle = [Character]()
         
-        repeat {
+        while characterBattle.count != 1 {
             Character.viewCharacterBattle(player: playerAttack)
-            let choiceCharacter = readLine()
-            // optimiser la boucle for
-            for (_, type) in (players[playerAttack]?.getTeamCharacter())! {
-            if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
-                if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
-                    characterBattle.append(type)
-                }
-            } else if choiceCharacter == type.name {
-                characterBattle.append(type)
-                }
+            Character.selectCharacter(player: playerAttack)
             }
-        } while characterBattle.count == 1
         
-        repeat {
+        while characterBattle.count != 2 {
             Character.viewCharacterBattle(player: playerDefender)
-            let choiceCharacter = readLine()
-            
-            for (_, type) in (players[playerAttack]?.getTeamCharacter())! {
-                if choiceCharacter == "1" || choiceCharacter == "2" || choiceCharacter == "3 " {
-                    if type.characterNumber == 1 || type.characterNumber == 2 || type.characterNumber == 3 {
-                        characterBattle.append(type)
-                    }
-                } else if choiceCharacter == type.name {
-                    characterBattle.append(type)
-                }
+            Character.selectCharacter(player: playerDefender)
             }
-        } while characterBattle.count == 2
         
-        characterBattle[1].health -= characterBattle[0].attack
+        while characterBattle.count != 2 {
+        self.characterBattle[1].health -= self.characterBattle[0].attack
+        Player.battleCharacter(playerSelected : playerDefender , choiceCharacter : (self.characterBattle[1]))
+            }
+        
+        characterBattle = [Character]()
+        
+        while characterBattle.count != 1 {
+            Character.viewCharacterBattle(player: playerDefender)
+            Character.selectCharacter(player: playerDefender)
+            }
+        
+        while characterBattle.count != 2 {
+            Character.viewCharacterBattle(player: playerAttack)
+            Character.selectCharacter(player: playerAttack)
+            }
+        
+        while characterBattle.count != 2 {
+        self.characterBattle[1].health -= self.characterBattle[0].attack
+        Player.battleCharacter(playerSelected : playerDefender , choiceCharacter : (self.characterBattle[1]))
+            }
         
         Player.remoteCharacter()
+        Player.remotePlayer()
+        Player.seeAllTeamCharacter()
         // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
     }
 }

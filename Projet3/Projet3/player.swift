@@ -24,6 +24,17 @@ class Player{
                 print("le personnage \(name) qui est un \(Character.findCharacter(type: type))")
             }
     }
+    public static func battleCharacter (playerSelected : String , choiceCharacter : Character) {
+        for player in game.players.values {
+            if player.teamName == playerSelected {
+                for (_ , personnage) in player.teamCharacter {
+                    if personnage.name == choiceCharacter.name {
+                        personnage.health = choiceCharacter.health
+                    }
+                }
+            }
+        }
+    }
     public static func remoteCharacter() {
         for player in game.players.values {
             for (nameCharacter, type) in player.teamCharacter {
@@ -31,6 +42,19 @@ class Player{
                     player.teamCharacter.removeValue(forKey: nameCharacter)
                 }
             }
+        }
+    }
+    public static func remotePlayer() {
+        for player in game.players.values {
+            let numberCharacter = player.teamCharacter.count
+                if numberCharacter == 0 {
+                    let teamName = player.teamName
+                    game.players.removeValue(forKey: teamName)
+                    for player in game.players.values {
+                        let teamName = player.teamName
+                        print(" le joueur \(teamName)")
+                    }
+                }
         }
     }
     
@@ -42,7 +66,7 @@ class Player{
             for player in game.players.values {
                 for (nameCharacter, type) in player.teamCharacter {
                     if player.teamName == name {
-                        print("le personnage \(nameCharacter) qui est un \(Character.findCharacter(type: type))")
+                        print("le personnage \(nameCharacter) qui est un \(Character.findCharacter(type: type)) et il a \(type.health) pt de vie")
                     }
                 }
             }
