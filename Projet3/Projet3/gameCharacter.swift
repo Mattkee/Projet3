@@ -39,7 +39,7 @@ class Character {
     }
     public static func viewCharacterBattle (player : String) {
         
-        print("lequel parmi vos personnage voulez vous choisir pour ce combat :")
+        print("quel personnage voulez vous choisir pour ce combat :")
         print("")
         for (name, type) in (game.players[player]?.getTeamCharacter())! {
             if type.characterNumber == 1 {
@@ -72,6 +72,7 @@ class Character {
     }
     static func selectCharacter(player : String) {
     
+        print("indiquez un nom de personnage ou son numéro pour le sélectionner")
         if let choiceCharacter = readLine() {
         // optimiser la boucle for
             for (_, type) in (game.players[player]?.getTeamCharacter())! {

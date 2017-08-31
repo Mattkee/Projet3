@@ -27,14 +27,19 @@ class Player{
     public static func battleCharacter (playerOne : String , playerTwo : String) {
         
         while game.characterBattle.count != 1 {
+            print("")
+            print("\(playerOne) vous attaquez voici vos personnages")
             Character.viewCharacterBattle(player: playerOne)
             Character.selectCharacter(player: playerOne)
         }
-        
+
         while game.characterBattle.count != 2 {
+            print("vous attaquez \(playerTwo) voici ses personnages")
             Character.viewCharacterBattle(player: playerTwo)
             Character.selectCharacter(player: playerTwo)
         }
+        
+        print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
         game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
         game.characterBattle = [Character]()
         
@@ -108,6 +113,7 @@ class Player{
         
         let team = Player()
         
+        print("")
         print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
         
         let teamName = team.playerName()

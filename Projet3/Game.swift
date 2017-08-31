@@ -22,9 +22,10 @@ class Game {
         }
     }
     public func beginGame() {
+        
         print("")
         print("Que le jeu commence !!!")
-        print("")
+        
         Player.seeAllTeamCharacter()
         // créer les fonction pour commencer le jeu.
         
@@ -44,14 +45,19 @@ class Game {
         // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
+        repeat{
+            Player.battleCharacter(playerOne: playerAttack, playerTwo: playerDefender)
         
-        Player.battleCharacter(playerOne: playerAttack, playerTwo: playerDefender)
+            Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
         
-        Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
+            Player.remoteCharacter()
+            Player.remotePlayer()
+            Player.seeAllTeamCharacter()
+            // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
+        } while players.count > 1
         
-        Player.remoteCharacter()
-        Player.remotePlayer()
-        Player.seeAllTeamCharacter()
-        // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
+        for (name , _) in players {
+           print("\(name) vous gagnez le jeu.")
+        }
     }
 }
