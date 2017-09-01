@@ -32,7 +32,11 @@ class Player{
             Character.viewCharacterBattle(player: playerOne)
             Character.selectCharacter(player: playerOne)
         }
-
+        if game.characterBattle[0] is Wizard {
+            
+            self.wizardHeals(player: playerOne,playerOne : playerOne, playerTwo: playerTwo)
+            
+        } else {
         while game.characterBattle.count != 2 {
             print("vous attaquez \(playerTwo) voici ses personnages")
             Character.viewCharacterBattle(player: playerTwo)
@@ -42,9 +46,45 @@ class Player{
         print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
         game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
         game.characterBattle = [Character]()
+        }
         Player.remoteCharacter()
         Player.remotePlayer()
     }
+    public static func wizardHeals(player : String, playerOne : String , playerTwo : String) {
+        print("voulez vous soigner un de vos personnage ou attaquer ?"
+            + "\n1. Attaquer"
+            + "\n2. Soigner")
+        print("Ecrivez le numéro de l'action ou le nom de l'action")
+        
+        if let choiceAction = readLine() {
+            // optimiser la boucle for
+            if choiceAction == "2" || choiceAction == "soigner" {
+                while game.characterBattle.count != 2 {
+                    print("quel personnage voulez vous soigner :")
+                    Character.viewCharacterBattle(player: player)
+                    Character.selectCharacter(player: player)
+                }
+                // corriger la commande de soin.
+              game.players[player]?.teamCharacter[(game.characterBattle[0].name)]?.health += (game.players[player]?.teamCharacter[(game.characterBattle[1].name)]?.magic)!
+                
+                game.characterBattle = [Character]()
+                
+            } else if choiceAction == "1" || choiceAction == "attaquer" {
+                    while game.characterBattle.count != 2 {
+                        print("vous attaquez \(playerTwo) voici ses personnages")
+                        Character.viewCharacterBattle(player: playerTwo)
+                        Character.selectCharacter(player: playerTwo)
+                    }
+                    
+                    print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
+                    game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
+                    game.characterBattle = [Character]()
+                }
+                Player.remoteCharacter()
+                Player.remotePlayer()
+        }
+    }
+
     public static func remoteCharacter() {
         for player in game.players.values {
             for (nameCharacter, type) in player.teamCharacter {

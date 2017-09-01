@@ -3,12 +3,14 @@ class Character {
     var name : String = ""
     var health : Int
     var attack : Int
+    var magic : Int
     var characterNumber : Int = 0
     
-    init(health : Int, attack : Int) {
+    init(health : Int, attack : Int, magic : Int) {
         //self.name = ""
         self.health = health
         self.attack = attack
+        self.magic = magic
     }
     func nameCharacter() {
         // trouver le moyen de verifier si le nom est déjà utilisé

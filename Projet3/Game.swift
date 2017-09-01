@@ -42,7 +42,7 @@ class Game {
         print("\(playerAttack) vous débutez le combat")
         
     }
-        // changer la boucle pour simplifier les phases de jeu en rajoutant une propriété characterNumber pour définir un numéro à chaque personnage afin de simplifier les choix.
+    
         // faire la même chose avec la class player, rajouter un numéro à chaque joueur pour simplifier le jeu.
     public func battle() {
         repeat{
@@ -50,11 +50,11 @@ class Game {
             if players.count == 2 {
                 Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
             }
-        // inclure la suppression du personnage et du player à la func battleCharacter.
+        
             Player.seeAllTeamCharacter()
             // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
         } while players.count > 1
-        //voir si la boucle peut être mise directement dans la func battleCharacter.
+        
         for (name , _) in players {
            print("\(name) vous gagnez le jeu.")
         }
