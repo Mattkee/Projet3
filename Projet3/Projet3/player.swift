@@ -25,7 +25,7 @@ class Player{
             }
     }
     public static func battleCharacter (playerOne : String , playerTwo : String) {
-        
+        // intégrer une étape soin à la place de l'attaque si le joueur le choisi, créer le côté aléatoire des attaques pour ajouter du piment au jeu.
         while game.characterBattle.count != 1 {
             print("")
             print("\(playerOne) vous attaquez voici vos personnages")
@@ -42,7 +42,8 @@ class Player{
         print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
         game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
         game.characterBattle = [Character]()
-        
+        Player.remoteCharacter()
+        Player.remotePlayer()
     }
     public static func remoteCharacter() {
         for player in game.players.values {

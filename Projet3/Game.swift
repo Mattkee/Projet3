@@ -47,15 +47,14 @@ class Game {
     public func battle() {
         repeat{
             Player.battleCharacter(playerOne: playerAttack, playerTwo: playerDefender)
-        
-            Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
-        
-            Player.remoteCharacter()
-            Player.remotePlayer()
+            if players.count == 2 {
+                Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
+            }
+        // inclure la suppression du personnage et du player à la func battleCharacter.
             Player.seeAllTeamCharacter()
             // finir la deuxième boucle d'action voir essayer d'inclure tout de suite l'étape 3.
         } while players.count > 1
-        
+        //voir si la boucle peut être mise directement dans la func battleCharacter.
         for (name , _) in players {
            print("\(name) vous gagnez le jeu.")
         }
