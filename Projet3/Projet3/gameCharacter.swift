@@ -4,6 +4,8 @@ class Character {
     var health : Int
     var attack : Int
     var magic : Int
+    var objects = [Objects]()
+    
     var characterNumber : Int = 0
     
     init(health : Int, attack : Int, magic : Int) {

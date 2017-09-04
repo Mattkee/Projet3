@@ -47,6 +47,8 @@ class Game {
     public func battle() {
         repeat{
             Player.battleCharacter(playerOne: playerAttack, playerTwo: playerDefender)
+            Player.seeAllTeamCharacter()
+            
             if players.count == 2 {
                 Player.battleCharacter(playerOne: playerDefender, playerTwo: playerAttack)
             }
@@ -60,4 +62,7 @@ class Game {
         }
     }
     // créer une fonction coffre qui de manière aléatoire donnera une arme ou autre chose au personnage selectionné.
+    func chest(characterSelected : Character) {
+        
+    }
 }
