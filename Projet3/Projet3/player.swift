@@ -33,6 +33,7 @@ class Player{
             Character.selectCharacter(player: playerOne)
         }
         game.chest(characterSelected : (game.players[playerOne]?.teamCharacter[(game.characterBattle[0].name)])!)
+        
         if game.characterBattle[0] is Wizard {
             
             self.wizardHeals(playerOne : playerOne, playerTwo: playerTwo)
@@ -45,7 +46,8 @@ class Player{
         }
         
         print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
-        game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
+        game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= Character.calculateDamage(characterSelected: (game.players[playerOne]?.teamCharacter[(game.characterBattle[0].name)])!)
+        
         game.characterBattle = [Character]()
         }
         Player.remoteCharacter()
@@ -85,7 +87,7 @@ class Player{
                 
                 if characterHealthMax < game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health {
                 
-                game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health = characterHealthMax
+                    game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health = characterHealthMax
                     
                 }
                 
@@ -103,7 +105,7 @@ class Player{
                     
                 print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                 
-                game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= game.characterBattle[0].attack
+                game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= Character.calculateDamage(characterSelected: (game.players[playerOne]?.teamCharacter[(game.characterBattle[0].name)])!)
                 
                 game.characterBattle = [Character]()
             }
@@ -143,7 +145,7 @@ class Player{
             for player in game.players.values {
                 for (nameCharacter, type) in player.teamCharacter {
                     if player.teamName == name {
-                        print("le personnage \(nameCharacter) qui est un \(Character.findCharacter(type: type)) et il a \(type.health) pt de vie")
+                        print("le personnage \(nameCharacter) qui est un \(Character.findCharacter(type: type)) et il a \(type.health) pt de vie et peut infliger \(Character.calculateDamage(characterSelected: type))pt de dommage.")
                     }
                 }
             }

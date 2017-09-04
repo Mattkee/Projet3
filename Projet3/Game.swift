@@ -9,7 +9,8 @@ class Game {
     var selectPlayer : String = ""
     var playerAttack : String = ""
     var playerDefender : String = ""
-    var objectsList = [EpeeLarge() , MagicBaguette()]
+    var objectsAttackList = [EpeeLarge()]
+    var objectsMagicList = [MagicBaguette()]
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     
     public func initializeGame() {
@@ -73,10 +74,26 @@ class Game {
             let playerChoice = String(readLine()!)
             
             if playerChoice == "1" || playerChoice == "oui" {
-                let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsList.count)))
-                characterSelected.objects.append(objectsList[openChestNumber])
-                print("\(characterSelected.name) reçoit un nouvel objet qui lui donne \(characterSelected.objects[0].objectProfit)")
-                print("")
+                
+                if Character.findCharacter(type: characterSelected) == "mage" {
+                    let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsMagicList.count)))
+                    
+                    characterSelected.objects = [Objects]()
+                    
+                    characterSelected.objects.append(objectsMagicList[openChestNumber])
+                    
+                    print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(characterSelected.objects[0].objectProfit)")
+                    print("")
+                } else {
+                    let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsAttackList.count)))
+                    
+                    characterSelected.objects = [Objects]()
+                    
+                    characterSelected.objects.append(objectsAttackList[openChestNumber])
+                    
+                    print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(characterSelected.objects[0].objectProfit)")
+                    print("")
+                }
             } else {
                 print("Votre réponse a fait disparaître le coffre")
                 print("")

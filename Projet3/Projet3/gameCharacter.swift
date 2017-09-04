@@ -88,5 +88,14 @@ class Character {
             }
         }
     }
+    static func calculateDamage(characterSelected : Character) -> Int {
+        if characterSelected.objects.count == 1 {
+            let damage = characterSelected.attack + characterSelected.objects[0].objectProfit
+            return damage
+        } else {
+            let damage = characterSelected.attack
+            return damage
+        }
+    }
 }
 

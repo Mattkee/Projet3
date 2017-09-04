@@ -11,10 +11,19 @@ class Objects {
         self.typeObject = typeObject
     }
 }
-
+class Epee : Objects {
+    init(){
+        super.init(name: "épée", objectProfit: 10, typeObject: "attaque")
+    }
+}
+class Hache : Objects {
+    init(){
+        super.init(name: "Hache", objectProfit: 50, typeObject: "attaque")
+    }
+}
 class EpeeLarge : Objects {
     init(){
-        super.init(name: "épée Large", objectProfit: 20, typeObject: "attaque")
+        super.init(name: "épée Large", objectProfit: 40, typeObject: "attaque")
     }
 }
 
@@ -23,3 +32,9 @@ class MagicBaguette : Objects {
         super.init(name: "Baguette magic", objectProfit: 30, typeObject: "magie")
     }
 }
+class WithoutObject : Objects {
+    init(){
+        super.init(name: "", objectProfit: 0, typeObject: "")
+    }
+}
+
