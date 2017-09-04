@@ -9,7 +9,7 @@ class Game {
     var selectPlayer : String = ""
     var playerAttack : String = ""
     var playerDefender : String = ""
-    
+    var objectsList = [EpeeLarge() , MagicBaguette()]
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     
     public func initializeGame() {
@@ -63,6 +63,7 @@ class Game {
     }
     // créer une fonction coffre qui de manière aléatoire donnera une arme ou autre chose au personnage selectionné.
     func chest(characterSelected : Character) {
-        
+        let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsList.count)))
+        characterSelected.objects.append(objectsList[openChestNumber])
     }
 }
