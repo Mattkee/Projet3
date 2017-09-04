@@ -79,8 +79,14 @@ class Player{
                     characterHealthMax = 30
                 }
                 
+                game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health += 20
+                game.players[playerOne]!.teamCharacter[game.characterBattle[0].name]!.magic -= 20
                 
-                game.players[playerOne]?.teamCharacter[(game.characterBattle[1].name)]?.health += ((game.players[playerOne]?.teamCharacter[(game.characterBattle[1].name)]?.health)!) / 100 * 20
+                if characterHealthMax < game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health {
+                
+                game.players[playerOne]!.teamCharacter[game.characterBattle[1].name]!.health = characterHealthMax
+                    
+                }
                 
                 print("\(game.characterBattle[0].name) soigne \(game.characterBattle[1].name)")
                 
