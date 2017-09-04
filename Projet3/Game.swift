@@ -63,7 +63,24 @@ class Game {
     }
     // créer une fonction coffre qui de manière aléatoire donnera une arme ou autre chose au personnage selectionné.
     func chest(characterSelected : Character) {
-        let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsList.count)))
-        characterSelected.objects.append(objectsList[openChestNumber])
+        let luck = Int(arc4random_uniform(UInt32(2)))
+        
+        if luck == 1 {
+           print("un coffre apparait devant \(characterSelected.name) voulez vous l'ouvrir ?"
+            + "\n1. oui"
+            + "\n2. non")
+            
+            let playerChoice = String(readLine()!)
+            
+            if playerChoice == "1" || playerChoice == "oui" {
+                let openChestNumber = Int(arc4random_uniform(UInt32(game.objectsList.count)))
+                characterSelected.objects.append(objectsList[openChestNumber])
+                print("\(characterSelected.name) reçoit un nouvel objet qui lui donne \(characterSelected.objects[0].objectProfit)")
+                print("")
+            } else {
+                print("Votre réponse a fait disparaître le coffre")
+                print("")
+            }
+        }
     }
 }

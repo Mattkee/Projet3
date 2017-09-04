@@ -32,6 +32,7 @@ class Player{
             Character.viewCharacterBattle(player: playerOne)
             Character.selectCharacter(player: playerOne)
         }
+        game.chest(characterSelected : (game.players[playerOne]?.teamCharacter[(game.characterBattle[0].name)])!)
         if game.characterBattle[0] is Wizard {
             
             self.wizardHeals(playerOne : playerOne, playerTwo: playerTwo)
