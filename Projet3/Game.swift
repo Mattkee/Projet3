@@ -9,7 +9,7 @@ class Game {
     var selectPlayer : String = ""
     var playerAttack : String = ""
     var playerDefender : String = ""
-    var objectsAttackList = [EpeeLarge()]
+    var objectsAttackList = [EpeeLarge(), Hache()]
     var objectsMagicList = [MagicBaguette()]
     //First stage of the game we'll ask the players to choose the name of their team and choose three characters
     

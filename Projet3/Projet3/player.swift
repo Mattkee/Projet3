@@ -46,6 +46,7 @@ class Player{
         }
         
         print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
+            
         game.players[playerTwo]?.teamCharacter[(game.characterBattle[1].name)]?.health -= Character.calculateDamage(characterSelected: (game.players[playerOne]?.teamCharacter[(game.characterBattle[0].name)])!)
         
         game.characterBattle = [Character]()

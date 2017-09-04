@@ -26,15 +26,8 @@ class EpeeLarge : Objects {
         super.init(name: "épée Large", objectProfit: 40, typeObject: "attaque")
     }
 }
-
 class MagicBaguette : Objects {
     init(){
         super.init(name: "Baguette magic", objectProfit: 30, typeObject: "magie")
     }
 }
-class WithoutObject : Objects {
-    init(){
-        super.init(name: "", objectProfit: 0, typeObject: "")
-    }
-}
-
