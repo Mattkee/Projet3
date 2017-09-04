@@ -66,6 +66,19 @@ class Player{
                     Character.selectCharacter(player: playerOne)
                 }
                 // trouver le moyen de verifier que lorsque le mage soigne cela ne dépasse pas le nombre de point de vie maximum. utiliser la fonction findCharacter.
+                var characterHealthMax = 0
+                let characterType = Character.findCharacter(type : game.characterBattle[1])
+                
+                if characterType == "combattant" {
+                    characterHealthMax = 100
+                } else if characterType == "mage" {
+                    characterHealthMax = 60
+                } else if characterType == "colosse" {
+                    characterHealthMax = 500
+                } else {
+                    characterHealthMax = 30
+                }
+                
                 
                 game.players[playerOne]?.teamCharacter[(game.characterBattle[1].name)]?.health += ((game.players[playerOne]?.teamCharacter[(game.characterBattle[1].name)]?.health)!) / 100 * 20
                 

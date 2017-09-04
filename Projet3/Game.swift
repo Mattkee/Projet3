@@ -59,4 +59,5 @@ class Game {
            print("\(name) vous gagnez le jeu.")
         }
     }
+    // créer une fonction coffre qui de manière aléatoire donnera une arme ou autre chose au personnage selectionné.
 }
