@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF1F999D1F5D59D7003E0464 /* gameObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF1F999C1F5D59D7003E0464 /* gameObjects.swift */; };
-		AF7BD41E1F27B65A004C233C /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD41D1F27B65A004C233C /* main.swift */; };
-		AF7BD4251F27B723004C233C /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD4241F27B723004C233C /* Game.swift */; };
-		AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD43B1F27E207004C233C /* gameCharacter.swift */; };
-		AF7BD43E1F27E2B1004C233C /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7BD43D1F27E2B1004C233C /* player.swift */; };
-		AFFDA0641F30C505001ADB95 /* gameCharacterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */; };
+		AF59290C1F64AB38007B29F3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929011F64AB38007B29F3 /* main.swift */; };
+		AF59290D1F64AB38007B29F3 /* game.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929021F64AB38007B29F3 /* game.swift */; };
+		AF59290E1F64AB38007B29F3 /* player.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929031F64AB38007B29F3 /* player.swift */; };
+		AF59290F1F64AB38007B29F3 /* character.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929041F64AB38007B29F3 /* character.swift */; };
+		AF5929101F64AB38007B29F3 /* warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929051F64AB38007B29F3 /* warrior.swift */; };
+		AF5929111F64AB38007B29F3 /* wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929061F64AB38007B29F3 /* wizard.swift */; };
+		AF5929121F64AB38007B29F3 /* colossus.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929071F64AB38007B29F3 /* colossus.swift */; };
+		AF5929131F64AB38007B29F3 /* dwarf.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929081F64AB38007B29F3 /* dwarf.swift */; };
+		AF5929141F64AB38007B29F3 /* object.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929091F64AB38007B29F3 /* object.swift */; };
+		AF5929151F64AB38007B29F3 /* attackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290A1F64AB38007B29F3 /* attackObject.swift */; };
+		AF5929161F64AB38007B29F3 /* magicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290B1F64AB38007B29F3 /* magicObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,13 +33,18 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		AF1F999C1F5D59D7003E0464 /* gameObjects.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameObjects.swift; sourceTree = "<group>"; };
+		AF5929011F64AB38007B29F3 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		AF5929021F64AB38007B29F3 /* game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = game.swift; sourceTree = "<group>"; };
+		AF5929031F64AB38007B29F3 /* player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
+		AF5929041F64AB38007B29F3 /* character.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = character.swift; sourceTree = "<group>"; };
+		AF5929051F64AB38007B29F3 /* warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = warrior.swift; sourceTree = "<group>"; };
+		AF5929061F64AB38007B29F3 /* wizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = wizard.swift; sourceTree = "<group>"; };
+		AF5929071F64AB38007B29F3 /* colossus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = colossus.swift; sourceTree = "<group>"; };
+		AF5929081F64AB38007B29F3 /* dwarf.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = dwarf.swift; sourceTree = "<group>"; };
+		AF5929091F64AB38007B29F3 /* object.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = object.swift; sourceTree = "<group>"; };
+		AF59290A1F64AB38007B29F3 /* attackObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attackObject.swift; sourceTree = "<group>"; };
+		AF59290B1F64AB38007B29F3 /* magicObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = magicObject.swift; sourceTree = "<group>"; };
 		AF7BD41A1F27B65A004C233C /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
-		AF7BD41D1F27B65A004C233C /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		AF7BD4241F27B723004C233C /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = SOURCE_ROOT; };
-		AF7BD43B1F27E207004C233C /* gameCharacter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameCharacter.swift; sourceTree = "<group>"; };
-		AF7BD43D1F27E2B1004C233C /* player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = player.swift; sourceTree = "<group>"; };
-		AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = gameCharacterType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +77,17 @@
 		AF7BD41C1F27B65A004C233C /* Projet3 */ = {
 			isa = PBXGroup;
 			children = (
-				AF7BD41D1F27B65A004C233C /* main.swift */,
-				AF7BD4241F27B723004C233C /* Game.swift */,
-				AF7BD43D1F27E2B1004C233C /* player.swift */,
-				AF7BD43B1F27E207004C233C /* gameCharacter.swift */,
-				AFFDA0631F30C505001ADB95 /* gameCharacterType.swift */,
-				AF1F999C1F5D59D7003E0464 /* gameObjects.swift */,
+				AF5929011F64AB38007B29F3 /* main.swift */,
+				AF5929021F64AB38007B29F3 /* game.swift */,
+				AF5929031F64AB38007B29F3 /* player.swift */,
+				AF5929041F64AB38007B29F3 /* character.swift */,
+				AF5929051F64AB38007B29F3 /* warrior.swift */,
+				AF5929061F64AB38007B29F3 /* wizard.swift */,
+				AF5929071F64AB38007B29F3 /* colossus.swift */,
+				AF5929081F64AB38007B29F3 /* dwarf.swift */,
+				AF5929091F64AB38007B29F3 /* object.swift */,
+				AF59290A1F64AB38007B29F3 /* attackObject.swift */,
+				AF59290B1F64AB38007B29F3 /* magicObject.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -109,6 +124,7 @@
 				TargetAttributes = {
 					AF7BD4191F27B65A004C233C = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -135,12 +151,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF1F999D1F5D59D7003E0464 /* gameObjects.swift in Sources */,
-				AF7BD43E1F27E2B1004C233C /* player.swift in Sources */,
-				AFFDA0641F30C505001ADB95 /* gameCharacterType.swift in Sources */,
-				AF7BD41E1F27B65A004C233C /* main.swift in Sources */,
-				AF7BD4251F27B723004C233C /* Game.swift in Sources */,
-				AF7BD43C1F27E207004C233C /* gameCharacter.swift in Sources */,
+				AF5929151F64AB38007B29F3 /* attackObject.swift in Sources */,
+				AF59290C1F64AB38007B29F3 /* main.swift in Sources */,
+				AF59290E1F64AB38007B29F3 /* player.swift in Sources */,
+				AF5929131F64AB38007B29F3 /* dwarf.swift in Sources */,
+				AF59290D1F64AB38007B29F3 /* game.swift in Sources */,
+				AF5929101F64AB38007B29F3 /* warrior.swift in Sources */,
+				AF5929161F64AB38007B29F3 /* magicObject.swift in Sources */,
+				AF5929121F64AB38007B29F3 /* colossus.swift in Sources */,
+				AF5929111F64AB38007B29F3 /* wizard.swift in Sources */,
+				AF59290F1F64AB38007B29F3 /* character.swift in Sources */,
+				AF5929141F64AB38007B29F3 /* object.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -240,7 +261,10 @@
 		AF7BD4221F27B65A004C233C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -248,6 +272,8 @@
 		AF7BD4231F27B65A004C233C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

@@ -1,15 +1,12 @@
-//
-//  main.swift
-//  Projet3
-//
-//  Created by Lei et Matthieu on 25/07/2017.
-//  Copyright © 2017 Mattkee. All rights reserved.
-//
-
 import Foundation
 
-
+// this instance of the class game will allow to call different methods of game
 var game = Game()
+
+// methods call to start the game.
+// for create player and to choice character
 game.initializeGame()
-game.beginGame()
+
+// start game.
 game.battle()
+
