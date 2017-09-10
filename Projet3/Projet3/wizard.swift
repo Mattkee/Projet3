@@ -21,7 +21,7 @@ class Wizard : Character {
                 
                         while game.characterBattle.count != 2 {
                             print("quel personnage voulez vous soigner :")
-                            playerAttack.seeTeamMembers(player: playerAttack)
+                            
                             Player.selectCharacter(player : playerAttack)
                         }
                 
