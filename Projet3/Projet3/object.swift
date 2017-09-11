@@ -11,4 +11,23 @@ class Objects {
         self.attack = attack
         self.magic = magic
     }
+    
+    // this method allow to define type of selected character's object.
+    static func checkObjetsType (characterSelected : Character) {
+        
+        for object in characterSelected.objects {
+            
+            if let attackObject = object as? AttackObject {
+                
+                print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(attackObject.attackDamage)")
+                print("")
+                
+            } else if let magicObject = object as? MagicObject {
+                
+                print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(magicObject.magicPoint)")
+                print("")
+                
+            }
+        }
+    }
 }

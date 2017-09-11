@@ -78,10 +78,12 @@ class Game {
     func chest(characterSelected : Character) {
         
         // this propertie contains lot of objet for the random choice of the chest.
-        let listObjects = [
+        let listAttackObjects = [
             AttackObject(name: "épée simple", attackDamage: 10),
             AttackObject(name: "hache simple", attackDamage: 50),
             AttackObject(name: "épée lourde", attackDamage: 20),
+        ]
+        let listHealsObjects = [
             MagicObject(name: "baguette", magicPoint: 30)
         ]
         
@@ -96,20 +98,25 @@ class Game {
             
             if playerChoice == "1" || playerChoice == "oui" {
 
-                let openChestNumber = Int(arc4random_uniform(UInt32(listObjects.count)))
+                if Character.findCharacter(type: characterSelected) == "mage" {
                     
-                characterSelected.objects.removeAll()
+                    let openChestNumber = Int(arc4random_uniform(UInt32(listHealsObjects.count)))
                     
-                characterSelected.objects.append(listObjects[openChestNumber])
+                    characterSelected.objects.removeAll()
                     
-                for object in characterSelected.objects {
-                    if let attackObject = object as? AttackObject {
-                        print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(attackObject.attackDamage)")
-                        print("")
-                    } else if let magicObject = object as? MagicObject {
-                        print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(magicObject.magicPoint)")
-                        print("")
-                    }
+                    characterSelected.objects.append(listHealsObjects[openChestNumber])
+                    
+                    Objects.checkObjetsType(characterSelected: characterSelected)
+                    
+                } else {
+                    let openChestNumber = Int(arc4random_uniform(UInt32(listAttackObjects.count)))
+                    
+                    characterSelected.objects.removeAll()
+                    
+                    characterSelected.objects.append(listAttackObjects[openChestNumber])
+                    
+                    Objects.checkObjetsType(characterSelected: characterSelected)
+                    
                 }
             } else {
                 print("Votre réponse a fait disparaître le coffre")
