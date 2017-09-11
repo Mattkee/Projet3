@@ -77,15 +77,6 @@ class Game {
     // each chest contains an object chosen at random, that will be added to the character.
     func chest(characterSelected : Character) {
         
-        // this propertie contains lot of objet for the random choice of the chest.
-        let listAttackObjects = [
-            AttackObject(name: "épée simple", attackDamage: 10),
-            AttackObject(name: "hache simple", attackDamage: 50),
-            AttackObject(name: "épée lourde", attackDamage: 20),
-        ]
-        let listHealsObjects = [
-            MagicObject(name: "baguette", magicPoint: 30)
-        ]
         
         let luck = Int(arc4random_uniform(UInt32(2)))
         
@@ -98,26 +89,15 @@ class Game {
             
             if playerChoice == "1" || playerChoice == "oui" {
 
-                if Character.findCharacter(type: characterSelected) == "mage" {
-                    
-                    let openChestNumber = Int(arc4random_uniform(UInt32(listHealsObjects.count)))
-                    
-                    characterSelected.objects.removeAll()
-                    
-                    characterSelected.objects.append(listHealsObjects[openChestNumber])
-                    
-                    Objects.checkObjetsType(characterSelected: characterSelected)
+                let typeChestContain = Int(arc4random_uniform(UInt32(2)))
+                
+                if typeChestContain == 1 {
+                    Objects.addCharacterObject(characterSelected: characterSelected)
                     
                 } else {
-                    let openChestNumber = Int(arc4random_uniform(UInt32(listAttackObjects.count)))
-                    
-                    characterSelected.objects.removeAll()
-                    
-                    characterSelected.objects.append(listAttackObjects[openChestNumber])
-                    
-                    Objects.checkObjetsType(characterSelected: characterSelected)
-                    
+                    Spell.addCharacterSpell(characterSelected: characterSelected)
                 }
+                
             } else {
                 print("Votre réponse a fait disparaître le coffre")
                 print("")

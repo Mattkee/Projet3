@@ -12,6 +12,18 @@ class Objects {
         self.magic = magic
     }
     
+    // this propertie contains lot of attack objet for the random choice of the chest.
+    static let listAttackObjects = [
+        AttackObject(name: "épée simple", attackDamage: 10),
+        AttackObject(name: "hache simple", attackDamage: 50),
+        AttackObject(name: "épée lourde", attackDamage: 20),
+        ]
+    
+    // this propertie contains lot of magic objet for the random choice of the chest.
+    static let listHealsObjects = [
+        MagicObject(name: "baguette", magicPoint: 30)
+    ]
+    
     // this method allow to define type of selected character's object.
     static func checkObjetsType (characterSelected : Character) {
         
@@ -28,6 +40,30 @@ class Objects {
                 print("")
                 
             }
+        }
+    }
+    
+    static func addCharacterObject (characterSelected : Character) {
+        
+        if Character.findCharacter(type: characterSelected) == "mage" {
+            
+            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
+            
+            characterSelected.objects.removeAll()
+            
+            characterSelected.objects.append(Objects.listHealsObjects[openChestNumber])
+            
+            Objects.checkObjetsType(characterSelected: characterSelected)
+            
+        } else {
+            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
+            
+            characterSelected.objects.removeAll()
+            
+            characterSelected.objects.append(Objects.listAttackObjects[openChestNumber])
+            
+            Objects.checkObjetsType(characterSelected: characterSelected)
+            
         }
     }
 }

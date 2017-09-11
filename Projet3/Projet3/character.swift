@@ -11,6 +11,7 @@ class Character {
     var characterNumber : Int = 0
     var objects = [Objects]()
     var spell = [Spell]()
+    var spellSelected = [Spell]()
     
     init(health : Int, attack : Int, magic : Int) {
         
@@ -88,6 +89,16 @@ class Character {
             let damage = characterSelected.attack
             
             return damage
+        }
+    }
+    
+    func seeCharacterSpell(characterSelected : Character) {
+        print("Voici la liste des sorts de \(characterSelected.name) :")
+        print("")
+        print("choisissez un sort")
+        print("")
+        for spell in characterSelected.spell {
+            print("\(spell.spellNumber + 1). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
         }
     }
 }
