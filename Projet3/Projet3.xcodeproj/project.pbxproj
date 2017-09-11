@@ -19,6 +19,7 @@
 		AF5929151F64AB38007B29F3 /* attackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290A1F64AB38007B29F3 /* attackObject.swift */; };
 		AF5929161F64AB38007B29F3 /* magicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290B1F64AB38007B29F3 /* magicObject.swift */; };
 		AFE1F6651F6663EB0057B71D /* spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1F6641F6663EB0057B71D /* spell.swift */; };
+		AFE1F6671F666B7E0057B71D /* attackSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1F6661F666B7E0057B71D /* attackSpell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +48,7 @@
 		AF59290B1F64AB38007B29F3 /* magicObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = magicObject.swift; sourceTree = "<group>"; };
 		AF7BD41A1F27B65A004C233C /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFE1F6641F6663EB0057B71D /* spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = spell.swift; sourceTree = "<group>"; };
+		AFE1F6661F666B7E0057B71D /* attackSpell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attackSpell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				AF59290A1F64AB38007B29F3 /* attackObject.swift */,
 				AF59290B1F64AB38007B29F3 /* magicObject.swift */,
 				AFE1F6641F6663EB0057B71D /* spell.swift */,
+				AFE1F6661F666B7E0057B71D /* attackSpell.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				AF5929101F64AB38007B29F3 /* warrior.swift in Sources */,
 				AFE1F6651F6663EB0057B71D /* spell.swift in Sources */,
 				AF5929161F64AB38007B29F3 /* magicObject.swift in Sources */,
+				AFE1F6671F666B7E0057B71D /* attackSpell.swift in Sources */,
 				AF5929121F64AB38007B29F3 /* colossus.swift in Sources */,
 				AF5929111F64AB38007B29F3 /* wizard.swift in Sources */,
 				AF59290F1F64AB38007B29F3 /* character.swift in Sources */,

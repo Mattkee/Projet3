@@ -10,6 +10,7 @@ class Character {
     var magic : Int
     var characterNumber : Int = 0
     var objects = [Objects]()
+    var spell = [Spell]()
     
     init(health : Int, attack : Int, magic : Int) {
         
