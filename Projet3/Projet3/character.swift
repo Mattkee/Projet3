@@ -8,6 +8,7 @@ class Character {
     var health : Int
     var attack : Int
     var magic : Int
+    var magicMinNeed : Bool = false
     var magicMax : Int
     var characterNumber : Int = 0
     var objects = [Objects]()
@@ -94,6 +95,7 @@ class Character {
         }
     }
     
+    // this method allows to display all character selected's spell.
     func seeCharacterSpell(characterSelected : Character) {
         print("Voici la liste des sorts de \(characterSelected.name) :")
         print("")
@@ -101,6 +103,16 @@ class Character {
         print("")
         for spell in characterSelected.spell {
             print("\(spell.spellNumber + 1). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
+        }
+    }
+    
+    // this method allow to check if character can use spell.
+    func characterMinNeedMagic(characterSelected : Character) {
+       
+       for spell in characterSelected.spell {
+            if characterSelected.magicMinNeed == true || spell.magicPointCost <= characterSelected.magic {
+                characterSelected.magicMinNeed = true
+            }
         }
     }
 }

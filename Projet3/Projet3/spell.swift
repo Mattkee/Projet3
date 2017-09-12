@@ -71,7 +71,10 @@ class Spell {
     
     // This method puts in place the use of a magic spell selected phase. 
     static func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
-        if characterSelected.spell.count != 0 {
+        
+        characterSelected.characterMinNeedMagic(characterSelected: characterSelected)
+        
+        if characterSelected.spell.count != 0 || characterSelected.magicMinNeed == true {
             while game.characterBattle.count == 1 {
                 print("voulez vous attaquer ou lancer un sort ?"
                 + "\n1. attaquer"
@@ -110,10 +113,13 @@ class Spell {
                     
                         game.characterBattle.removeAll()
                     }
+                    
                     Player.remoteCharacter()
                     Player.remotePlayer()
                 }
             }
         }
+        
+        characterSelected.magicMinNeed = false
     }
 }
