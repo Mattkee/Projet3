@@ -68,7 +68,7 @@ class Spell {
         }
     }
     
-    func castSpell (playerAttack: Player, playerDefender : Player, characterSelected : Character) {
+    func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
         if characterSelected.spell.count != 0 {
             while game.characterBattle.count == 1 {
                 print("voulez vous attaquer ou lancer un sort ?"
@@ -85,10 +85,10 @@ class Spell {
                             while characterSelected.spellSelected.count == 0 {
                               Spell.selectSpell(characterSelected: characterSelected)
                             }
-                            Player.selectCharacter(player : playerDefender)
+                            Player.selectCharacter(player : playerTwo)
                         }
                     
-                        playerDefender.teamCharacter[game.characterBattle[1].characterNumber].health -= characterSelected.spellSelected[0].attack
+                        playerTwo.teamCharacter[game.characterBattle[1].characterNumber].health -= characterSelected.spellSelected[0].attack
                         characterSelected.magic -= characterSelected.spellSelected[0].magicPointCost
                     
                         print("\(game.characterBattle[0].name) lance un sort à \(game.characterBattle[1].name) et lui inflige \(characterSelected.spellSelected[0].attack) de dommage.")
@@ -99,9 +99,9 @@ class Spell {
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                     
                         while game.characterBattle.count != 2 {
-                        Player.selectCharacter(player: playerDefender)
+                        Player.selectCharacter(player: playerTwo)
                         }
-                        Player.attackPhase(playerOne: playerAttack, playerTwo: playerDefender)
+                        Player.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
                     
                         print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                     

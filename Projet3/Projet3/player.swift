@@ -233,7 +233,8 @@ class Player{
     // This method will allow to carry out the phase of attack between two character. 
     static func attackPhase(playerOne : Player, playerTwo : Player) {
         
-        game.players[playerTwo.teamNumber].teamCharacter[game.characterBattle[1].characterNumber].health -= Character.calculateDamage(characterSelected: game.players[playerOne.teamNumber].teamCharacter[game.characterBattle[0].characterNumber])
+        playerTwo.teamCharacter[game.characterBattle[1].characterNumber].health -= Character.calculateDamage(characterSelected: playerOne.teamCharacter[game.characterBattle[0].characterNumber])
+        
         print("\(playerOne.getTeamName()) attaque \(playerTwo.getTeamName()) et lui inflige \(Character.calculateDamage(characterSelected: playerOne.teamCharacter[game.characterBattle[0].characterNumber])) point de dégat.")
     }
     
