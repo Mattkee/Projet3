@@ -30,7 +30,7 @@ class Game {
         }
         game.chest(characterSelected: playerOne.getTeamCharacter(characterNumber: characterBattle[0].characterNumber))
         
-        Wizard.WizardHeals(playerAttack: playerOne, playerDefender: playerTwo, wizardHeals: players[playerOne.getPlayernumber()].getTeamCharacter(characterNumber: characterBattle[0].characterNumber))
+        Wizard.WizardHeals(playerOne: playerOne, playerTwo: playerTwo, wizardHeals: players[playerOne.getPlayernumber()].getTeamCharacter(characterNumber: characterBattle[0].characterNumber))
         
         if characterBattle.count != 0 {
             

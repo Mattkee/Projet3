@@ -4,7 +4,7 @@ import Foundation
 class Wizard : Character {
     
     // This method will allow the character of type wizard to heal or attack.
-    static func WizardHeals (playerAttack : Player , playerDefender : Player , wizardHeals: Character) {
+    static func WizardHeals (playerOne : Player , playerTwo : Player , wizardHeals: Character) {
         
         //If the type of the selected character is a wizard the player can choose if he wants to heal or attack.
         if Character.findCharacter(type: wizardHeals) == "mage" {
@@ -22,17 +22,17 @@ class Wizard : Character {
                         while game.characterBattle.count != 2 {
                             print("quel personnage voulez vous soigner :")
                             
-                            Player.selectCharacter(player : playerAttack)
+                            Player.selectCharacter(player : playerOne)
                         }
                 
                         let characterHealthMax = Character.charactersHealth(characterType : game.characterBattle[1])
                 
-                        playerAttack.teamCharacter[game.characterBattle[1].characterNumber].health += 20
+                        playerOne.teamCharacter[game.characterBattle[1].characterNumber].health += 20
                         wizardHeals.magic -= 20
                 
                         if characterHealthMax < game.characterBattle[1].health {
                     
-                            playerAttack.teamCharacter[game.characterBattle[1].characterNumber].health = characterHealthMax
+                            playerOne.teamCharacter[game.characterBattle[1].characterNumber].health = characterHealthMax
                     
                         }
                 
@@ -42,14 +42,16 @@ class Wizard : Character {
                 
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                         
-                        Spell.castSpell(playerOne: playerAttack, playerTwo: playerDefender, characterSelected: game.characterBattle[0])
-                        while game.characterBattle.count != 2 {
-                            Player.selectCharacter(player: playerDefender)
+                        Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: game.characterBattle[0])
+                        
+                        if game.characterBattle.count == 1 {
+                            while game.characterBattle.count == 1 {
+                                Player.selectCharacter(player: playerTwo)
+                            }
+                            Player.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
+                            print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                         }
-                        Player.attackPhase(playerOne: playerAttack, playerTwo: playerDefender)
-                
-                        print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
-                
+                        
                 
                         game.characterBattle.removeAll()
                     }
