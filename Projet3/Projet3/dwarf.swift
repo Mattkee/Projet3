@@ -4,7 +4,7 @@ import Foundation
 class Dwarf : Character {
     
     init(){
-        super.init(health: 30, attack: 5, magic: 0)
+        super.init(health: 30, attack: 5, magic: 0, magicMax : 0)
         
         objects = [AttackObject(name: "hache", attackDamage: 50)]
         

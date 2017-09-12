@@ -4,7 +4,7 @@ import Foundation
 class Warrior : Character {
     
     init() {
-        super.init(health: 100, attack: 10, magic: 0)
+        super.init(health: 100, attack: 10, magic: 0, magicMax : 0)
         
         objects = [AttackObject(name: "épée", attackDamage: 10)]
         

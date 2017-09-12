@@ -33,6 +33,11 @@ class Game {
         Wizard.WizardHeals(playerAttack: playerOne, playerDefender: playerTwo, wizardHeals: players[playerOne.getPlayernumber()].getTeamCharacter(characterNumber: characterBattle[0].characterNumber))
         
         if characterBattle.count != 0 {
+            
+            Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterBattle[0])
+        }
+        
+        if characterBattle.count != 0 {
             while game.characterBattle.count != 2 {
             Player.selectCharacter(player: playerTwo)
             }

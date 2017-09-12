@@ -22,6 +22,7 @@ class Spell {
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30)
     ]
     
+    // this method return the type of selected spell.
     static func checkSpellType (characterSelected : Character, newSpell : Spell) {
         
         for spell in characterSelected.spell {
@@ -35,11 +36,11 @@ class Spell {
         }
     }
     
+    // this method will allow to add new spell for selected character.
     static func addCharacterSpell (characterSelected : Character) {
         
         let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
         
-        characterSelected.spell.removeAll()
         characterSelected.magic += 50
         
         characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
@@ -47,14 +48,13 @@ class Spell {
         Spell.checkSpellType(characterSelected: characterSelected, newSpell: listAttackSpell[openChestNumber])
     }
     
+    // this method will allow to select one spell's character to use it.
     static func selectSpell(characterSelected : Character) {
-        
         
         characterSelected.seeCharacterSpell(characterSelected: characterSelected)
         
-        print("quel sort voulez vous choisir :")
         print("")
-        
+        print("quel sort voulez vous choisir :")
         print("indiquez un nom de sort ou son numéro pour le sélectionner")
         
         if let choiceSpell = readLine() {
@@ -68,7 +68,8 @@ class Spell {
         }
     }
     
-    func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
+    // This method puts in place the use of a magic spell selected phase. 
+    static func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
         if characterSelected.spell.count != 0 {
             while game.characterBattle.count == 1 {
                 print("voulez vous attaquer ou lancer un sort ?"
@@ -81,7 +82,7 @@ class Spell {
                     if choiceAction == "2" || choiceAction == "lancer un sort" {
                     
                         while game.characterBattle.count != 2 {
-                            print("quel sort voulez vous utiliser :")
+                            
                             while characterSelected.spellSelected.count == 0 {
                               Spell.selectSpell(characterSelected: characterSelected)
                             }
@@ -103,7 +104,7 @@ class Spell {
                         }
                         Player.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
                     
-                        print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
+                        print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                     
                     
                         game.characterBattle.removeAll()

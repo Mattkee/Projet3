@@ -8,16 +8,18 @@ class Character {
     var health : Int
     var attack : Int
     var magic : Int
+    var magicMax : Int
     var characterNumber : Int = 0
     var objects = [Objects]()
     var spell = [Spell]()
     var spellSelected = [Spell]()
     
-    init(health : Int, attack : Int, magic : Int) {
+    init(health : Int, attack : Int, magic : Int, magicMax : Int) {
         
         self.health = health
         self.attack = attack
         self.magic = magic
+        self.magicMax = magicMax
     }
     
     // This method will allow to check the name chosen by the player for the character.

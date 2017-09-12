@@ -41,13 +41,14 @@ class Wizard : Character {
                         game.characterBattle.removeAll()
                 
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
-                
+                        
+                        Spell.castSpell(playerOne: playerAttack, playerTwo: playerDefender, characterSelected: game.characterBattle[0])
                         while game.characterBattle.count != 2 {
                             Player.selectCharacter(player: playerDefender)
                         }
                         Player.attackPhase(playerOne: playerAttack, playerTwo: playerDefender)
                 
-                        print("Le combat opposera \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
+                        print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                 
                 
                         game.characterBattle.removeAll()
@@ -60,7 +61,7 @@ class Wizard : Character {
     }
 
     init(){
-        super.init(health: 60, attack: 2, magic: 100)
+        super.init(health: 60, attack: 2, magic: 100, magicMax : 100)
         
         self.magic = magic
         

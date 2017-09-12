@@ -235,6 +235,17 @@ class Player{
         
         playerTwo.teamCharacter[game.characterBattle[1].characterNumber].health -= Character.calculateDamage(characterSelected: playerOne.teamCharacter[game.characterBattle[0].characterNumber])
         
+        if game.characterBattle[0].magicMax != 0 {
+            game.characterBattle[0].magic += 20
+            
+            if game.characterBattle[0].magic > game.characterBattle[0].magicMax {
+                playerOne.teamCharacter[game.characterBattle[0].characterNumber].magic = game.characterBattle[0].magicMax
+                
+            } else {
+               playerOne.teamCharacter[game.characterBattle[0].characterNumber].magic = game.characterBattle[0].magic
+            }
+        }
+        
         print("\(playerOne.getTeamName()) attaque \(playerTwo.getTeamName()) et lui inflige \(Character.calculateDamage(characterSelected: playerOne.teamCharacter[game.characterBattle[0].characterNumber])) point de dégat.")
     }
     
