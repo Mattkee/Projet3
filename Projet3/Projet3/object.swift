@@ -36,6 +36,8 @@ class Objects {
                 
             } else if let magicObject = object as? MagicObject {
                 
+                characterSelected.magicMax += magicObject.magicPoint
+                
                 print("\(characterSelected.name) reçoit l'objet \(characterSelected.objects[0].name) qui lui donne \(magicObject.magicPoint)")
                 print("")
                 
@@ -49,6 +51,8 @@ class Objects {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
             
+            characterSelected.magicMax -= characterSelected.objects[0].magic
+            
             characterSelected.objects.removeAll()
             
             characterSelected.objects.append(Objects.listHealsObjects[openChestNumber])
@@ -56,6 +60,7 @@ class Objects {
             Objects.checkObjetsType(characterSelected: characterSelected)
             
         } else {
+            
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
             
             characterSelected.objects.removeAll()

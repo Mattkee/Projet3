@@ -186,7 +186,7 @@ class Player{
             print("pour l'équipe de \(player.getTeamName()) voici la liste des personnages :")
             print("")
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(Character.findCharacter(type: character)) et il a \(character.health) pt de vie et a \(Character.calculateDamage(characterSelected:character))pt d'attack total.")
+                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(Character.findCharacter(type: character)) et il a \(character.health) pt de vie et a \(Character.calculateDamage(characterSelected:character))pt d'attack total et \(character.magic) pt de magie.")
             }
         }
     }
