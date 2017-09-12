@@ -42,6 +42,7 @@ class Spell {
         let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
         
         characterSelected.magic += 50
+        characterSelected.magicMax += 50
         
         characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
         

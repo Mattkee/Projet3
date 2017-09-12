@@ -51,7 +51,9 @@ class Objects {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
             
-            characterSelected.magicMax -= characterSelected.objects[0].magic
+            if characterSelected.objects.count != 0 {
+                characterSelected.magicMax -= characterSelected.objects[0].magic
+            }
             
             characterSelected.objects.removeAll()
             
