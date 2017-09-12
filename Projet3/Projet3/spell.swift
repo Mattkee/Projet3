@@ -22,13 +22,13 @@ class Spell {
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30)
     ]
     
-    static func checkSpellType (characterSelected : Character) {
+    static func checkSpellType (characterSelected : Character, newSpell : Spell) {
         
         for spell in characterSelected.spell {
             
             if let attackSpell = spell as? AttackSpell {
                 
-                print("\(characterSelected.name) reçoit le sort de combat \(characterSelected.spell[0].name) qui lui donne \(attackSpell.attackSpellDamage)")
+                print("\(characterSelected.name) reçoit le sort de combat \(newSpell.name) qui lui donne \(attackSpell.attackSpellDamage)")
                 print("")
                 
             }
@@ -40,10 +40,11 @@ class Spell {
         let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
         
         characterSelected.spell.removeAll()
+        characterSelected.magic += 50
         
         characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
         
-        Spell.checkSpellType(characterSelected: characterSelected)
+        Spell.checkSpellType(characterSelected: characterSelected, newSpell: listAttackSpell[openChestNumber])
     }
     
     static func selectSpell(characterSelected : Character) {
@@ -88,11 +89,11 @@ class Spell {
                         }
                     
                         playerDefender.teamCharacter[game.characterBattle[1].characterNumber].health -= characterSelected.spellSelected[0].attack
-                    
+                        characterSelected.magic -= characterSelected.spellSelected[0].magicPointCost
                     
                         print("\(game.characterBattle[0].name) lance un sort à \(game.characterBattle[1].name) et lui inflige \(characterSelected.spellSelected[0].attack) de dommage.")
                         
-                        characterSelected.spell.removeAll()
+                        characterSelected.spellSelected.removeAll()
                         game.characterBattle.removeAll()
                     
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
