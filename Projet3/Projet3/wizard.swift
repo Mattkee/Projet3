@@ -55,8 +55,8 @@ class Wizard : Character {
                 
                         game.characterBattle.removeAll()
                     }
-                    Player.remoteCharacter()
-                    Player.remotePlayer()
+                    Player.removeCharacter()
+                    Player.removePlayer()
                 }
             }
         }

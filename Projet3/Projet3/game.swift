@@ -47,8 +47,8 @@ class Game {
         
         Player.seeAllTeamCharacter()
         
-        Player.remoteCharacter()
-        Player.remotePlayer()
+        Player.removeCharacter()
+        Player.removePlayer()
         
     }
     
