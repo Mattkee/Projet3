@@ -7,7 +7,7 @@ class Player{
     private var teamName : String = ""
     
     // This property will store the number of the selected player.
-    private var teamNumber : Int = 0
+    var teamNumber : Int = 0
     
     // this method will store the characters of selected player
     var teamCharacter = [Character]()
@@ -53,28 +53,6 @@ class Player{
         return teamNumber
     }
     
-    // this static method allow to create the players.
-    public static func initializeTeamsName(playerNumber : Int){
-        
-        // this let propertie allow to create instance of class player.
-        let team = Player()
-        
-        // this let propertie allow to define name of instance team.
-        let teamName = team.playerName(playerNumber : playerNumber)
-        
-        // add teamName in instance Team, and after add team in the array players.
-        team.setTeamName(name : teamName)
-        team.teamNumber = playerNumber
-        game.players.append(team)
-        
-        // this loop will allow to display stored players.
-        print("")
-        for player in game.players {
-            
-            print("Le joueur \(player.teamNumber + 1) s'appelle " + (player.getTeamName()))
-        }
-    }
-    
     // this method allow to define player name.
     public func playerName(playerNumber : Int) -> String {
         
@@ -115,30 +93,31 @@ class Player{
     }
     
     // this method allow to add new character to selected player.
-    static func addNewCharacter(personnage : Character, playerNumber : Int) {
+    func addNewCharacter(personnage : Character, playerNumber : Int) {
         
         // these lines will allow to add parametre for this new character.
         personnage.nameCharacter()
-        personnage.characterNumber = game.players[playerNumber].getTeamMembersNumber()
+        personnage.characterNumber = self.teamCharacter.count
+        
         
         // this line will allow to add this new character to selected player's character array.
-        game.players[playerNumber].setTeamMember(member: personnage)
+        self.setTeamMember(member: personnage)
         
         print("")
-        print("\(game.players[playerNumber].getTeamName()) a \(game.players[playerNumber].getTeamMembersNumber()) personnage.")
+        print("\(self.getTeamName()) a \(self.getTeamMembersNumber()) personnage.")
         
         // this line is to display list of existing selected player's characters.
-        game.players[playerNumber].seeTeamMembers(player: game.players[playerNumber])
+        self.seeTeamMembers(player: self)
         
     }
     
     // this static method allow to initialize players's characters.
-    public static func initializeTeamsCharacters(playerNumber : Int){
+    func initializeTeamsCharacters(playerNumber : Int){
         
         // this loop will allow to add new character to selected player while selected player'characters is not equal 3
-        while game.players[playerNumber].teamCharacter.count < 3 {
+        while self.teamCharacter.count < 3 {
             print("")
-            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(game.players[playerNumber].teamCharacter.count + 1) de votre équipe parmis les choix suivants : "
+            print(" Joueur \(playerNumber + 1) : Choisissez le personnage \(self.teamCharacter.count + 1) de votre équipe parmis les choix suivants : "
                 + "\n1. Combattant"
                 + "\n2. Mage"
                 + "\n3. Colosse"
@@ -152,22 +131,22 @@ class Player{
                 case "1":
                     
                     let personnage = Warrior()
-                    Player.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
+                    self.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
                     
                 case "2":
                     
                     let personnage = Wizard()
-                    Player.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
+                    self.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
                     
                 case "3":
                     
                     let personnage = Colossus()
-                    Player.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
+                    self.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
                     
                 case "4":
                     
                     let personnage = Dwarf()
-                    Player.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
+                    self.addNewCharacter(personnage: personnage, playerNumber : playerNumber)
                     
                 default:
                     

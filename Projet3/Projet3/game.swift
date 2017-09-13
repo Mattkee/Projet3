@@ -14,13 +14,37 @@ class Game {
         print("Bienvenue dans notre super jeu de combat.")
         print("")
         
+        let player = Player()
         // This loop allows to select each player and their characters.
         for i in 0 ... 1 {
             
-            Player.initializeTeamsName(playerNumber: i)
-            Player.initializeTeamsCharacters(playerNumber: i)
+            initializeTeamsName(playerNumber: i)
+            player.initializeTeamsCharacters(playerNumber: i)
         }
     }
+    
+    // this static method allow to create the players.
+    public func initializeTeamsName(playerNumber : Int){
+        
+        // this let propertie allow to create instance of class player.
+        let player = Player()
+        
+        // this let propertie allow to define name of instance team.
+        let playerName = player.playerName(playerNumber : playerNumber)
+        
+        // add playerName in instance player, and after add team in the array players.
+        player.setTeamName(name : playerName)
+        player.teamNumber = playerNumber
+        players.append(player)
+        
+        // this loop will allow to display stored players.
+        print("")
+        for player in players {
+            
+            print("Le joueur \(player.teamNumber + 1) s'appelle " + (player.getTeamName()))
+        }
+    }
+    
     
     // This method will allow to randomly choose which players attack first and which players defended.
     public func battlePhase(playerOne : Player , playerTwo : Player) {
