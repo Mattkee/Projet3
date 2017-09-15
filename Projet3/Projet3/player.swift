@@ -157,7 +157,7 @@ class Player{
     
     
     // this method will allow to remove a character when this character's health is less than 1
-    public static func remoteCharacter() {
+    public static func removeCharacter() {
         for player in game.players {
             for character in player.teamCharacter {
                 if character.health < 1 {
