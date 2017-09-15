@@ -32,12 +32,12 @@ class Character {
                 if let setName = readLine(){
                     self.name = String(setName)
                 }
-            } while (Player.checkName(nameChoice: name) == true)
+            } while (game.checkName(nameChoice: name) == true)
         } while((name.characters.count) <= 3)
     }
     
     // this method find character type and return french translate.
-    public static func findCharacter(type : Character) -> String {
+    public static func findTypeCharacter(type : Character) -> String {
         
         if type is Warrior {
             return "combattant"
@@ -80,16 +80,16 @@ class Character {
     }
     
     // This method allows to define the total number of pt of attack of a character, including his point of attack accumulates with the point of attack from character object.
-    static func calculateDamage(characterSelected : Character) -> Int {
-        if characterSelected.objects.count == 1 {
+    func calculateDamage() -> Int {
+        if self.objects.count == 1 {
             
-            let damage = characterSelected.attack + characterSelected.objects[0].attack
+            let damage = self.attack + self.objects[0].attack
             
             return damage
             
         } else {
             
-            let damage = characterSelected.attack
+            let damage = self.attack
             
             return damage
         }
@@ -114,5 +114,49 @@ class Character {
                 characterSelected.magicMinNeed = true
             }
         }
+    }
+    
+    // this method allows to add new object for character selected.
+    func addCharacterObject (characterSelected : Character) {
+        
+        if Character.findTypeCharacter(type: characterSelected) == "mage" {
+            
+            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
+            
+            if characterSelected.objects.count != 0 {
+                characterSelected.magicMax -= characterSelected.objects[0].magic
+            }
+            
+            characterSelected.objects.removeAll()
+            
+            characterSelected.objects.append(Objects.listHealsObjects[openChestNumber])
+            
+            Objects.checkObjetsType(characterSelected: characterSelected)
+            
+        } else {
+            
+            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
+            
+            characterSelected.objects.removeAll()
+            
+            characterSelected.objects.append(Objects.listAttackObjects[openChestNumber])
+            
+            Objects.checkObjetsType(characterSelected: characterSelected)
+            
+        }
+    }
+    
+    // this method will allow to add new spell for selected character.
+    func addCharacterSpell (characterSelected : Character) {
+        
+        let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
+        
+        characterSelected.magic += 50
+        characterSelected.magicMax += 50
+        
+        characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
+        
+        Spell.checkSpellType(characterSelected: characterSelected, newSpell: Spell.listAttackSpell[openChestNumber])
+        
     }
 }

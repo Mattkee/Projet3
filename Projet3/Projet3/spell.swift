@@ -8,19 +8,19 @@ class Spell {
     var attack : Int
     var spellNumber : Int = 0
     
+    // this array contain the list of different Attack spells.
+    static var listAttackSpell = [
+        AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
+        AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30)
+    ]
+
     init(name: String , magicPointCost : Int, attack : Int) {
         self.name = name
         self.magicPointCost = magicPointCost
         self.attack = attack
         
     }
-    
-    // this array contain the list of different Attack spells.
-    static var listAttackSpell = [
-        
-        AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
-        AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30)
-    ]
+
     
     // this method return the type of selected spell.
     static func checkSpellType (characterSelected : Character, newSpell : Spell) {
@@ -34,19 +34,6 @@ class Spell {
                 
             }
         }
-    }
-    
-    // this method will allow to add new spell for selected character.
-    static func addCharacterSpell (characterSelected : Character) {
-        
-        let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
-        
-        characterSelected.magic += 50
-        characterSelected.magicMax += 50
-        
-        characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
-        
-        Spell.checkSpellType(characterSelected: characterSelected, newSpell: listAttackSpell[openChestNumber])
     }
     
     // this method will allow to select one spell's character to use it.
@@ -90,7 +77,7 @@ class Spell {
                             while characterSelected.spellSelected.count == 0 {
                               Spell.selectSpell(characterSelected: characterSelected)
                             }
-                            Player.selectCharacter(player : playerTwo)
+                            playerTwo.selectCharacter()
                         }
                     
                         playerTwo.teamCharacter[game.characterBattle[1].characterNumber].health -= characterSelected.spellSelected[0].attack
@@ -104,9 +91,9 @@ class Spell {
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                     
                         while game.characterBattle.count != 2 {
-                        Player.selectCharacter(player: playerTwo)
+                        playerTwo.selectCharacter()
                         }
-                        Player.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
+                        game.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
                     
                         print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                     
@@ -115,7 +102,7 @@ class Spell {
                     }
                     
                     Player.remoteCharacter()
-                    Player.remotePlayer()
+                    game.remotePlayer()
                 }
             }
         }

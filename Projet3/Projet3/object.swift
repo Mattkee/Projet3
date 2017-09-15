@@ -48,7 +48,7 @@ class Objects {
     // this method allows to add new object for character selected.
     static func addCharacterObject (characterSelected : Character) {
         
-        if Character.findCharacter(type: characterSelected) == "mage" {
+        if Character.findTypeCharacter(type: characterSelected) == "mage" {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
             
