@@ -36,25 +36,6 @@ class Spell {
         }
     }
     
-    // this method will allow to select one spell's character to use it.
-    static func selectSpell(characterSelected : Character) {
-        
-        characterSelected.seeCharacterSpell(characterSelected: characterSelected)
-        
-        print("")
-        print("quel sort voulez vous choisir :")
-        print("indiquez un nom de sort ou son numéro pour le sélectionner")
-        
-        if let choiceSpell = readLine() {
-            
-            for spell in characterSelected.spell {
-                
-                if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber + 1) {
-                    characterSelected.spellSelected.append(spell)
-                }
-            }
-        }
-    }
     
     // This method puts in place the use of a magic spell selected phase. 
     static func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
@@ -75,7 +56,7 @@ class Spell {
                         while game.characterBattle.count != 2 {
                             
                             while characterSelected.spellSelected.count == 0 {
-                              Spell.selectSpell(characterSelected: characterSelected)
+                              characterSelected.selectSpell()
                             }
                             playerTwo.selectCharacter()
                         }

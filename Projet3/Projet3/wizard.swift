@@ -7,7 +7,7 @@ class Wizard : Character {
     func WizardHeals (playerOne : Player , playerTwo : Player , wizardHeals: Character) {
         
         //If the type of the selected character is a wizard the player can choose if he wants to heal or attack.
-        if Character.findTypeCharacter(type: wizardHeals) == "mage" {
+        if wizardHeals.findTypeCharacter() == "mage" {
             
             while game.characterBattle.count == 1 {
                 print("voulez vous soigner un de vos personnage ou attaquer ?"
@@ -25,7 +25,7 @@ class Wizard : Character {
                             playerOne.selectCharacter()
                         }
                 
-                        let characterHealthMax = Character.charactersHealth(characterType : game.characterBattle[1])
+                        let characterHealthMax = game.characterBattle[1].charactersHealth()
                 
                         playerOne.teamCharacter[game.characterBattle[1].characterNumber].health += 20
                         wizardHeals.magic -= 20

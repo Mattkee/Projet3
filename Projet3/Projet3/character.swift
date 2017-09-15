@@ -37,15 +37,15 @@ class Character {
     }
     
     // this method find character type and return french translate.
-    public static func findTypeCharacter(type : Character) -> String {
+    func findTypeCharacter() -> String {
         
-        if type is Warrior {
+        if self is Warrior {
             return "combattant"
             
-        } else if type is Wizard {
+        } else if self is Wizard {
             return "mage"
             
-        } else if type is Colossus {
+        } else if self is Colossus {
             return "colosse"
             
         } else {
@@ -55,19 +55,19 @@ class Character {
     }
     
     // This method allows to define what is the maximum number of life to a character type.
-    public static func charactersHealth(characterType : Character) -> Int {
+    func charactersHealth() -> Int {
         
-        if characterType is Warrior {
+        if self is Warrior {
             
             let characterHealthMax = 100
             return characterHealthMax
             
-        } else if characterType is Wizard {
+        } else if self is Wizard {
             
             let characterHealthMax = 60
             return characterHealthMax
             
-        } else if characterType is Colossus {
+        } else if self is Colossus {
             
             let characterHealthMax = 500
             return characterHealthMax
@@ -119,7 +119,7 @@ class Character {
     // this method allows to add new object for character selected.
     func addCharacterObject (characterSelected : Character) {
         
-        if Character.findTypeCharacter(type: characterSelected) == "mage" {
+        if characterSelected.findTypeCharacter() == "mage" {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
             
@@ -159,4 +159,25 @@ class Character {
         Spell.checkSpellType(characterSelected: characterSelected, newSpell: Spell.listAttackSpell[openChestNumber])
         
     }
+    
+    // this method will allow to select one spell's character to use it.
+    func selectSpell() {
+        
+        self.seeCharacterSpell(characterSelected: self)
+        
+        print("")
+        print("quel sort voulez vous choisir :")
+        print("indiquez un nom de sort ou son numéro pour le sélectionner")
+        
+        if let choiceSpell = readLine() {
+            
+            for spell in self.spell {
+                
+                if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber + 1) {
+                    self.spellSelected.append(spell)
+                }
+            }
+        }
+    }
+    
 }

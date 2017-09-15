@@ -39,7 +39,7 @@ class Player{
         print("")
         
         for character in teamCharacter {
-            print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(Character.findTypeCharacter(type: character))")
+            print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.findTypeCharacter())")
         }
     }
     

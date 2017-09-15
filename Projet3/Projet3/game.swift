@@ -73,7 +73,7 @@ class Game {
             print("pour l'équipe de \(player.teamName) voici la liste des personnages :")
             print("")
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(Character.findTypeCharacter(type: character)) et il a \(character.health) pt de vie et a \(character.calculateDamage())pt d'attack total et \(character.magic) pt de magie.")
+                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.findTypeCharacter()) et il a \(character.health) pt de vie et a \(character.calculateDamage())pt d'attack total et \(character.magic) pt de magie.")
             }
         }
     }
@@ -121,9 +121,17 @@ class Game {
             playerOne.selectCharacter()
         }
         print("le personnage selectionné est \(characterBattle[0].name)")
-        print("\(characterBattle[0].characterNumber)")
+
         chest(characterSelected: playerOne.teamCharacter[characterBattle[0].characterNumber])
         
+        if characterBattle[0] is Wizard {
+
+            for character in characterBattle {
+                if let wizard = character as? Wizard {
+                    wizard.WizardHeals(playerOne: playerOne, playerTwo: playerTwo, wizardHeals: wizard)
+                }
+            }
+        }
         
         if characterBattle.count != 0 {
             

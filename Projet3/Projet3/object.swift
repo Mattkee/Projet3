@@ -45,33 +45,4 @@ class Objects {
         }
     }
     
-    // this method allows to add new object for character selected.
-    static func addCharacterObject (characterSelected : Character) {
-        
-        if Character.findTypeCharacter(type: characterSelected) == "mage" {
-            
-            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
-            
-            if characterSelected.objects.count != 0 {
-                characterSelected.magicMax -= characterSelected.objects[0].magic
-            }
-            
-            characterSelected.objects.removeAll()
-            
-            characterSelected.objects.append(Objects.listHealsObjects[openChestNumber])
-            
-            Objects.checkObjetsType(characterSelected: characterSelected)
-            
-        } else {
-            
-            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
-            
-            characterSelected.objects.removeAll()
-            
-            characterSelected.objects.append(Objects.listAttackObjects[openChestNumber])
-            
-            Objects.checkObjetsType(characterSelected: characterSelected)
-            
-        }
-    }
 }
