@@ -10,5 +10,3 @@ game.initializeGame()
 // start game.
 game.battle()
 
-// plusieurs changement fait.
-

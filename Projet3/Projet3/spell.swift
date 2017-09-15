@@ -82,8 +82,8 @@ class Spell {
                         game.characterBattle.removeAll()
                     }
                     
-                    Player.remoteCharacter()
-                    game.remotePlayer()
+                    Player.removeCharacter()
+                    game.removePlayer()
                 }
             }
         }

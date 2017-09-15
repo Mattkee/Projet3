@@ -146,8 +146,8 @@ class Game {
             characterBattle = [Character]()
         }
         
-        Player.remoteCharacter()
-        remotePlayer()
+        Player.removeCharacter()
+        removePlayer()
         
         if players.count > 1 {
             seeAllTeamCharacter()
@@ -214,7 +214,7 @@ class Game {
     }
     
     // this method will allow to remove a player when this player's number of character is 0
-    public func remotePlayer() {
+    public func removePlayer() {
         for player in players {
             let numberCharacter = player.teamCharacter.count
             if numberCharacter == 0 {
