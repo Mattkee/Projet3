@@ -4,63 +4,68 @@ import Foundation
 class Wizard : Character {
     
     // This method will allow the character of type wizard to heal or attack.
-    func WizardHeals (playerOne : Player , playerTwo : Player , wizardHeals: Character) {
+    func WizardHeals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
         
-        //If the type of the selected character is a wizard the player can choose if he wants to heal or attack.
-        if wizardHeals.findTypeCharacter() == "mage" {
+        var characterneedHeals : Any = ""
+        var characterTwo : Any = ""
             
-            while game.characterBattle.count == 1 {
-                print("voulez vous soigner un de vos personnage ou attaquer ?"
-                    + "\n1. Attaquer"
-                    + "\n2. Soigner")
-                print("Ecrivez le numéro de l'action ou le nom de l'action")
+            while characterneedHeals is String {
+                print("voulez vous soigner un de vos personnage ou attaquer ?")
+                
+                print("si oui répondez 1 ou Oui")
         
                 if let choiceAction = readLine() {
             
-                    if choiceAction == "2" || choiceAction == "soigner" {
+                    if choiceAction == "1" || choiceAction == "oui" {
                 
-                        while game.characterBattle.count != 2 {
+                        repeat {
                             print("quel personnage voulez vous soigner :")
                             
-                            playerOne.selectCharacter()
+                            characterneedHeals = playerOne.selectCharacter()
+                            
+                        } while characterneedHeals is Bool
+                        
+                        if let characterTwoSelected = characterneedHeals as? Character {
+                            
+                            let characterHealthMax = characterTwoSelected.charactersHealth()
+                            
+                            characterTwoSelected.health += 20
+                            characterOneSelected.magic -= 20
+                            
+                            if characterHealthMax < characterTwoSelected.health {
+                                
+                                characterTwoSelected.health = characterHealthMax
+                                
+                            }
+                            
+                            print("\(characterOneSelected.name) soigne \(characterTwoSelected.name)")
+                            
                         }
                 
-                        let characterHealthMax = game.characterBattle[1].charactersHealth()
-                
-                        playerOne.teamCharacter[game.characterBattle[1].characterNumber].health += 20
-                        wizardHeals.magic -= 20
-                
-                        if characterHealthMax < game.characterBattle[1].health {
-                    
-                            playerOne.teamCharacter[game.characterBattle[1].characterNumber].health = characterHealthMax
-                    
-                        }
-                
-                        print("\(game.characterBattle[0].name) soigne \(game.characterBattle[1].name)")
-                
-                        game.characterBattle.removeAll()
                 
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                         
-                        Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: game.characterBattle[0])
+                        Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterOneSelected)
                         
-                        if game.characterBattle.count == 1 {
-                            while game.characterBattle.count == 1 {
-                                playerTwo.selectCharacter()
+                        if characterTwo is String {
+                            
+                            repeat {
+                                
+                                characterTwo = playerTwo.selectCharacter()
+                                
+                            } while characterTwo is Bool
+                            
+                            if let characterTwoSelected = characterTwo as? Character {
+                            game.attackPhase(characterOne: characterOneSelected, characterTwo: characterTwoSelected)
                             }
-                            game.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
-                            print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
                         }
                         
-                
-                        game.characterBattle.removeAll()
                     }
                     Player.removeCharacter()
                     game.removePlayer()
                 }
             }
         }
-    }
 
     init(){
         super.init(health: 60, attack: 2, magic: 100, magicMax : 100)

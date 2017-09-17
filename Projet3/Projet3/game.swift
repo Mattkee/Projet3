@@ -96,55 +96,59 @@ class Game {
     }
     
     // This method will allow to carry out the phase of attack between two character.
-    func attackPhase(playerOne : Player, playerTwo : Player) {
+    func attackPhase(characterOne : Character, characterTwo : Character) {
         
-        playerTwo.teamCharacter[characterBattle[1].characterNumber].health -= playerOne.teamCharacter[characterBattle[0].characterNumber].calculateDamage()
+        characterTwo.health -= characterOne.calculateDamage()
         
-        if characterBattle[0].magicMax != 0 {
-            characterBattle[0].magic += 20
+        if characterOne.magicMax != 0 {
+            characterOne.magic += 20
             
-            if characterBattle[0].magic > characterBattle[0].magicMax {
-                playerOne.teamCharacter[characterBattle[0].characterNumber].magic = characterBattle[0].magicMax
-                
-            } else {
-                playerOne.teamCharacter[characterBattle[0].characterNumber].magic = characterBattle[0].magic
+            if characterOne.magic > characterOne.magicMax {
+                characterOne.magic = characterOne.magicMax
             }
         }
         
-        print("\(playerOne.teamName) attaque \(playerTwo.teamName) et lui inflige \(playerOne.teamCharacter[characterBattle[0].characterNumber].calculateDamage()) point de dégat.")
+        print("\(characterOne.name) attaque \(characterTwo.name) et lui inflige \(characterOne.calculateDamage()) point de dégat.")
     }
     
     // This method will allow to randomly choose which players attack first and which players defended.
     func battlePhase(playerOne : Player , playerTwo : Player) {
+        var characterOne : Any = ""
+        var characterTwo : Any = ""
         
-        while game.characterBattle.count != 1 {
-            playerOne.selectCharacter()
-        }
-        print("le personnage selectionné est \(characterBattle[0].name)")
-
-        chest(characterSelected: playerOne.teamCharacter[characterBattle[0].characterNumber])
+        repeat {
+            
+            characterOne = playerOne.selectCharacter()
+            
+        } while characterOne is Bool
         
-        if characterBattle[0] is Wizard {
-
-            for character in characterBattle {
-                if let wizard = character as? Wizard {
-                    wizard.WizardHeals(playerOne: playerOne, playerTwo: playerTwo, wizardHeals: wizard)
+        if let characterOneSelected = characterOne as? Character {
+            print("le personnage selectionné est \(characterOneSelected.name)")
+            chest(characterSelected: characterOneSelected)
+            
+            if characterOneSelected is Wizard {
+                
+                if let wizard = characterOneSelected as? Wizard {
+                    wizard.WizardHeals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
                 }
             }
-        }
-        
-        if characterBattle.count != 0 {
+            Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterOneSelected)
             
-            Spell.castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterBattle[0])
-        }
-        
-        if characterBattle.count != 0 {
-            while game.characterBattle.count != 2 {
-            playerTwo.selectCharacter()
+            if characterTwo is String {
+                
+                repeat {
+                
+                    characterTwo = playerTwo.selectCharacter()
+                
+                } while characterTwo is Bool
+                
             }
-            attackPhase(playerOne: playerOne, playerTwo: playerTwo)
-            characterBattle = [Character]()
+            
+            if let characterTwoSelected = characterTwo as? Character {
+                attackPhase(characterOne: characterOneSelected, characterTwo: characterTwoSelected)
+            }
         }
+
         
         Player.removeCharacter()
         removePlayer()
@@ -165,12 +169,20 @@ class Game {
         seeAllTeamCharacter()
         
         repeat{
-            
+           
             playerChoiceBattle()
             battlePhase(playerOne: playerAttack, playerTwo: playerDefender)
             print("")
+            if players.count != 1 {
+                
             print("c'est au tour de \(playerDefender.teamName) de jouer")
             battlePhase(playerOne: playerDefender, playerTwo: playerAttack)
+                
+            } else {
+                    
+                print("\(players[0].teamName) vous gagnez le jeu.")
+                
+            }
             
         } while players.count > 1
         
@@ -219,7 +231,7 @@ class Game {
             let numberCharacter = player.teamCharacter.count
             if numberCharacter == 0 {
                 players.remove(at: player.teamNumber)
-                print(" le joueur \(player.teamName)")
+                print(" le joueur \(player.teamName) a perdu la partie")
             }
         }
     }

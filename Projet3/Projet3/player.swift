@@ -17,7 +17,6 @@ class Player{
         self.teamName = name
     }
     
-    
     // this method will allow to return the characters of selected player.
     public func getTeamCharacter(characterNumber : Int) -> Character {
         return self.teamCharacter[characterNumber]
@@ -131,7 +130,7 @@ class Player{
     }
     
     // this method allow to select a character for different battle's phase.
-    func selectCharacter() {
+    func selectCharacter() -> Any {
         
         self.seeTeamMembers()
         
@@ -145,24 +144,24 @@ class Player{
             for character in self.teamCharacter {
                 
                 if choiceCharacter == character.name || choiceCharacter == String(character.characterNumber + 1) {
-                        game.characterBattle.append(character)
-                    print("voici le personnage selectionné \(character.name)")
-                    for i in game.characterBattle {
-                        print("\(i.name)")
-                    }
+                        return character
                 }
             }
         }
+        return false
     }
     
     
     // this method will allow to remove a character when this character's health is less than 1
     public static func removeCharacter() {
         for player in game.players {
+            var characterNumber = 0
             for character in player.teamCharacter {
+                
                 if character.health < 1 {
-                    player.teamCharacter.remove(at: character.characterNumber)
+                    player.teamCharacter.remove(at: characterNumber)
                 }
+                characterNumber += 1
             }
         }
     }

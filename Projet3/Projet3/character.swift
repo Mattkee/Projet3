@@ -154,7 +154,22 @@ class Character {
         characterSelected.magic += 50
         characterSelected.magicMax += 50
         
-        characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
+        var checkCharacterSpell : Bool = false
+        
+        for spell in characterSelected.spell {
+            
+            if Spell.listAttackSpell[openChestNumber].name == spell.name {
+                checkCharacterSpell = true
+            }
+        }
+        
+        if checkCharacterSpell == true {
+            
+            characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
+            characterSelected.spell[characterSelected.spell.count - 1].spellNumber = characterSelected.spell.count
+            
+        }
+    
         
         Spell.checkSpellType(characterSelected: characterSelected, newSpell: Spell.listAttackSpell[openChestNumber])
         

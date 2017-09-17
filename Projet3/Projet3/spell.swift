@@ -41,9 +41,10 @@ class Spell {
     static func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
         
         characterSelected.characterMinNeedMagic(characterSelected: characterSelected)
+        var characterTwo : Any = ""
         
         if characterSelected.spell.count != 0 || characterSelected.magicMinNeed == true {
-            while game.characterBattle.count == 1 {
+            while characterTwo is String {
                 print("voulez vous attaquer ou lancer un sort ?"
                 + "\n1. attaquer"
                 + "\n2. lancer un sort")
@@ -53,41 +54,43 @@ class Spell {
                 
                     if choiceAction == "2" || choiceAction == "lancer un sort" {
                     
-                        while game.characterBattle.count != 2 {
+                        repeat {
                             
                             while characterSelected.spellSelected.count == 0 {
                               characterSelected.selectSpell()
                             }
-                            playerTwo.selectCharacter()
-                        }
+                            characterTwo = playerTwo.selectCharacter()
+                            
+                        } while characterTwo is Bool
                     
-                        playerTwo.teamCharacter[game.characterBattle[1].characterNumber].health -= characterSelected.spellSelected[0].attack
-                        characterSelected.magic -= characterSelected.spellSelected[0].magicPointCost
+                        if let characterTwoSelected = characterTwo as? Character {
+                            characterTwoSelected.health -= characterSelected.spellSelected[0].attack
+                            characterSelected.magic -= characterSelected.spellSelected[0].magicPointCost
                     
-                        print("\(game.characterBattle[0].name) lance un sort à \(game.characterBattle[1].name) et lui inflige \(characterSelected.spellSelected[0].attack) de dommage.")
+                        print("\(characterSelected.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(characterSelected.spellSelected[0].attack) de dommage.")
                         
                         characterSelected.spellSelected.removeAll()
-                        game.characterBattle.removeAll()
+                        }
                     
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                     
-                        while game.characterBattle.count != 2 {
-                        playerTwo.selectCharacter()
+                        while characterTwo is String {
+                            repeat {
+                                
+                                characterTwo = playerTwo.selectCharacter()
+                                
+                            } while characterTwo is Bool
+                        
+                            if let characterTwoSelected = characterTwo as? Character {
+                                game.attackPhase(characterOne: characterSelected, characterTwo: characterTwoSelected)
+                            }
                         }
-                        game.attackPhase(playerOne: playerOne, playerTwo: playerTwo)
-                    
-                        print("Le combat a opposé \(game.characterBattle[0].name) à \(game.characterBattle[1].name)")
-                    
-                    
-                        game.characterBattle.removeAll()
-                    }
-                    
                     Player.removeCharacter()
                     game.removePlayer()
+                    }
                 }
             }
+            characterSelected.magicMinNeed = false
         }
-        
-        characterSelected.magicMinNeed = false
     }
 }
