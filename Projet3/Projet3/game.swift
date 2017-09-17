@@ -82,17 +82,17 @@ class Game {
     func playerChoiceBattle() {
         
         // this line will randomly choose which players attack first.
-        let playerNumber = Int(arc4random_uniform(UInt32(game.players.count)))
-        game.playerAttack = game.players[playerNumber]
+        let playerNumber = Int(arc4random_uniform(UInt32(players.count)))
+        playerAttack = players[playerNumber]
         
         if playerNumber == 1 {
-            game.playerDefender = game.players[playerNumber - 1]
+            playerDefender = players[playerNumber - 1]
         } else {
-            game.playerDefender = game.players[playerNumber + 1]
+            playerDefender = players[playerNumber + 1]
         }
         
         print("")
-        print("\(game.playerAttack.teamName) vous débutez le combat")
+        print("\(playerAttack.teamName) vous débutez le combat")
     }
     
     // This method will allow to carry out the phase of attack between two character.
