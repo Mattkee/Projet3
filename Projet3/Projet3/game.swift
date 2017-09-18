@@ -193,9 +193,11 @@ class Game {
             print("")
             if players.count != 1 {
                 
-            print("c'est au tour de \(playerDefender.teamName) de jouer")
-            battlePhase(playerOne: playerDefender, playerTwo: playerAttack)
-                
+                print("c'est au tour de \(playerDefender.teamName) de jouer")
+                battlePhase(playerOne: playerDefender, playerTwo: playerAttack)
+                if players.count == 1 {
+                   print("\(players[0].teamName) vous gagnez le jeu.")
+                }
             } else {
                     
                 print("\(players[0].teamName) vous gagnez le jeu.")
@@ -203,12 +205,6 @@ class Game {
             }
             
         } while players.count > 1
-        
-        for player in players {
-            
-            print("\(player.teamName) vous gagnez le jeu.")
-            
-        }
     }
     
     // This method will allow random to a chest to appear in front of the first character to be selected for the combat phase.
