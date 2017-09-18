@@ -12,26 +12,6 @@ class Player{
     // this method will store the characters of selected player
     var teamCharacter = [Character]()
     
-    // this method will allow to define the name of the player.
-    public func setTeamName(name:String){
-        self.teamName = name
-    }
-    
-    // this method will allow to return the characters of selected player.
-    public func getTeamCharacter(characterNumber : Int) -> Character {
-        return self.teamCharacter[characterNumber]
-    }
-    
-    // this method will allow to add a new character to selected player.
-    public func setTeamMember(member : Character) {
-        self.teamCharacter.append(member)
-    }
-    
-    // this method will allow to return the number of character of selected player.
-    public func getTeamMembersNumber() -> Int {
-        return self.teamCharacter.count
-    }
-    
     // this method will allow to display selected player all characters.
     public func seeTeamMembers() {
         print("Voici la liste des personnages de \(self.teamName) :")
@@ -41,30 +21,6 @@ class Player{
             print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.findTypeCharacter())")
         }
     }
-    
-    // this method will allow to return the team number of selected player.
-    public func getPlayernumber () -> Int {
-        return teamNumber
-    }
-    
-    // this method allow to define player name.
-    public func playerName(playerNumber : Int) -> String {
-        
-        print("")
-        print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
-        
-        // these two repeat loops will allow to choice name for team, these loops running while define name is already exist or if define name is less than 3 characters. if condition are true this method return teamName.
-        repeat{
-            repeat { print("veuillez donner un nom correct de minimum 4 caractères.")
-                if let setName = readLine(){
-                    self.teamName = String(setName)
-                }
-            } while (game.checkName(nameChoice: teamName) == true)
-        } while((teamName.characters.count) <= 3)
-        
-        return teamName
-    }
-    
     
     // this method allow to add new character to selected player.
     func addNewCharacter(personnage : Character, characterNumber : Int) {
@@ -148,22 +104,8 @@ class Player{
                 }
             }
         }
+        
+        print("je n'ai pas compris")
         return false
     }
-    
-    
-    // this method will allow to remove a character when this character's health is less than 1
-    public static func removeCharacter() {
-        for player in game.players {
-            var characterNumber = 0
-            for character in player.teamCharacter {
-                
-                if character.health < 1 {
-                    player.teamCharacter.remove(at: characterNumber)
-                }
-                characterNumber += 1
-            }
-        }
-    }
-    
 }
