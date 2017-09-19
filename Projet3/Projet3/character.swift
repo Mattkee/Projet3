@@ -96,67 +96,67 @@ class Character {
     }
     
     // this method allows to display all character selected's spell.
-    func seeCharacterSpell(characterSelected : Character) {
-        print("Voici la liste des sorts de \(characterSelected.name) :")
+    func seeCharacterSpell() {
+        print("Voici la liste des sorts de \(self.name) :")
         print("")
         print("choisissez un sort")
         print("")
-        for spell in characterSelected.spell {
+        for spell in self.spell {
             print("\(spell.spellNumber + 1). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
         }
     }
     
     // this method allow to check if character can use spell.
-    func characterMinNeedMagic(characterSelected : Character) {
+    func characterMinNeedMagic() {
        
-       for spell in characterSelected.spell {
-            if characterSelected.magicMinNeed == true || spell.magicPointCost <= characterSelected.magic {
-                characterSelected.magicMinNeed = true
+       for spell in self.spell {
+            if self.magicMinNeed == true || spell.magicPointCost <= self.magic {
+                self.magicMinNeed = true
             }
         }
     }
     
     // this method allows to add new object for character selected.
-    func addCharacterObject (characterSelected : Character) {
+    func addCharacterObject () {
         
-        if characterSelected.findTypeCharacter() == "mage" {
+        if self.findTypeCharacter() == "mage" {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
             
-            if characterSelected.objects.count != 0 {
-                characterSelected.magicMax -= characterSelected.objects[0].magic
+            if self.objects.count != 0 {
+                self.magicMax -= self.objects[0].magic
             }
             
-            characterSelected.objects.removeAll()
+            self.objects.removeAll()
             
-            characterSelected.objects.append(Objects.listHealsObjects[openChestNumber])
+            self.objects.append(Objects.listHealsObjects[openChestNumber])
             
-            Objects.checkObjetsType(characterSelected: characterSelected)
+            checkObjetsType()
             
         } else {
             
             let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
             
-            characterSelected.objects.removeAll()
+            self.objects.removeAll()
             
-            characterSelected.objects.append(Objects.listAttackObjects[openChestNumber])
+            self.objects.append(Objects.listAttackObjects[openChestNumber])
             
-            Objects.checkObjetsType(characterSelected: characterSelected)
+            checkObjetsType()
             
         }
     }
     
     // this method will allow to add new spell for selected character.
-    func addCharacterSpell (characterSelected : Character) {
+    func addCharacterSpell () {
         
         let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
         
-        characterSelected.magic += 50
-        characterSelected.magicMax += 50
+        self.magic += 50
+        self.magicMax += 50
         
         var checkCharacterSpell : Bool = false
         
-        for spell in characterSelected.spell {
+        for spell in self.spell {
             
             if Spell.listAttackSpell[openChestNumber].name == spell.name {
                 checkCharacterSpell = true
@@ -165,20 +165,20 @@ class Character {
         
         if checkCharacterSpell == true {
             
-            characterSelected.spell.append(Spell.listAttackSpell[openChestNumber])
-            characterSelected.spell[characterSelected.spell.count - 1].spellNumber = characterSelected.spell.count
+            self.spell.append(Spell.listAttackSpell[openChestNumber])
+            self.spell[self.spell.count - 1].spellNumber = self.spell.count
             
         }
     
         
-        Spell.checkSpellType(characterSelected: characterSelected, newSpell: Spell.listAttackSpell[openChestNumber])
+        Spell.checkSpellType(characterSelected: self, newSpell: Spell.listAttackSpell[openChestNumber])
         
     }
     
     // this method will allow to select one spell's character to use it.
     func selectSpell() {
         
-        self.seeCharacterSpell(characterSelected: self)
+        self.seeCharacterSpell()
         
         print("")
         print("quel sort voulez vous choisir :")
@@ -195,4 +195,24 @@ class Character {
         }
     }
     
+    // this method allow to define type of selected character's object.
+    func checkObjetsType () {
+        
+        for object in self.objects {
+            
+            if let attackObject = object as? AttackObject {
+                
+                print("\(self.name) reçoit l'objet \(self.objects[0].name) qui lui donne \(attackObject.attackDamage)")
+                print("")
+                
+            } else if let magicObject = object as? MagicObject {
+                
+                self.magicMax += magicObject.magicPoint
+                
+                print("\(self.name) reçoit l'objet \(self.objects[0].name) qui lui donne \(magicObject.magicPoint)")
+                print("")
+                
+            }
+        }
+    }
 }

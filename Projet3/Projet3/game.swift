@@ -205,10 +205,10 @@ class Game {
                 let typeChestContain = Int(arc4random_uniform(UInt32(2)))
                 
                 if typeChestContain == 1 {
-                    characterSelected.addCharacterObject(characterSelected: characterSelected)
+                    characterSelected.addCharacterObject()
                     
                 } else {
-                    characterSelected.addCharacterSpell(characterSelected: characterSelected)
+                    characterSelected.addCharacterSpell()
                 }
                 
             } else {
@@ -246,7 +246,7 @@ class Game {
     // This method puts in place the use of a magic spell selected phase.
     func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
         
-        characterSelected.characterMinNeedMagic(characterSelected: characterSelected)
+        characterSelected.characterMinNeedMagic()
         var characterTwo : Any = ""
         
         if characterSelected.spell.count != 0 || characterSelected.magicMinNeed == true {
