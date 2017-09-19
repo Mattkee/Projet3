@@ -22,11 +22,32 @@ class Player{
         }
     }
     
+    // this method allow to check if the name is already use for players or characters.
+    func checkName(nameChoice : String, players : [Player]) -> Bool{
+        
+        // this loop will observe players name.
+        for player in players {
+            
+            if nameChoice.lowercased() == player.teamName.lowercased() {
+                return true
+            } else {
+                
+                // this loop will observe all characters name.
+                for character in player.teamCharacter {
+                    if nameChoice.lowercased() == character.name.lowercased() {
+                        return true
+                    }
+                }
+            }
+        }
+        return false
+    }
+    
     // this method allow to add new character to selected player.
-    func addNewCharacter(personnage : Character, characterNumber : Int) {
+    func addNewCharacter(personnage : Character, characterNumber : Int, players : [Player]) {
         
         // these lines will allow to add parametre for this new character.
-        personnage.nameCharacter()
+        personnage.nameCharacter(players : players)
         personnage.characterNumber = characterNumber
         // this line will allow to add this new character to selected player's character array.
         self.teamCharacter.append(personnage)
@@ -39,8 +60,8 @@ class Player{
         
     }
     
-    // this static method allow to initialize players's characters.
-    func initializeTeamsCharacters(){
+    // this method allow to initialize players's characters.
+    func initializeTeamsCharacters(players : [Player]){
         
         // this loop will allow to add new character to selected player while selected player'characters is not equal 3
         while self.teamCharacter.count < 3 {
@@ -59,22 +80,22 @@ class Player{
                 case "1":
                     
                     let personnage = Warrior()
-                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count)
+                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count, players: players)
                     
                 case "2":
                     
                     let personnage = Wizard()
-                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count)
+                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count, players: players)
                     
                 case "3":
                     
                     let personnage = Colossus()
-                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count)
+                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count, players: players)
                     
                 case "4":
                     
                     let personnage = Dwarf()
-                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count)
+                    self.addNewCharacter(personnage: personnage, characterNumber: teamCharacter.count, players: players)
                     
                 default:
                     

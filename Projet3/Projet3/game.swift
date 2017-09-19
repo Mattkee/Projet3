@@ -17,11 +17,11 @@ class Game {
         for i in 0 ... 1 {
             
             initializeTeamsName(playerNumber: i)
-            players[i].initializeTeamsCharacters()
+            players[i].initializeTeamsCharacters(players: players)
         }
     }
     
-    // this static method allow to create the players.
+    // this method allow to create the players.
     func initializeTeamsName(playerNumber : Int){
         
         // this let propertie allow to create instance of class player.
@@ -42,29 +42,8 @@ class Game {
         }
     }
     
-    // this method allow to check if a name is already exist in player or player's characters.
-    public func checkName(nameChoice : String) -> Bool{
-        
-        // this loop will observe players name.
-        for player in players {
-            
-            if nameChoice.lowercased() == player.teamName.lowercased() {
-                return true
-            } else {
-                
-                // this loop will observe all characters name.
-                for character in player.teamCharacter {
-                    if nameChoice.lowercased() == character.name.lowercased() {
-                        return true
-                    }
-                }
-            }
-        }
-        return false
-    }
-    
     // this method allow to define player name.
-    public func playerName(playerNumber : Int) -> String {
+    func playerName(playerNumber : Int) -> String {
         
         let player = Player()
         
@@ -77,7 +56,7 @@ class Game {
                 if let setName = readLine(){
                     player.teamName = String(setName)
                 }
-            } while (checkName(nameChoice: player.teamName) == true)
+            } while (player.checkName(nameChoice: player.teamName, players: players) == true)
         } while((player.teamName.characters.count) <= 3)
         
         return player.teamName
@@ -147,7 +126,7 @@ class Game {
             if characterOneSelected is Wizard {
                 
                 if let wizard = characterOneSelected as? Wizard {
-                    WizardHeals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
+                    wizardHeals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
                 }
             }
             castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterOneSelected)
@@ -322,7 +301,7 @@ class Game {
     }
     
     // This method will allow the character of type wizard to heal or attack.
-    func WizardHeals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
+    func wizardHeals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
         
         var characterneedHeals : Any = ""
         var characterTwo : Any = ""

@@ -24,15 +24,15 @@ class Character {
     }
     
     // This method will allow to check the name chosen by the player for the character.
-    func nameCharacter() {
-        let callGame = Game()
+    func nameCharacter(players : [Player]) {
+        let player = Player()
         repeat{
             repeat {
                 print("veuillez donner un nom correct de minimum 4 caractères.")
                 if let setName = readLine(){
                     self.name = String(setName)
                 }
-            } while (callGame.checkName(nameChoice: name) == true)
+            } while (player.checkName(nameChoice: name, players : players) == true)
         } while((name.characters.count) <= 3)
     }
     
