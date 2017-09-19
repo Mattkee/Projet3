@@ -23,7 +23,7 @@ class Player{
     }
     
     // this method allow to check if the name is already use for players or characters.
-    func checkName(nameChoice : String, players : [Player]) -> Bool{
+    static func checkName(nameChoice : String, players : [Player]) -> Bool{
         
         // this loop will observe players name.
         for player in players {

@@ -25,14 +25,14 @@ class Character {
     
     // This method will allow to check the name chosen by the player for the character.
     func nameCharacter(players : [Player]) {
-        let player = Player()
+        
         repeat{
             repeat {
                 print("veuillez donner un nom correct de minimum 4 caractères.")
                 if let setName = readLine(){
                     self.name = String(setName)
                 }
-            } while (player.checkName(nameChoice: name, players : players) == true)
+            } while (Player.checkName(nameChoice: name, players : players) == true)
         } while((name.characters.count) <= 3)
     }
     
@@ -109,7 +109,9 @@ class Character {
     // this method allow to check if character can use spell.
     func characterMinNeedMagic() {
        
-       for spell in self.spell {
+        self.magicMinNeed = false
+        
+        for spell in self.spell {
             if self.magicMinNeed == true || spell.magicPointCost <= self.magic {
                 self.magicMinNeed = true
             }
@@ -154,12 +156,12 @@ class Character {
         self.magic += 50
         self.magicMax += 50
         
-        var checkCharacterSpell : Bool = false
+        var checkCharacterSpell : Bool = true
         
         for spell in self.spell {
             
             if Spell.listAttackSpell[openChestNumber].name == spell.name {
-                checkCharacterSpell = true
+                checkCharacterSpell = false
             }
         }
         
@@ -215,4 +217,78 @@ class Character {
             }
         }
     }
+    
+    // This method puts in place the use of a magic spell selected phase.
+    func castSpell (playerTwo : Player) {
+        
+        self.characterMinNeedMagic()
+        var characterTwo : Any = ""
+        
+        if self.spell.count != 0 || self.magicMinNeed == true {
+            while characterTwo is String {
+                print("voulez vous attaquer ou lancer un sort ?"
+                    + "\n1. attaquer"
+                    + "\n2. lancer un sort")
+                print("Ecrivez le numéro de l'action ou le nom de l'action")
+                
+                if let choiceAction = readLine() {
+                    
+                    if choiceAction == "2" || choiceAction == "lancer un sort" {
+                        
+                        repeat {
+                            
+                            while self.spellSelected.count == 0 {
+                                self.selectSpell()
+                            }
+                            characterTwo = playerTwo.selectCharacter()
+                            
+                        } while characterTwo is Bool
+                        
+                        if let characterTwoSelected = characterTwo as? Character {
+                            characterTwoSelected.health -= self.spellSelected[0].attack
+                            
+                            self.magic -= self.spellSelected[0].magicPointCost
+                            
+                            print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(self.spellSelected[0].attack) de dommage.")
+                            
+                            self.spellSelected.removeAll()
+                        }
+                        
+                    } else if choiceAction == "1" || choiceAction == "attaquer" {
+                        
+                        while characterTwo is String {
+                            repeat {
+                                
+                                characterTwo = playerTwo.selectCharacter()
+                                
+                            } while characterTwo is Bool
+                            
+                            if let characterTwoSelected = characterTwo as? Character {
+                                self.attackPhase(characterTwo: characterTwoSelected)
+                            }
+                        }
+                        
+                    }
+                }
+            }
+            self.magicMinNeed = false
+        }
+    }
+    
+    // This method will allow to carry out the phase of attack between two character.
+    func attackPhase(characterTwo : Character) {
+        
+        characterTwo.health -= self.calculateDamage()
+        
+        if self.magicMax != 0 {
+            self.magic += 20
+            
+            if self.magic > self.magicMax {
+                self.magic = self.magicMax
+            }
+        }
+        
+        print("\(self.name) attaque \(characterTwo.name) et lui inflige \(self.calculateDamage()) point de dégat.")
+    }
+    
 }

@@ -56,7 +56,7 @@ class Game {
                 if let setName = readLine(){
                     player.teamName = String(setName)
                 }
-            } while (player.checkName(nameChoice: player.teamName, players: players) == true)
+            } while (Player.checkName(nameChoice: player.teamName, players: players) == true)
         } while((player.teamName.characters.count) <= 3)
         
         return player.teamName
@@ -92,22 +92,6 @@ class Game {
         print("\(playerAttack.teamName) vous débutez le combat")
     }
     
-    // This method will allow to carry out the phase of attack between two character.
-    func attackPhase(characterOne : Character, characterTwo : Character) {
-        
-        characterTwo.health -= characterOne.calculateDamage()
-        
-        if characterOne.magicMax != 0 {
-            characterOne.magic += 20
-            
-            if characterOne.magic > characterOne.magicMax {
-                characterOne.magic = characterOne.magicMax
-            }
-        }
-        
-        print("\(characterOne.name) attaque \(characterTwo.name) et lui inflige \(characterOne.calculateDamage()) point de dégat.")
-    }
-    
     // This method will allow to randomly choose which players attack first and which players defended.
     func battlePhase(playerOne : Player , playerTwo : Player) {
         var characterOne : Any = ""
@@ -126,10 +110,19 @@ class Game {
             if characterOneSelected is Wizard {
                 
                 if let wizard = characterOneSelected as? Wizard {
-                    wizardHeals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
+                    wizard.heals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
+                    removeCharacter()
+                    removePlayer()
+                    characterTwo = true
                 }
             }
-            castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterOneSelected)
+            
+            if characterOneSelected.spell.count > 0 {
+                
+                characterOneSelected.castSpell(playerTwo: playerTwo)
+                characterTwo = true
+                
+            }
             
             if characterTwo is String {
                 
@@ -142,7 +135,7 @@ class Game {
             }
             
             if let characterTwoSelected = characterTwo as? Character {
-                attackPhase(characterOne: characterOneSelected, characterTwo: characterTwoSelected)
+                characterOneSelected.attackPhase(characterTwo: characterTwoSelected)
             }
         }
 
@@ -243,124 +236,4 @@ class Game {
         }
     }
     
-    // This method puts in place the use of a magic spell selected phase.
-    func castSpell (playerOne: Player, playerTwo : Player, characterSelected : Character) {
-        
-        characterSelected.characterMinNeedMagic()
-        var characterTwo : Any = ""
-        
-        if characterSelected.spell.count != 0 || characterSelected.magicMinNeed == true {
-            while characterTwo is String {
-                print("voulez vous attaquer ou lancer un sort ?"
-                    + "\n1. attaquer"
-                    + "\n2. lancer un sort")
-                print("Ecrivez le numéro de l'action ou le nom de l'action")
-                
-                if let choiceAction = readLine() {
-                    
-                    if choiceAction == "2" || choiceAction == "lancer un sort" {
-                        
-                        repeat {
-                            
-                            while characterSelected.spellSelected.count == 0 {
-                                characterSelected.selectSpell()
-                            }
-                            characterTwo = playerTwo.selectCharacter()
-                            
-                        } while characterTwo is Bool
-                        
-                        if let characterTwoSelected = characterTwo as? Character {
-                            characterTwoSelected.health -= characterSelected.spellSelected[0].attack
-                            characterSelected.magic -= characterSelected.spellSelected[0].magicPointCost
-                            
-                            print("\(characterSelected.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(characterSelected.spellSelected[0].attack) de dommage.")
-                            
-                            characterSelected.spellSelected.removeAll()
-                        }
-                        
-                    } else if choiceAction == "1" || choiceAction == "attaquer" {
-                        
-                        while characterTwo is String {
-                            repeat {
-                                
-                                characterTwo = playerTwo.selectCharacter()
-                                
-                            } while characterTwo is Bool
-                            
-                            if let characterTwoSelected = characterTwo as? Character {
-                                attackPhase(characterOne: characterSelected, characterTwo: characterTwoSelected)
-                            }
-                        }
-                        removeCharacter()
-                        removePlayer()
-                    }
-                }
-            }
-            characterSelected.magicMinNeed = false
-        }
-    }
-    
-    // This method will allow the character of type wizard to heal or attack.
-    func wizardHeals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
-        
-        var characterneedHeals : Any = ""
-        var characterTwo : Any = ""
-        
-        while characterneedHeals is String {
-            print("voulez vous soigner un de vos personnage ou attaquer ?")
-            
-            print("si oui répondez 1 ou Oui")
-            
-            if let choiceAction = readLine() {
-                
-                if choiceAction == "1" || choiceAction == "oui" {
-                    
-                    repeat {
-                        print("quel personnage voulez vous soigner :")
-                        
-                        characterneedHeals = playerOne.selectCharacter()
-                        
-                    } while characterneedHeals is Bool
-                    
-                    if let characterTwoSelected = characterneedHeals as? Character {
-                        
-                        let characterHealthMax = characterTwoSelected.charactersHealth()
-                        
-                        characterTwoSelected.health += 20
-                        characterOneSelected.magic -= 20
-                        
-                        if characterHealthMax < characterTwoSelected.health {
-                            
-                            characterTwoSelected.health = characterHealthMax
-                            
-                        }
-                        
-                        print("\(characterOneSelected.name) soigne \(characterTwoSelected.name)")
-                        
-                    }
-                    
-                    
-                } else if choiceAction == "1" || choiceAction == "attaquer" {
-                    
-                    castSpell(playerOne: playerOne, playerTwo: playerTwo, characterSelected: characterOneSelected)
-                    
-                    if characterTwo is String {
-                        
-                        repeat {
-                            
-                            characterTwo = playerTwo.selectCharacter()
-                            
-                        } while characterTwo is Bool
-                        
-                        if let characterTwoSelected = characterTwo as? Character {
-                            attackPhase(characterOne: characterOneSelected, characterTwo: characterTwoSelected)
-                        }
-                    }
-                    
-                }
-                removeCharacter()
-                removePlayer()
-            }
-        }
-    }
 }
