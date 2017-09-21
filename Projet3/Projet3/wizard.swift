@@ -21,7 +21,7 @@ class Wizard : Character {
                     repeat {
                         print("quel personnage voulez vous soigner :")
                         
-                        characterneedHeals = playerOne.selectCharacter()
+                        characterneedHeals = Tools.select(wantSelect: playerOne)
                         
                     } while characterneedHeals is Bool
                     
@@ -51,7 +51,7 @@ class Wizard : Character {
                         
                         repeat {
                             
-                            characterTwo = playerTwo.selectCharacter()
+                            characterTwo = Tools.select(wantSelect: playerTwo)
                             
                         } while characterTwo is Bool
                         

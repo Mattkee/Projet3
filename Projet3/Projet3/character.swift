@@ -13,7 +13,7 @@ class Character {
     var characterNumber : Int = 0
     var objects = [Objects]()
     var spell = [Spell]()
-    var spellSelected = [Spell]()
+    var spellSelected : Any = ""
     
     init(health : Int, attack : Int, magic : Int, magicMax : Int) {
         
@@ -164,26 +164,6 @@ class Character {
         
     }
     
-    // this method will allow to select one spell's character to use it.
-    func selectSpell() {
-        
-        self.seeCharacterSpell()
-        
-        print("")
-        print("quel sort voulez vous choisir :")
-        print("indiquez un nom de sort ou son numéro pour le sélectionner")
-        
-        if let choiceSpell = readLine() {
-            
-            for spell in self.spell {
-                
-                if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber) {
-                    self.spellSelected.append(spell)
-                }
-            }
-        }
-    }
-    
     // This method puts in place the use of a magic spell selected phase.
     func castSpell (playerTwo : Player) {
         
@@ -203,21 +183,27 @@ class Character {
                         
                         repeat {
                             
-                            while self.spellSelected.count == 0 {
-                                self.selectSpell()
+                            while self.spellSelected is String {
+                            
+                                self.spellSelected = Tools.select(wantSelect: self)
+                                
                             }
-                            characterTwo = playerTwo.selectCharacter()
+                            characterTwo = Tools.select(wantSelect: playerTwo)
                             
                         } while characterTwo is Bool
                         
                         if let characterTwoSelected = characterTwo as? Character {
-                            characterTwoSelected.health -= self.spellSelected[0].attack
                             
-                            self.magic -= self.spellSelected[0].magicPointCost
+                            if let useSpell = self.spellSelected as? Spell {
                             
-                            print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(self.spellSelected[0].attack) de dommage.")
+                                characterTwoSelected.health -= useSpell.attack
                             
-                            self.spellSelected.removeAll()
+                                self.magic -= useSpell.magicPointCost
+                            
+                                print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(useSpell.attack) de dommage.")
+                            
+                                self.spellSelected = ""
+                            }
                         }
                         
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
@@ -225,7 +211,7 @@ class Character {
                         while characterTwo is String {
                             repeat {
                                 
-                                characterTwo = playerTwo.selectCharacter()
+                                characterTwo = Tools.select(wantSelect: playerTwo)
                                 
                             } while characterTwo is Bool
                             

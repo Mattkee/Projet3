@@ -73,21 +73,79 @@ class Tools {
         }
     }
     
+    // this method allow to select character or spell.
+    static func select (wantSelect : Any) -> Any {
+        
+        if wantSelect is Player {
+            if let player = wantSelect as? Player {
+                
+                player.seeTeamMembers()
+            
+                print("quel personnage voulez vous choisir :")
+                print("")
+            
+                print("indiquez un nom de personnage ou son numéro pour le sélectionner")
+            
+                if let choiceCharacter = readLine() {
+                
+                    for character in player.teamCharacter {
+                    
+                        if choiceCharacter == character.name || choiceCharacter == String(character.characterNumber + 1) {
+                        return character
+                        }
+                    }
+                }
+            }
+        } else {
+            
+            if let character = wantSelect as? Character {
+                
+                character.seeCharacterSpell()
+            
+                print("")
+                print("quel sort voulez vous choisir :")
+                print("indiquez un nom de sort ou son numéro pour le sélectionner")
+            
+                if let choiceSpell = readLine() {
+                
+                    for spell in character.spell {
+                    
+                        if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber) {
+                            return spell
+                        }
+                    }
+                }
+            }
+        }
+        
+        print("je n'ai pas compris")
+        return false
+    }
+    
     // this propertie contains lot of attack objet for the random choice of the chest.
     static let listAttackObjects = [
         AttackObject(name: "épée simple", attackDamage: 10),
-        AttackObject(name: "hache simple", attackDamage: 50),
+        AttackObject(name: "hache simple", attackDamage: 20),
         AttackObject(name: "épée lourde", attackDamage: 20),
+        AttackObject(name: "lance", attackDamage: 15),
+        AttackObject(name: "hache lourde", attackDamage: 50),
+        AttackObject(name: "sabre", attackDamage: 25),
         ]
     
     // this propertie contains lot of magic objet for the random choice of the chest.
     static let listHealsObjects = [
-        MagicObject(name: "baguette", magicPoint: 30)
+        MagicObject(name: "baguette", magicPoint: 30),
+        MagicObject(name: "baguette d'ébene", magicPoint: 40),
+        MagicObject(name: "baguette lumineuse", magicPoint: 50),
+        MagicObject(name: "baguette de feu", magicPoint: 45),
+        MagicObject(name: "baguette de glace", magicPoint: 35)
     ]
     
     // this array contain the list of different Attack spells.
     static var listAttackSpell = [
         AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
-        AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30)
+        AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30),
+        AttackSpell(name: "foudre", magicPointCost: 30, attackSpellDamage: 35),
+        AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40)
     ]
 }

@@ -92,7 +92,7 @@ class Game {
         
         repeat {
             
-            characterOne = playerOne.selectCharacter()
+            characterOne = Tools.select(wantSelect: playerOne)
             
         } while characterOne is Bool
         
@@ -121,7 +121,7 @@ class Game {
                 
                 repeat {
                 
-                    characterTwo = playerTwo.selectCharacter()
+                    characterTwo = Tools.select(wantSelect: playerTwo)
                 
                 } while characterTwo is Bool
                 

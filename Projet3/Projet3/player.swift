@@ -22,7 +22,6 @@ class Player{
         }
     }
     
-    
     // this method allow to add new character to selected player.
     func addNewCharacter(personnage : Character, characterNumber : Int, players : [Player]) {
         
@@ -85,28 +84,5 @@ class Player{
             }
         }
     }
-    
-    // this method allow to select a character for different battle's phase.
-    func selectCharacter() -> Any {
-        
-        self.seeTeamMembers()
-        
-        print("quel personnage voulez vous choisir :")
-        print("")
-        
-            print("indiquez un nom de personnage ou son numéro pour le sélectionner")
-        
-        if let choiceCharacter = readLine() {
-            
-            for character in self.teamCharacter {
-                
-                if choiceCharacter == character.name || choiceCharacter == String(character.characterNumber + 1) {
-                        return character
-                }
-            }
-        }
-        
-        print("je n'ai pas compris")
-        return false
-    }
+
 }
