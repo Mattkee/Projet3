@@ -183,11 +183,12 @@ class Character {
                         
                         repeat {
                             
-                            while self.spellSelected is String {
+                            while self.spellSelected is String || self.spellSelected is Bool {
                             
                                 self.spellSelected = Tools.select(wantSelect: self)
                                 
                             }
+                            
                             characterTwo = Tools.select(wantSelect: playerTwo)
                             
                         } while characterTwo is Bool
