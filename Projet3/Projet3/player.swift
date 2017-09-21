@@ -22,32 +22,12 @@ class Player{
         }
     }
     
-    // this method allow to check if the name is already use for players or characters.
-    static func checkName(nameChoice : String, players : [Player]) -> Bool{
-        
-        // this loop will observe players name.
-        for player in players {
-            
-            if nameChoice.lowercased() == player.teamName.lowercased() {
-                return true
-            } else {
-                
-                // this loop will observe all characters name.
-                for character in player.teamCharacter {
-                    if nameChoice.lowercased() == character.name.lowercased() {
-                        return true
-                    }
-                }
-            }
-        }
-        return false
-    }
     
     // this method allow to add new character to selected player.
     func addNewCharacter(personnage : Character, characterNumber : Int, players : [Player]) {
         
         // these lines will allow to add parametre for this new character.
-        personnage.nameCharacter(players : players)
+        personnage.name = Tools.choiceName(players: players)
         personnage.characterNumber = characterNumber
         // this line will allow to add this new character to selected player's character array.
         self.teamCharacter.append(personnage)

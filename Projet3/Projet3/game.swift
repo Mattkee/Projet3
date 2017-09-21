@@ -50,14 +50,7 @@ class Game {
         print("")
         print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
         
-        // these two repeat loops will allow to choice name for team, these loops running while define name is already exist or if define name is less than 3 characters. if condition are true this method return teamName.
-        repeat{
-            repeat { print("veuillez donner un nom correct de minimum 4 caractères.")
-                if let setName = readLine(){
-                    player.teamName = String(setName)
-                }
-            } while (Player.checkName(nameChoice: player.teamName, players: players) == true)
-        } while((player.teamName.characters.count) <= 3)
+        player.teamName = Tools.choiceName(players: players)
         
         return player.teamName
     }

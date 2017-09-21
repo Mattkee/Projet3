@@ -20,19 +20,4 @@ class Spell {
         self.attack = attack
         
     }
-
-    
-    // this method return the type of selected spell.
-    static func checkSpellType (characterSelected : Character, newSpell : Spell) {
-        
-        for spell in characterSelected.spell {
-            
-            if let attackSpell = spell as? AttackSpell {
-                
-                print("\(characterSelected.name) reçoit le sort de combat \(newSpell.name) qui lui donne \(attackSpell.attackSpellDamage)")
-                print("")
-                
-            }
-        }
-    }
 }

@@ -23,19 +23,6 @@ class Character {
         self.magicMax = magicMax
     }
     
-    // This method will allow to check the name chosen by the player for the character.
-    func nameCharacter(players : [Player]) {
-        
-        repeat{
-            repeat {
-                print("veuillez donner un nom correct de minimum 4 caractères.")
-                if let setName = readLine(){
-                    self.name = String(setName)
-                }
-            } while (Player.checkName(nameChoice: name, players : players) == true)
-        } while((name.characters.count) <= 3)
-    }
-    
     // this method find character type and return french translate.
     func findTypeCharacter() -> String {
         
@@ -102,7 +89,7 @@ class Character {
         print("choisissez un sort")
         print("")
         for spell in self.spell {
-            print("\(spell.spellNumber + 1). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
+            print("\(spell.spellNumber). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
         }
     }
     
@@ -133,7 +120,7 @@ class Character {
             
             self.objects.append(Objects.listHealsObjects[openChestNumber])
             
-            checkObjetsType()
+            Tools.checkThings(character: self, things: Objects.listHealsObjects[openChestNumber])
             
         } else {
             
@@ -143,7 +130,7 @@ class Character {
             
             self.objects.append(Objects.listAttackObjects[openChestNumber])
             
-            checkObjetsType()
+            Tools.checkThings(character: self, things: Objects.listAttackObjects[openChestNumber])
             
         }
     }
@@ -173,7 +160,7 @@ class Character {
         }
     
         
-        Spell.checkSpellType(characterSelected: self, newSpell: Spell.listAttackSpell[openChestNumber])
+        Tools.checkThings(character: self, things: Spell.listAttackSpell[openChestNumber])
         
     }
     
@@ -190,30 +177,9 @@ class Character {
             
             for spell in self.spell {
                 
-                if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber + 1) {
+                if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber) {
                     self.spellSelected.append(spell)
                 }
-            }
-        }
-    }
-    
-    // this method allow to define type of selected character's object.
-    func checkObjetsType () {
-        
-        for object in self.objects {
-            
-            if let attackObject = object as? AttackObject {
-                
-                print("\(self.name) reçoit l'objet \(self.objects[0].name) qui lui donne \(attackObject.attackDamage)")
-                print("")
-                
-            } else if let magicObject = object as? MagicObject {
-                
-                self.magicMax += magicObject.magicPoint
-                
-                print("\(self.name) reçoit l'objet \(self.objects[0].name) qui lui donne \(magicObject.magicPoint)")
-                print("")
-                
             }
         }
     }
