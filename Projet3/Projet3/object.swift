@@ -11,17 +11,4 @@ class Objects {
         self.attack = attack
         self.magic = magic
     }
-    
-    // this propertie contains lot of attack objet for the random choice of the chest.
-    static let listAttackObjects = [
-        AttackObject(name: "épée simple", attackDamage: 10),
-        AttackObject(name: "hache simple", attackDamage: 50),
-        AttackObject(name: "épée lourde", attackDamage: 20),
-        ]
-    
-    // this propertie contains lot of magic objet for the random choice of the chest.
-    static let listHealsObjects = [
-        MagicObject(name: "baguette", magicPoint: 30)
-    ]
-    
 }

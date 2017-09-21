@@ -110,7 +110,7 @@ class Character {
         
         if self.findTypeCharacter() == "mage" {
             
-            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listHealsObjects.count)))
+            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listHealsObjects.count)))
             
             if self.objects.count != 0 {
                 self.magicMax -= self.objects[0].magic
@@ -118,19 +118,19 @@ class Character {
             
             self.objects.removeAll()
             
-            self.objects.append(Objects.listHealsObjects[openChestNumber])
+            self.objects.append(Tools.listHealsObjects[openChestNumber])
             
-            Tools.checkThings(character: self, things: Objects.listHealsObjects[openChestNumber])
+            Tools.checkThings(character: self, things: Tools.listHealsObjects[openChestNumber])
             
         } else {
             
-            let openChestNumber = Int(arc4random_uniform(UInt32(Objects.listAttackObjects.count)))
+            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackObjects.count)))
             
             self.objects.removeAll()
             
-            self.objects.append(Objects.listAttackObjects[openChestNumber])
+            self.objects.append(Tools.listAttackObjects[openChestNumber])
             
-            Tools.checkThings(character: self, things: Objects.listAttackObjects[openChestNumber])
+            Tools.checkThings(character: self, things: Tools.listAttackObjects[openChestNumber])
             
         }
     }
@@ -138,7 +138,7 @@ class Character {
     // this method will allow to add new spell for selected character.
     func addCharacterSpell () {
         
-        let openChestNumber = Int(arc4random_uniform(UInt32(Spell.listAttackSpell.count)))
+        let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackSpell.count)))
         
         self.magic += 50
         self.magicMax += 50
@@ -147,20 +147,20 @@ class Character {
         
         for spell in self.spell {
             
-            if Spell.listAttackSpell[openChestNumber].name == spell.name {
+            if Tools.listAttackSpell[openChestNumber].name == spell.name {
                 checkCharacterSpell = false
             }
         }
         
         if checkCharacterSpell == true {
             
-            self.spell.append(Spell.listAttackSpell[openChestNumber])
+            self.spell.append(Tools.listAttackSpell[openChestNumber])
             self.spell[self.spell.count - 1].spellNumber = self.spell.count
             
         }
     
         
-        Tools.checkThings(character: self, things: Spell.listAttackSpell[openChestNumber])
+        Tools.checkThings(character: self, things: Tools.listAttackSpell[openChestNumber])
         
     }
     
