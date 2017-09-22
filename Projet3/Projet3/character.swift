@@ -105,63 +105,60 @@ class Character {
         }
     }
     
-    // this method allows to add new object for character selected.
-    func addCharacterObject () {
+    // this method allows to add new object or spell for character selected.
+    func addCharacterThings (things : String) {
         
-        if self.findTypeCharacter() == "mage" {
+        if things == "object" {
+            if self.findTypeCharacter() == "mage" {
             
-            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listHealsObjects.count)))
+                let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listHealsObjects.count)))
             
-            if self.objects.count != 0 {
-                self.magicMax -= self.objects[0].magic
+                if self.objects.count != 0 {
+                    self.magicMax -= self.objects[0].magic
+                }
+            
+                self.objects.removeAll()
+            
+                self.objects.append(Tools.listHealsObjects[openChestNumber])
+            
+                Tools.checkThings(character: self, things: Tools.listHealsObjects[openChestNumber])
+            
+            } else {
+            
+                let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackObjects.count)))
+            
+                self.objects.removeAll()
+            
+                self.objects.append(Tools.listAttackObjects[openChestNumber])
+            
+                Tools.checkThings(character: self, things: Tools.listAttackObjects[openChestNumber])
+            
+            }
+        } else if things == "spell" {
+            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackSpell.count)))
+            
+            self.magic += 50
+            self.magicMax += 50
+            
+            var checkCharacterSpell : Bool = true
+            
+            for spell in self.spell {
+                
+                if Tools.listAttackSpell[openChestNumber].name == spell.name {
+                    checkCharacterSpell = false
+                }
             }
             
-            self.objects.removeAll()
-            
-            self.objects.append(Tools.listHealsObjects[openChestNumber])
-            
-            Tools.checkThings(character: self, things: Tools.listHealsObjects[openChestNumber])
-            
-        } else {
-            
-            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackObjects.count)))
-            
-            self.objects.removeAll()
-            
-            self.objects.append(Tools.listAttackObjects[openChestNumber])
-            
-            Tools.checkThings(character: self, things: Tools.listAttackObjects[openChestNumber])
-            
-        }
-    }
-    
-    // this method will allow to add new spell for selected character.
-    func addCharacterSpell () {
-        
-        let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackSpell.count)))
-        
-        self.magic += 50
-        self.magicMax += 50
-        
-        var checkCharacterSpell : Bool = true
-        
-        for spell in self.spell {
-            
-            if Tools.listAttackSpell[openChestNumber].name == spell.name {
-                checkCharacterSpell = false
+            if checkCharacterSpell == true {
+                
+                self.spell.append(Tools.listAttackSpell[openChestNumber])
+                self.spell[self.spell.count - 1].spellNumber = self.spell.count
+                
             }
-        }
-        
-        if checkCharacterSpell == true {
             
-            self.spell.append(Tools.listAttackSpell[openChestNumber])
-            self.spell[self.spell.count - 1].spellNumber = self.spell.count
             
+            Tools.checkThings(character: self, things: Tools.listAttackSpell[openChestNumber])
         }
-    
-        
-        Tools.checkThings(character: self, things: Tools.listAttackSpell[openChestNumber])
-        
     }
     
     // This method puts in place the use of a magic spell selected phase.

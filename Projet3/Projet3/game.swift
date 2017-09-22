@@ -104,8 +104,7 @@ class Game {
                 
                 if let wizard = characterOneSelected as? Wizard {
                     wizard.heals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
-                    removeCharacter()
-                    removePlayer()
+                    remove()
                     characterTwo = true
                 }
             }
@@ -133,8 +132,7 @@ class Game {
         }
 
         
-        removeCharacter()
-        removePlayer()
+        remove()
         
         if players.count > 1 {
             seeAllTeamCharacter()
@@ -191,10 +189,10 @@ class Game {
                 let typeChestContain = Int(arc4random_uniform(UInt32(2)))
                 
                 if typeChestContain == 1 {
-                    characterSelected.addCharacterObject()
+                    characterSelected.addCharacterThings(things: "object")
                     
                 } else {
-                    characterSelected.addCharacterSpell()
+                    characterSelected.addCharacterThings(things: "spell")
                 }
                 
             } else {
@@ -204,19 +202,8 @@ class Game {
         }
     }
     
-    // this method will allow to remove a player when this player's number of character is 0
-    func removePlayer() {
-        for player in players {
-            let numberCharacter = player.teamCharacter.count
-            if numberCharacter == 0 {
-                players.remove(at: player.teamNumber)
-                print(" le joueur \(player.teamName) a perdu la partie")
-            }
-        }
-    }
- 
-    // this method will allow to remove a character when this character's health is less than 1
-    func removeCharacter() {
+    // this method will allow to remove a character or player when this character's health is less than 1 or player team character is 0.
+    func remove() {
         for player in players {
             var characterNumber = 0
             for character in player.teamCharacter {
@@ -225,6 +212,14 @@ class Game {
                     player.teamCharacter.remove(at: characterNumber)
                 }
                 characterNumber += 1
+            }
+        }
+        
+        for player in players {
+            let numberCharacter = player.teamCharacter.count
+            if numberCharacter == 0 {
+                players.remove(at: player.teamNumber)
+                print(" le joueur \(player.teamName) a perdu la partie")
             }
         }
     }
