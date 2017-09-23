@@ -8,6 +8,6 @@ class AttackObject : Objects {
     init(name : String, attackDamage: Int) {
         
         self.attackDamage = attackDamage
-        super.init(name: name, attack: attackDamage, magic: 0)
+        super.init(name: name, attack: attackDamage, magic: 0, defense: 0)
     }
 }

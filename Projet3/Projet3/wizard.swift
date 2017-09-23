@@ -10,13 +10,14 @@ class Wizard : Character {
         var characterTwo : Any = ""
         
         while characterneedHeals is String {
-            print("voulez vous soigner un de vos personnage ou attaquer ?")
+            print("voulez vous soigner un de vos personnage ou attaquer ?"
+                + "\n1. soigner"
+                + "\n2. attaquer")
             
-            print("si oui répondez 1 ou Oui")
             
             if let choiceAction = readLine() {
                 
-                if choiceAction == "1" || choiceAction == "oui" {
+                if choiceAction == "1" || choiceAction == "soigner" {
                     
                     repeat {
                         print("quel personnage voulez vous soigner :")
@@ -43,7 +44,7 @@ class Wizard : Character {
                     }
                     
                     
-                } else if choiceAction == "1" || choiceAction == "attaquer" {
+                } else if choiceAction == "2" || choiceAction == "attaquer" {
                     
                     characterOneSelected.castSpell(playerTwo: playerTwo)
                     

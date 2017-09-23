@@ -70,7 +70,13 @@ class Character {
     func calculateDamage() -> Int {
         if self.objects.count == 1 {
             
-            let damage = self.attack + self.objects[0].attack
+            var totalAttackPoint : Int = 0
+            
+            for object in self.objects {
+                totalAttackPoint += object.attack
+            }
+            
+            let damage = self.attack + totalAttackPoint
             
             return damage
             
@@ -110,8 +116,16 @@ class Character {
         
         if things == "object" {
             if self.findTypeCharacter() == "mage" {
-            
-                let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listHealsObjects.count)))
+                
+                var listObjectMagic = [Objects]()
+                
+                for object in Tools.listObjects {
+                    if object is MagicObject {
+                        listObjectMagic.append(object)
+                    }
+                }
+                
+                let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMagic.count)))
             
                 if self.objects.count != 0 {
                     self.magicMax -= self.objects[0].magic
@@ -119,23 +133,40 @@ class Character {
             
                 self.objects.removeAll()
             
-                self.objects.append(Tools.listHealsObjects[openChestNumber])
+                self.objects.append(listObjectMagic[openChestNumber])
             
-                Tools.checkThings(character: self, things: Tools.listHealsObjects[openChestNumber])
+                Tools.checkThings(character: self, things: listObjectMagic[openChestNumber])
             
             } else {
+                
+                var listObject = [Objects]()
+                
+                for object in Tools.listObjects {
+                    if object is AttackObject {
+                        listObject.append(object)
+                    }
+                }
+                
+                let openChestNumber = Int(arc4random_uniform(UInt32(listObject.count)))
+                
+                if listObject[openChestNumber] is AttackObject {
+                    var objectNumber : Int = 0
+                    for object in self.objects {
+                        
+                        if object is AttackObject {
+                            self.objects.remove(at: objectNumber)
+                        }
+                        objectNumber += 1
+                    }
+                }
+                
+                self.objects.append(listObject[openChestNumber])
             
-                let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackObjects.count)))
-            
-                self.objects.removeAll()
-            
-                self.objects.append(Tools.listAttackObjects[openChestNumber])
-            
-                Tools.checkThings(character: self, things: Tools.listAttackObjects[openChestNumber])
+                Tools.checkThings(character: self, things: listObject[openChestNumber])
             
             }
         } else if things == "spell" {
-            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listAttackSpell.count)))
+            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listSpell.count)))
             
             self.magic += 50
             self.magicMax += 50
@@ -144,20 +175,20 @@ class Character {
             
             for spell in self.spell {
                 
-                if Tools.listAttackSpell[openChestNumber].name == spell.name {
+                if Tools.listSpell[openChestNumber].name == spell.name {
                     checkCharacterSpell = false
                 }
             }
             
             if checkCharacterSpell == true {
                 
-                self.spell.append(Tools.listAttackSpell[openChestNumber])
+                self.spell.append(Tools.listSpell[openChestNumber])
                 self.spell[self.spell.count - 1].spellNumber = self.spell.count
                 
             }
             
             
-            Tools.checkThings(character: self, things: Tools.listAttackSpell[openChestNumber])
+            Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
         }
     }
     
@@ -167,7 +198,7 @@ class Character {
         self.characterMinNeedMagic()
         var characterTwo : Any = ""
         
-        if self.spell.count != 0 || self.magicMinNeed == true {
+        if self.magicMinNeed == true {
             while characterTwo is String {
                 print("voulez vous attaquer ou lancer un sort ?"
                     + "\n1. attaquer"

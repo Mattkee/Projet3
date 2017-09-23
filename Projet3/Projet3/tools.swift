@@ -123,26 +123,23 @@ class Tools {
     }
     
     // this propertie contains lot of attack objet for the random choice of the chest.
-    static let listAttackObjects = [
+    static let listObjects = [
         AttackObject(name: "épée simple", attackDamage: 10),
         AttackObject(name: "hache simple", attackDamage: 20),
         AttackObject(name: "épée lourde", attackDamage: 20),
         AttackObject(name: "lance", attackDamage: 15),
         AttackObject(name: "hache lourde", attackDamage: 50),
         AttackObject(name: "sabre", attackDamage: 25),
-        ]
-    
-    // this propertie contains lot of magic objet for the random choice of the chest.
-    static let listHealsObjects = [
         MagicObject(name: "baguette", magicPoint: 30),
         MagicObject(name: "baguette d'ébene", magicPoint: 40),
         MagicObject(name: "baguette lumineuse", magicPoint: 50),
         MagicObject(name: "baguette de feu", magicPoint: 45),
         MagicObject(name: "baguette de glace", magicPoint: 35)
-    ]
+        ]
+    
     
     // this array contain the list of different Attack spells.
-    static var listAttackSpell = [
+    static var listSpell = [
         AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30),
         AttackSpell(name: "foudre", magicPointCost: 30, attackSpellDamage: 35),

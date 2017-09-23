@@ -158,9 +158,12 @@ class Game {
                 
                 print("c'est au tour de \(playerDefender.teamName) de jouer")
                 battlePhase(playerOne: playerDefender, playerTwo: playerAttack)
+                
                 if players.count == 1 {
                    print("\(players[0].teamName) vous gagnez le jeu.")
+                    
                 }
+                
             } else {
                     
                 print("\(players[0].teamName) vous gagnez le jeu.")
@@ -204,6 +207,7 @@ class Game {
     
     // this method will allow to remove a character or player when this character's health is less than 1 or player team character is 0.
     func remove() {
+        
         for player in players {
             var characterNumber = 0
             for character in player.teamCharacter {

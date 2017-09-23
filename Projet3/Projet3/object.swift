@@ -4,11 +4,13 @@ import Foundation
 class Objects {
     var name : String
     var attack : Int
+    var defense : Int
     var magic : Int
     
-    init (name : String , attack : Int , magic : Int) {
+    init (name : String , attack : Int , magic : Int, defense : Int) {
         self.name = name
         self.attack = attack
+        self.defense = defense
         self.magic = magic
     }
 }

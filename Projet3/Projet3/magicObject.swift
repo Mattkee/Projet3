@@ -8,6 +8,6 @@ class MagicObject : Objects {
     init(name : String, magicPoint : Int) {
         
         self.magicPoint = magicPoint
-        super.init(name: name, attack: 0, magic: magicPoint)
+        super.init(name: name, attack: 0, magic: magicPoint, defense : 0)
     }
 }
