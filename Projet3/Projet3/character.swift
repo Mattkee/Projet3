@@ -224,6 +224,7 @@ class Character {
                     if choiceAction == "2" || choiceAction == "lancer un sort" {
                         
                         useSpell (playerTwo : playerTwo)
+                        characterTwo = true
                         
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                         
@@ -297,6 +298,7 @@ class Character {
             
             if let totalDefense = spellSelected as? DefenseSpell {
                 self.defense += totalDefense.defenseSpellProtection
+                print("\(self.name) lance l'enchantement \(totalDefense.name) qui ajoute \(totalDefense.defenseSpellProtection) pt à sa défense")
                 
                 var spellNumber = 0
                 for checkSpell in self.spell {
