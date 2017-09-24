@@ -143,6 +143,7 @@ class Tools {
         AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30),
         AttackSpell(name: "foudre", magicPointCost: 30, attackSpellDamage: 35),
-        AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40)
+        AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40),
+        DefenseSpell(name: "Armure magique", magicPointCost: 50, defenseSpellProtection: 15)
     ]
 }

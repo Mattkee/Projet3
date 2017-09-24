@@ -7,6 +7,7 @@ class Character {
     var name : String = ""
     var health : Int
     var attack : Int
+    var defense : Int = 0
     var magic : Int
     var magicMinNeed : Bool = false
     var magicMax : Int
@@ -90,13 +91,15 @@ class Character {
     
     // this method allows to return the total number of pt of defense of character's object total defense.
     func calculateDefense() -> Int {
-        var totalDefensePoint : Int = 0
         
+        var totalDefenseObjectPoint : Int = 0
         for object in self.objects {
-            totalDefensePoint += object.defense
+            totalDefenseObjectPoint += object.defense
         }
         
-        return totalDefensePoint
+        let totalDefense = totalDefenseObjectPoint + self.defense
+        
+        return totalDefense
     }
     
     // this method allows to display all character selected's spell.
@@ -220,31 +223,7 @@ class Character {
                     
                     if choiceAction == "2" || choiceAction == "lancer un sort" {
                         
-                        repeat {
-                            
-                            while self.spellSelected is String || self.spellSelected is Bool {
-                            
-                                self.spellSelected = Tools.select(wantSelect: self)
-                                
-                            }
-                            
-                            characterTwo = Tools.select(wantSelect: playerTwo)
-                            
-                        } while characterTwo is Bool
-                        
-                        if let characterTwoSelected = characterTwo as? Character {
-                            
-                            if let useSpell = self.spellSelected as? Spell {
-                            
-                                characterTwoSelected.health -= useSpell.attack
-                            
-                                self.magic -= useSpell.magicPointCost
-                            
-                                print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(useSpell.attack) de dommage.")
-                            
-                                self.spellSelected = ""
-                            }
-                        }
+                        useSpell (playerTwo : playerTwo)
                         
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                         
@@ -270,7 +249,7 @@ class Character {
     // This method will allow to carry out the phase of attack between two character.
     func attackPhase(characterTwo : Character) {
         
-        characterTwo.health -= self.calculateDamage()
+        characterTwo.health -= (self.calculateDamage() - characterTwo.calculateDefense())
         
         if self.magicMax != 0 {
             self.magic += 20
@@ -283,31 +262,50 @@ class Character {
         print("\(self.name) attaque \(characterTwo.name) et lui inflige \(self.calculateDamage()) point de dégat.")
     }
     
-    func useAttackSpell (playerTwo : Player) {
+    // this method allow to use Attack Spell.
+    func useSpell (playerTwo : Player) {
+        var characterTwo : Any = ""
         
-        repeat {
+        while self.spellSelected is String || self.spellSelected is Bool {
             
-            while self.spellSelected is String || self.spellSelected is Bool {
+            self.spellSelected = Tools.select(wantSelect: self)
+            
+        }
+        
+        if self.spellSelected is AttackSpell {
+            repeat {
+            
+                characterTwo = Tools.select(wantSelect: playerTwo)
+            
+            } while characterTwo is Bool
+        
+            if let characterTwoSelected = characterTwo as? Character {
+            
+                if let useSpell = self.spellSelected as? Spell {
                 
-                self.spellSelected = Tools.select(wantSelect: self)
+                    characterTwoSelected.health -= useSpell.attack
                 
+                    self.magic -= useSpell.magicPointCost
+                
+                    print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(useSpell.attack) de dommage.")
+                
+                    self.spellSelected = ""
+                }
             }
             
-            characterTwo = Tools.select(wantSelect: playerTwo)
+        } else if self.spellSelected is DefenseSpell {
             
-        } while characterTwo is Bool
-        
-        if let characterTwoSelected = characterTwo as? Character {
-            
-            if let useSpell = self.spellSelected as? Spell {
+            if let totalDefense = spellSelected as? DefenseSpell {
+                self.defense += totalDefense.defenseSpellProtection
                 
-                characterTwoSelected.health -= useSpell.attack
-                
-                self.magic -= useSpell.magicPointCost
-                
-                print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(useSpell.attack) de dommage.")
-                
-                self.spellSelected = ""
+                var spellNumber = 0
+                for checkSpell in self.spell {
+                    if checkSpell.name == totalDefense.name {
+                        self.spell.remove(at: spellNumber)
+                        return
+                    }
+                    spellNumber += 1
+                }
             }
         }
     }
