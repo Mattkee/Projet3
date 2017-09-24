@@ -88,6 +88,17 @@ class Character {
         }
     }
     
+    // this method allows to return the total number of pt of defense of character's object total defense.
+    func calculateDefense() -> Int {
+        var totalDefensePoint : Int = 0
+        
+        for object in self.objects {
+            totalDefensePoint += object.defense
+        }
+        
+        return totalDefensePoint
+    }
+    
     // this method allows to display all character selected's spell.
     func seeCharacterSpell() {
         print("Voici la liste des sorts de \(self.name) :")
@@ -272,4 +283,32 @@ class Character {
         print("\(self.name) attaque \(characterTwo.name) et lui inflige \(self.calculateDamage()) point de dégat.")
     }
     
+    func useAttackSpell (playerTwo : Player) {
+        
+        repeat {
+            
+            while self.spellSelected is String || self.spellSelected is Bool {
+                
+                self.spellSelected = Tools.select(wantSelect: self)
+                
+            }
+            
+            characterTwo = Tools.select(wantSelect: playerTwo)
+            
+        } while characterTwo is Bool
+        
+        if let characterTwoSelected = characterTwo as? Character {
+            
+            if let useSpell = self.spellSelected as? Spell {
+                
+                characterTwoSelected.health -= useSpell.attack
+                
+                self.magic -= useSpell.magicPointCost
+                
+                print("\(self.name) lance un sort à \(characterTwoSelected.name) et lui inflige \(useSpell.attack) de dommage.")
+                
+                self.spellSelected = ""
+            }
+        }
+    }
 }
