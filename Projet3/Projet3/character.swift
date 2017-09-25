@@ -280,7 +280,7 @@ class Character {
     
     // This method will allow to carry out the phase of attack between two character.
     func attackPhase(characterTwo : Character) {
-        var damage = self.calculateDefense() - characterTwo.calculateDamage()
+        var damage = self.calculateDamage() - characterTwo.calculateDefense()
         if damage < 0 {
             damage = 0
         }
