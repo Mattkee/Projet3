@@ -43,32 +43,34 @@ class Tools {
     static func checkThings (character : Character, things : Any) {
         
         if things is Objects {
-            for object in character.objects {
             
-                if let attackObject = object as? AttackObject {
+            if let attackObject = things as? AttackObject {
                 
-                    print("\(character.name) reçoit l'objet \(character.objects[0].name) qui lui donne \(attackObject.attackDamage)")
+                    print("\(character.name) reçoit l'objet \(attackObject.name) qui lui donne \(attackObject.attackDamage)")
                     print("")
                 
-                } else if let magicObject = object as? MagicObject {
+            } else if let magicObject = things as? MagicObject {
                 
                     character.magicMax += magicObject.magicPoint
                 
-                    print("\(character.name) reçoit l'objet \(character.objects[0].name) qui lui donne \(magicObject.magicPoint)")
+                    print("\(character.name) reçoit l'objet \(magicObject.name) qui lui donne \(magicObject.magicPoint)")
                     print("")
                 
-                }
             }
         } else {
-            
-            for spell in character.spell {
                 
-                if let attackSpell = spell as? AttackSpell {
+            if let attackSpell = things as? AttackSpell {
                     
-                    print("\(character.name) reçoit le sort de combat \(spell.name) qui lui donne \(attackSpell.attackSpellDamage)")
+                    print("\(character.name) reçoit le sort de combat \(attackSpell.name) qui utilisé lui permettra d'infliger \(attackSpell.attackSpellDamage) pt de dommage à son adversaire.")
                     print("")
                     
-                }
+            }
+            
+            if let defenseSpell = things as? DefenseSpell {
+                
+                print("\(character.name) reçoit le sort de défense \(defenseSpell.name) qui utilisé ajoutera \(defenseSpell.defenseSpellProtection) à ses pts de défense.")
+                print("")
+                
             }
         }
     }
@@ -124,7 +126,7 @@ class Tools {
     
     // this propertie contains lot of attack objet for the random choice of the chest.
     static let listObjects = [
-        AttackObject(name: "épée simple", attackDamage: 10),
+        AttackObject(name: "épée simple", attackDamage: 15),
         AttackObject(name: "hache simple", attackDamage: 20),
         AttackObject(name: "épée lourde", attackDamage: 20),
         AttackObject(name: "lance", attackDamage: 15),
@@ -134,7 +136,11 @@ class Tools {
         MagicObject(name: "baguette d'ébene", magicPoint: 40),
         MagicObject(name: "baguette lumineuse", magicPoint: 50),
         MagicObject(name: "baguette de feu", magicPoint: 45),
-        MagicObject(name: "baguette de glace", magicPoint: 35)
+        MagicObject(name: "baguette de glace", magicPoint: 35),
+        DefenseObject(name: "armure de cuir", defensePoint: 20),
+        DefenseObject(name: "armure de fer", defensePoint: 30),
+        DefenseObject(name: "armure d'acier", defensePoint: 40),
+        DefenseObject(name: "armure d'or", defensePoint: 50)
         ]
     
     

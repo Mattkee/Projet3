@@ -131,25 +131,29 @@ class Character {
         if things == "object" {
             if self.findTypeCharacter() == "mage" {
                 
-                var listObjectMagic = [Objects]()
+                var listObjectMage = [Objects]()
                 
                 for object in Tools.listObjects {
-                    if object is MagicObject {
-                        listObjectMagic.append(object)
+                    if object is MagicObject || object is DefenseObject {
+                        listObjectMage.append(object)
                     }
                 }
                 
-                let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMagic.count)))
+                let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMage.count)))
             
                 if self.objects.count != 0 {
-                    self.magicMax -= self.objects[0].magic
+                    for object in self.objects {
+                        if object is MagicObject {
+                         self.magicMax -= object.magic
+                        }
+                    }
                 }
             
                 self.objects.removeAll()
             
-                self.objects.append(listObjectMagic[openChestNumber])
+                self.objects.append(listObjectMage[openChestNumber])
             
-                Tools.checkThings(character: self, things: listObjectMagic[openChestNumber])
+                Tools.checkThings(character: self, things: listObjectMage[openChestNumber])
             
             } else {
                 
