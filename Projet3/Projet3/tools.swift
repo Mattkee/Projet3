@@ -137,10 +137,10 @@ class Tools {
         MagicObject(name: "baguette lumineuse", magicPoint: 50),
         MagicObject(name: "baguette de feu", magicPoint: 45),
         MagicObject(name: "baguette de glace", magicPoint: 35),
-        DefenseObject(name: "armure de cuir", defensePoint: 20),
-        DefenseObject(name: "armure de fer", defensePoint: 30),
-        DefenseObject(name: "armure d'acier", defensePoint: 40),
-        DefenseObject(name: "armure d'or", defensePoint: 50)
+        DefenseObject(name: "armure de cuir", defensePoint: 20, type: "armure"),
+        DefenseObject(name: "armure de fer", defensePoint: 30, type: "armure"),
+        DefenseObject(name: "armure d'acier", defensePoint: 40, type: "armure"),
+        DefenseObject(name: "armure d'or", defensePoint: 50, type: "armure")
         ]
     
     
@@ -150,6 +150,9 @@ class Tools {
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30),
         AttackSpell(name: "foudre", magicPointCost: 30, attackSpellDamage: 35),
         AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40),
-        DefenseSpell(name: "Armure magique", magicPointCost: 50, defenseSpellProtection: 15)
+        DefenseSpell(name: "Armure magique", magicPointCost: 50, defenseSpellProtection: 25),
+        DefenseSpell(name: "gant magique", magicPointCost: 30, defenseSpellProtection: 5),
+        DefenseSpell(name: "casque magique", magicPointCost: 35, defenseSpellProtection: 10),
+        DefenseSpell(name: "bouclier magique", magicPointCost: 40, defenseSpellProtection: 20)
     ]
 }

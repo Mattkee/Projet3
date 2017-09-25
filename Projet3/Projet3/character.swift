@@ -160,12 +160,13 @@ class Character {
                 var listObject = [Objects]()
                 
                 for object in Tools.listObjects {
-                    if object is AttackObject {
+                    if object is AttackObject || object is DefenseObject {
                         listObject.append(object)
                     }
                 }
                 
                 let openChestNumber = Int(arc4random_uniform(UInt32(listObject.count)))
+                
                 
                 if listObject[openChestNumber] is AttackObject {
                     var objectNumber : Int = 0
@@ -176,6 +177,19 @@ class Character {
                         }
                         objectNumber += 1
                     }
+                } else {
+                    
+                    if let object = listObject[openChestNumber] as? DefenseObject {
+                        var objectNumber : Int = 0
+                        for characterObject in self.objects {
+                            if let objectType = characterObject as? DefenseObject {
+                                if objectType.type == object.type {
+                                    self.objects.remove(at: objectNumber)
+                                }
+                            }
+                        objectNumber += 1
+                        }
+                    }
                 }
                 
                 self.objects.append(listObject[openChestNumber])
@@ -184,6 +198,7 @@ class Character {
             
             }
         } else if things == "spell" {
+            
             let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listSpell.count)))
             
             self.magic += 50
@@ -248,13 +263,29 @@ class Character {
                 }
             }
             self.magicMinNeed = false
+        } else {
+            
+            while characterTwo is String {
+                repeat {
+                    
+                    characterTwo = Tools.select(wantSelect: playerTwo)
+                    
+                } while characterTwo is Bool
+                
+                if let characterTwoSelected = characterTwo as? Character {
+                    self.attackPhase(characterTwo: characterTwoSelected)
+                }
+            }
         }
     }
     
     // This method will allow to carry out the phase of attack between two character.
     func attackPhase(characterTwo : Character) {
-        
-        characterTwo.health -= (self.calculateDamage() - characterTwo.calculateDefense())
+        var damage = self.calculateDefense() - characterTwo.calculateDamage()
+        if damage < 0 {
+            damage = 0
+        }
+        characterTwo.health -= damage
         
         if self.magicMax != 0 {
             self.magic += 20

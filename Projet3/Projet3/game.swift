@@ -112,11 +112,8 @@ class Game {
             if characterOneSelected.spell.count > 0 {
                 
                 characterOneSelected.castSpell(playerTwo: playerTwo)
-                characterTwo = true
                 
-            }
-            
-            if characterTwo is String {
+            } else if characterTwo is String {
                 
                 repeat {
                 

@@ -4,9 +4,11 @@ import Foundation
 class DefenseObject : Objects {
     
     var defensePoint : Int
+    var type : String
     
-    init(name : String, defensePoint: Int) {
+    init(name : String, defensePoint: Int, type: String) {
         
+        self.type = type
         self.defensePoint = defensePoint
         super.init(name: name, attack: 0, magic: 0, defense : defensePoint)
     }
