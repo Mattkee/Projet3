@@ -125,104 +125,103 @@ class Character {
         }
     }
     
-    // this method allows to add new object or spell for character selected.
-    func addCharacterThings (things : String) {
+    // this method allows to add new object for character selected.
+    func addCharacterObject () {
         
-        if things == "object" {
-            if self.findTypeCharacter() == "mage" {
+        if self.findTypeCharacter() == "mage" {
                 
-                var listObjectMage = [Objects]()
+            var listObjectMage = [Objects]()
                 
-                for object in Tools.listObjects {
-                    if object is MagicObject || object is DefenseObject {
-                        listObjectMage.append(object)
+            for object in Tools.listObjects {
+                if object is MagicObject || object is DefenseObject {
+                    listObjectMage.append(object)
+                }
+            }
+                
+            let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMage.count)))
+            
+            if self.objects.count != 0 {
+                for object in self.objects {
+                    if object is MagicObject {
+                        self.magicMax -= object.magic
                     }
                 }
-                
-                let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMage.count)))
+            }
             
-                if self.objects.count != 0 {
-                    for object in self.objects {
-                        if object is MagicObject {
-                         self.magicMax -= object.magic
-                        }
-                    }
+            self.objects.removeAll()
+            
+            self.objects.append(listObjectMage[openChestNumber])
+            
+            Tools.checkThings(character: self, things: listObjectMage[openChestNumber])
+            
+        } else {
+                
+            var listObject = [Objects]()
+                
+            for object in Tools.listObjects {
+                if object is AttackObject || object is DefenseObject {
+                    listObject.append(object)
                 }
-            
-                self.objects.removeAll()
-            
-                self.objects.append(listObjectMage[openChestNumber])
-            
-                Tools.checkThings(character: self, things: listObjectMage[openChestNumber])
-            
-            } else {
+            }
                 
-                var listObject = [Objects]()
-                
-                for object in Tools.listObjects {
-                    if object is AttackObject || object is DefenseObject {
-                        listObject.append(object)
-                    }
-                }
-                
-                let openChestNumber = Int(arc4random_uniform(UInt32(listObject.count)))
+            let openChestNumber = Int(arc4random_uniform(UInt32(listObject.count)))
                 
                 
-                if listObject[openChestNumber] is AttackObject {
-                    var objectNumber : Int = 0
-                    for object in self.objects {
+            if listObject[openChestNumber] is AttackObject {
+                var objectNumber : Int = 0
+                for object in self.objects {
                         
-                        if object is AttackObject {
-                            self.objects.remove(at: objectNumber)
-                        }
-                        objectNumber += 1
+                    if object is AttackObject {
+                        self.objects.remove(at: objectNumber)
                     }
-                } else {
+                    objectNumber += 1
+                }
+            } else {
                     
-                    if let object = listObject[openChestNumber] as? DefenseObject {
-                        var objectNumber : Int = 0
-                        for characterObject in self.objects {
-                            if let objectType = characterObject as? DefenseObject {
-                                if objectType.type == object.type {
-                                    self.objects.remove(at: objectNumber)
-                                }
+                if let object = listObject[openChestNumber] as? DefenseObject {
+                    var objectNumber : Int = 0
+                    for characterObject in self.objects {
+                        if let objectType = characterObject as? DefenseObject {
+                            if objectType.type == object.type {
+                                self.objects.remove(at: objectNumber)
                             }
-                        objectNumber += 1
                         }
+                        objectNumber += 1
                     }
                 }
-                
-                self.objects.append(listObject[openChestNumber])
-            
-                Tools.checkThings(character: self, things: listObject[openChestNumber])
-            
             }
-        } else if things == "spell" {
-            
-            let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listSpell.count)))
-            
-            self.magic += 50
-            self.magicMax += 50
-            
-            var checkCharacterSpell : Bool = true
-            
-            for spell in self.spell {
                 
-                if Tools.listSpell[openChestNumber].name == spell.name {
-                    checkCharacterSpell = false
-                }
-            }
+            self.objects.append(listObject[openChestNumber])
             
-            if checkCharacterSpell == true {
-                
-                self.spell.append(Tools.listSpell[openChestNumber])
-                self.spell[self.spell.count - 1].spellNumber = self.spell.count
-                
-            }
+            Tools.checkThings(character: self, things: listObject[openChestNumber])
             
-            
-            Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
         }
+    }
+    // this method allows to add new Spell for character selected.
+    func addCharacterSpell() {
+            
+        let openChestNumber = Int(arc4random_uniform(UInt32(Tools.listSpell.count)))
+            
+        self.magic += 50
+        self.magicMax += 50
+            
+        var checkCharacterSpell : Bool = true
+            
+        for spell in self.spell {
+                
+            if Tools.listSpell[openChestNumber].name == spell.name {
+                checkCharacterSpell = false
+            }
+        }
+            
+        if checkCharacterSpell == true {
+                
+            self.spell.append(Tools.listSpell[openChestNumber])
+            self.spell[self.spell.count - 1].spellNumber = self.spell.count
+                
+        }
+        
+        Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
     }
     
     // This method puts in place the use of a magic spell selected phase.

@@ -189,10 +189,10 @@ class Game {
                 let typeChestContain = Int(arc4random_uniform(UInt32(2)))
                 
                 if typeChestContain == 1 {
-                    characterSelected.addCharacterThings(things: "object")
+                    characterSelected.addCharacterObject()
                     
                 } else {
-                    characterSelected.addCharacterThings(things: "spell")
+                    characterSelected.addCharacterSpell()
                 }
                 
             } else {
