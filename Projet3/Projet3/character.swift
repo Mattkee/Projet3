@@ -69,12 +69,14 @@ class Character {
     
     // This method allows to define the total number of pt of attack of a character, including his point of attack accumulates with the point of attack from character object.
     func calculateDamage() -> Int {
-        if self.objects.count == 1 {
+        if self.objects.count != 0 {
             
             var totalAttackPoint : Int = 0
             
             for object in self.objects {
+                if object is AttackObject {
                 totalAttackPoint += object.attack
+                }
             }
             
             let damage = self.attack + totalAttackPoint
@@ -181,9 +183,11 @@ class Character {
                 if let object = listObject[openChestNumber] as? DefenseObject {
                     var objectNumber : Int = 0
                     for characterObject in self.objects {
-                        if let objectType = characterObject as? DefenseObject {
-                            if objectType.type == object.type {
-                                self.objects.remove(at: objectNumber)
+                        if characterObject is DefenseObject {
+                            if let objectType = characterObject as? DefenseObject {
+                                if objectType.type == object.type {
+                                    self.objects.remove(at: objectNumber)
+                                }
                             }
                         }
                         objectNumber += 1

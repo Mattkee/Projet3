@@ -56,6 +56,10 @@ class Tools {
                     print("\(character.name) reçoit l'objet \(magicObject.name) qui lui donne \(magicObject.magicPoint)")
                     print("")
                 
+            } else if let defenseObject = things as? DefenseObject {
+                
+                print("\(character.name) reçoit l'objet \(defenseObject.name) qui lui donne \(defenseObject.defensePoint) de défense.")
+                print("")
             }
         } else {
                 

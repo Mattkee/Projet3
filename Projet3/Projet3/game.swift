@@ -63,7 +63,7 @@ class Game {
             print("pour l'équipe de \(player.teamName) voici la liste des personnages :")
             print("")
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.findTypeCharacter()) et il a \(character.health) pt de vie et a \(character.calculateDamage())pt d'attack total et \(character.magic) pt de magie.")
+                print("\(character.characterNumber + 1). \(character.name) est un \(character.findTypeCharacter()), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
             }
         }
     }
