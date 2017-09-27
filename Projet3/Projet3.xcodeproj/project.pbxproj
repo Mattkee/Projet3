@@ -68,6 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF527DF11F7AF10E009E54E1 /* characters */ = {
+			isa = PBXGroup;
+			children = (
+				AF5929081F64AB38007B29F3 /* dwarf.swift */,
+				AF5929071F64AB38007B29F3 /* colossus.swift */,
+				AF5929061F64AB38007B29F3 /* wizard.swift */,
+				AF5929051F64AB38007B29F3 /* warrior.swift */,
+				AF5929041F64AB38007B29F3 /* character.swift */,
+			);
+			path = characters;
+			sourceTree = "<group>";
+		};
 		AF7BD4111F27B65A004C233C = {
 			isa = PBXGroup;
 			children = (
@@ -91,11 +103,7 @@
 				AF5929021F64AB38007B29F3 /* game.swift */,
 				AF5929031F64AB38007B29F3 /* player.swift */,
 				AFBE3BA91F730CC30012BDB2 /* tools.swift */,
-				AF5929041F64AB38007B29F3 /* character.swift */,
-				AF5929051F64AB38007B29F3 /* warrior.swift */,
-				AF5929061F64AB38007B29F3 /* wizard.swift */,
-				AF5929071F64AB38007B29F3 /* colossus.swift */,
-				AF5929081F64AB38007B29F3 /* dwarf.swift */,
+				AF527DF11F7AF10E009E54E1 /* characters */,
 				AF5929091F64AB38007B29F3 /* object.swift */,
 				AF59290A1F64AB38007B29F3 /* attackObject.swift */,
 				AF59290B1F64AB38007B29F3 /* magicObject.swift */,

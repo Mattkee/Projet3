@@ -63,7 +63,7 @@ class Game {
             print("pour l'équipe de \(player.teamName) voici la liste des personnages :")
             print("")
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). \(character.name) est un \(character.findTypeCharacter()), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
+                print("\(character.characterNumber + 1). \(character.name) est un \(character.type), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
             }
         }
     }
@@ -103,13 +103,15 @@ class Game {
             if characterOneSelected is Wizard {
                 
                 if let wizard = characterOneSelected as? Wizard {
+                    
+                    characterTwo = true
                     wizard.heals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
                     remove()
-                    characterTwo = true
+                    
                 }
             }
             
-            if characterOneSelected.spell.count > 0 {
+            if characterOneSelected.spells.count > 0 && characterTwo is String {
                 
                 characterOneSelected.castSpell(playerTwo: playerTwo)
                 

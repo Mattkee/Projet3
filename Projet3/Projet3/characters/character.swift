@@ -6,65 +6,27 @@ class Character {
     //Here are the parameters common to all characters
     var name : String = ""
     var health : Int
+    let healthMax : Int
     var attack : Int
     var defense : Int = 0
     var magic : Int
+    let type : String
     var magicMinNeed : Bool = false
     var magicMax : Int
     var characterNumber : Int = 0
-    var objects = [Objects]()
-    var spell = [Spell]()
+    
+    var objects = [String : Objects]()
+    var spells = [String : Spell]()
     var spellSelected : Any = ""
     
-    init(health : Int, attack : Int, magic : Int, magicMax : Int) {
+    init(health : Int, attack : Int, magic : Int, magicMax : Int, type : String, healthMax : Int) {
         
         self.health = health
+        self.healthMax = healthMax
         self.attack = attack
         self.magic = magic
+        self.type = type
         self.magicMax = magicMax
-    }
-    
-    // this method find character type and return french translate.
-    func findTypeCharacter() -> String {
-        
-        if self is Warrior {
-            return "combattant"
-            
-        } else if self is Wizard {
-            return "mage"
-            
-        } else if self is Colossus {
-            return "colosse"
-            
-        } else {
-            return "nain"
-            
-        }
-    }
-    
-    // This method allows to define what is the maximum number of life to a character type.
-    func charactersHealth() -> Int {
-        
-        if self is Warrior {
-            
-            let characterHealthMax = 100
-            return characterHealthMax
-            
-        } else if self is Wizard {
-            
-            let characterHealthMax = 60
-            return characterHealthMax
-            
-        } else if self is Colossus {
-            
-            let characterHealthMax = 500
-            return characterHealthMax
-            
-        } else {
-            
-            let characterHealthMax = 30
-            return characterHealthMax
-        }
     }
     
     // This method allows to define the total number of pt of attack of a character, including his point of attack accumulates with the point of attack from character object.
@@ -73,7 +35,7 @@ class Character {
             
             var totalAttackPoint : Int = 0
             
-            for object in self.objects {
+            for (_ , object) in self.objects {
                 if object is AttackObject {
                 totalAttackPoint += object.attack
                 }
@@ -95,7 +57,7 @@ class Character {
     func calculateDefense() -> Int {
         
         var totalDefenseObjectPoint : Int = 0
-        for object in self.objects {
+        for (_ , object) in self.objects {
             totalDefenseObjectPoint += object.defense
         }
         
@@ -110,7 +72,10 @@ class Character {
         print("")
         print("choisissez un sort")
         print("")
-        for spell in self.spell {
+        
+        let viewSpell = self.spells.values.sorted(by: ({ $1.spellNumber > $0.spellNumber }))
+    
+        for spell in viewSpell {
             print("\(spell.spellNumber). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
         }
     }
@@ -120,8 +85,9 @@ class Character {
        
         self.magicMinNeed = false
         
-        for spell in self.spell {
-            if self.magicMinNeed == true || spell.magicPointCost <= self.magic {
+        for (_ , spell) in self.spells {
+            
+            if spell.magicPointCost <= self.magic {
                 self.magicMinNeed = true
             }
         }
@@ -130,7 +96,7 @@ class Character {
     // this method allows to add new object for character selected.
     func addCharacterObject () {
         
-        if self.findTypeCharacter() == "mage" {
+        if self.type == "mage" {
                 
             var listObjectMage = [Objects]()
                 
@@ -142,17 +108,15 @@ class Character {
                 
             let openChestNumber = Int(arc4random_uniform(UInt32(listObjectMage.count)))
             
-            if self.objects.count != 0 {
-                for object in self.objects {
+            if self.objects.count != 0 && listObjectMage[openChestNumber] is MagicObject {
+                for (_ , object) in self.objects {
                     if object is MagicObject {
                         self.magicMax -= object.magic
                     }
                 }
             }
             
-            self.objects.removeAll()
-            
-            self.objects.append(listObjectMage[openChestNumber])
+            self.objects[listObjectMage[openChestNumber].type] = listObjectMage[openChestNumber]
             
             Tools.checkThings(character: self, things: listObjectMage[openChestNumber])
             
@@ -167,40 +131,14 @@ class Character {
             }
                 
             let openChestNumber = Int(arc4random_uniform(UInt32(listObject.count)))
-                
-                
-            if listObject[openChestNumber] is AttackObject {
-                var objectNumber : Int = 0
-                for object in self.objects {
-                        
-                    if object is AttackObject {
-                        self.objects.remove(at: objectNumber)
-                    }
-                    objectNumber += 1
-                }
-            } else {
-                    
-                if let object = listObject[openChestNumber] as? DefenseObject {
-                    var objectNumber : Int = 0
-                    for characterObject in self.objects {
-                        if characterObject is DefenseObject {
-                            if let objectType = characterObject as? DefenseObject {
-                                if objectType.type == object.type {
-                                    self.objects.remove(at: objectNumber)
-                                }
-                            }
-                        }
-                        objectNumber += 1
-                    }
-                }
-            }
-                
-            self.objects.append(listObject[openChestNumber])
+            
+            self.objects[listObject[openChestNumber].type] = listObject[openChestNumber]
             
             Tools.checkThings(character: self, things: listObject[openChestNumber])
             
         }
     }
+    
     // this method allows to add new Spell for character selected.
     func addCharacterSpell() {
             
@@ -208,24 +146,18 @@ class Character {
             
         self.magic += 50
         self.magicMax += 50
-            
-        var checkCharacterSpell : Bool = true
-            
-        for spell in self.spell {
-                
-            if Tools.listSpell[openChestNumber].name == spell.name {
-                checkCharacterSpell = false
-            }
-        }
-            
-        if checkCharacterSpell == true {
-                
-            self.spell.append(Tools.listSpell[openChestNumber])
-            self.spell[self.spell.count - 1].spellNumber = self.spell.count
-                
-        }
         
-        Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
+        if self.spells[Tools.listSpell[openChestNumber].name]?.name == Tools.listSpell[openChestNumber].name {
+            
+            Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
+            
+        } else {
+            self.spells[Tools.listSpell[openChestNumber].name] = Tools.listSpell[openChestNumber]
+            let spellNumber = self.spells.count
+            self.spells[Tools.listSpell[openChestNumber].name]?.spellNumber = spellNumber
+            
+            Tools.checkThings(character: self, things: Tools.listSpell[openChestNumber])
+        }
     }
     
     // This method puts in place the use of a magic spell selected phase.
@@ -251,6 +183,7 @@ class Character {
                     } else if choiceAction == "1" || choiceAction == "attaquer" {
                         
                         while characterTwo is String {
+                            
                             repeat {
                                 
                                 characterTwo = Tools.select(wantSelect: playerTwo)
@@ -269,6 +202,7 @@ class Character {
         } else {
             
             while characterTwo is String {
+                
                 repeat {
                     
                     characterTwo = Tools.select(wantSelect: playerTwo)
@@ -338,15 +272,14 @@ class Character {
                 self.defense += totalDefense.defenseSpellProtection
                 print("\(self.name) lance l'enchantement \(totalDefense.name) qui ajoute \(totalDefense.defenseSpellProtection) pt à sa défense")
                 
-                var spellNumber = 0
-                for checkSpell in self.spell {
-                    if checkSpell.name == totalDefense.name {
-                        self.spell.remove(at: spellNumber)
-                        return
+                for (name , _ ) in self.spells {
+                    if name == totalDefense.name {
+                        self.spells.removeValue(forKey: name)
                     }
-                    spellNumber += 1
                 }
+                self.spellSelected = ""
             }
         }
     }
+
 }

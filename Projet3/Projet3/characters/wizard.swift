@@ -7,7 +7,6 @@ class Wizard : Character {
     func heals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
         
         var characterneedHeals : Any = ""
-        var characterTwo : Any = ""
         
         while characterneedHeals is String {
             print("voulez vous soigner un de vos personnage ou attaquer ?"
@@ -28,7 +27,7 @@ class Wizard : Character {
                     
                     if let characterTwoSelected = characterneedHeals as? Character {
                         
-                        let characterHealthMax = characterTwoSelected.charactersHealth()
+                        let characterHealthMax = characterTwoSelected.healthMax
                         
                         characterTwoSelected.health += 20
                         characterOneSelected.magic -= 20
@@ -46,29 +45,17 @@ class Wizard : Character {
                     
                 } else if choiceAction == "2" || choiceAction == "attaquer" {
                     
+                    characterneedHeals = true
+                    
                     characterOneSelected.castSpell(playerTwo: playerTwo)
                     
-                    if characterTwo is String {
-                        
-                        repeat {
-                            
-                            characterTwo = Tools.select(wantSelect: playerTwo)
-                            
-                        } while characterTwo is Bool
-                        
-                        if let characterTwoSelected = characterTwo as? Character {
-                            characterOneSelected.attackPhase(characterTwo: characterTwoSelected)
-                        }
-                    }
-                    
                 }
-                
             }
         }
     }
 
     init(){
-        super.init(health: 60, attack: 2, magic: 100, magicMax : 100)
+        super.init(health: 60, attack: 2, magic: 100, magicMax : 100, type : "mage", healthMax: 60)
         
         self.magic = magic
         

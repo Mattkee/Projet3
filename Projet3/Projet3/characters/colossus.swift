@@ -4,7 +4,7 @@ import Foundation
 class Colossus : Character {
     
     init(){
-        super.init(health: 500, attack: 3, magic: 0, magicMax : 0)
+        super.init(health: 500, attack: 3, magic: 0, magicMax : 0, type : "colosse", healthMax: 500)
         
         self.attack = attack
         

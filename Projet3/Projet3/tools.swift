@@ -114,9 +114,9 @@ class Tools {
             
                 if let choiceSpell = readLine() {
                 
-                    for spell in character.spell {
+                    for (name , spell) in character.spells {
                     
-                        if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber) {
+                        if choiceSpell == name || choiceSpell == String(spell.spellNumber) {
                             return spell
                         }
                     }
@@ -130,17 +130,17 @@ class Tools {
     
     // this propertie contains lot of attack objet for the random choice of the chest.
     static let listObjects = [
-        AttackObject(name: "épée simple", attackDamage: 15),
-        AttackObject(name: "hache simple", attackDamage: 20),
-        AttackObject(name: "épée lourde", attackDamage: 20),
-        AttackObject(name: "lance", attackDamage: 15),
-        AttackObject(name: "hache lourde", attackDamage: 50),
-        AttackObject(name: "sabre", attackDamage: 25),
-        MagicObject(name: "baguette", magicPoint: 30),
-        MagicObject(name: "baguette d'ébene", magicPoint: 40),
-        MagicObject(name: "baguette lumineuse", magicPoint: 50),
-        MagicObject(name: "baguette de feu", magicPoint: 45),
-        MagicObject(name: "baguette de glace", magicPoint: 35),
+        AttackObject(name: "épée simple", attackDamage: 15, type: "arme"),
+        AttackObject(name: "hache simple", attackDamage: 20, type: "arme"),
+        AttackObject(name: "épée lourde", attackDamage: 20, type: "arme"),
+        AttackObject(name: "lance", attackDamage: 15, type: "arme"),
+        AttackObject(name: "hache lourde", attackDamage: 50, type: "arme"),
+        AttackObject(name: "sabre", attackDamage: 25, type: "arme"),
+        MagicObject(name: "baguette", magicPoint: 30, type: "magie"),
+        MagicObject(name: "baguette d'ébene", magicPoint: 40, type: "magie"),
+        MagicObject(name: "baguette lumineuse", magicPoint: 50, type: "magie"),
+        MagicObject(name: "baguette de feu", magicPoint: 45, type: "magie"),
+        MagicObject(name: "baguette de glace", magicPoint: 35, type: "magie"),
         DefenseObject(name: "armure de cuir", defensePoint: 20, type: "armure"),
         DefenseObject(name: "armure de fer", defensePoint: 30, type: "armure"),
         DefenseObject(name: "armure d'acier", defensePoint: 40, type: "armure"),
