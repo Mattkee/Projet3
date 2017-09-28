@@ -17,9 +17,14 @@ class Player{
         print("Voici la liste des personnages de \(self.teamName) :")
         print("")
         
+        var number = 1
+        
         for character in teamCharacter {
-            print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.type)")
+            character.characterNumber = number
+            print("\(character.characterNumber). le personnage \(character.name) qui est un \(character.type)")
+            number += 1
         }
+        print("")
     }
     
     // this method allow to add new character to selected player.

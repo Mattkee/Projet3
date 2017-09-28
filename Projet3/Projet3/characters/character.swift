@@ -77,7 +77,7 @@ class Character {
     
         for (name , spell) in self.spells {
             spell.spellNumber = number
-            print("\(spell.spellNumber). le sort \(name) qui permet : \(spell.attack) point de dommage.")
+            print("\(spell.spellNumber). \(name) qui permet : \(spell.attack) pts de dommages et donne \(spell.defense)pts de défenses, il coute \(spell.magicPointCost)pts de magie.")
             number += 1
         }
     }

@@ -96,7 +96,7 @@ class Tools {
                 
                     for character in player.teamCharacter {
                     
-                        if choiceCharacter == character.name || choiceCharacter == String(character.characterNumber + 1) {
+                        if choiceCharacter == character.name || choiceCharacter == String(character.characterNumber) {
                         return character
                         }
                     }
@@ -117,7 +117,12 @@ class Tools {
                     for (name , spell) in character.spells {
                     
                         if choiceSpell == name || choiceSpell == String(spell.spellNumber) {
-                            return spell
+                            if character.magic >= spell.magicPointCost {
+                                return spell
+                            } else {
+                                print("vous n'avez pas assez de points de magie pour ce sort.")
+                                return false
+                            }
                         }
                     }
                 }

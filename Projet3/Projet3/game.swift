@@ -62,8 +62,13 @@ class Game {
             print("")
             print("pour l'équipe de \(player.teamName) voici la liste des personnages :")
             print("")
+            
+            var number = 1
+            
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). \(character.name) est un \(character.type), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
+                character.characterNumber = number
+                print("\(character.characterNumber). \(character.name) est un \(character.type), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
+                number += 1
             }
         }
     }
