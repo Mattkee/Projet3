@@ -73,10 +73,12 @@ class Character {
         print("choisissez un sort")
         print("")
         
-        let viewSpell = self.spells.values.sorted(by: ({ $1.spellNumber > $0.spellNumber }))
+        var number = 1
     
-        for spell in viewSpell {
-            print("\(spell.spellNumber). le sort \(spell.name) qui permet : \(spell.attack) point de dommage.")
+        for (name , spell) in self.spells {
+            spell.spellNumber = number
+            print("\(spell.spellNumber). le sort \(name) qui permet : \(spell.attack) point de dommage.")
+            number += 1
         }
     }
     
