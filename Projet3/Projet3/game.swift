@@ -217,6 +217,7 @@ class Game {
             for character in player.teamCharacter {
                 
                 if character.health < 1 {
+                    print("\(character.name) est mort, il est retiré du jeu.")
                     player.teamCharacter.remove(at: characterNumber)
                 }
                 characterNumber += 1
