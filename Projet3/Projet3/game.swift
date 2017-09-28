@@ -105,7 +105,7 @@ class Game {
             print("le personnage selectionné est \(characterOneSelected.name)")
             chest(characterSelected: characterOneSelected)
             
-            if characterOneSelected is Wizard {
+            if characterOneSelected is Wizard && characterOneSelected.magic >= 20 {
                 
                 if let wizard = characterOneSelected as? Wizard {
                     
