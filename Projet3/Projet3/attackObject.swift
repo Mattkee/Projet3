@@ -5,9 +5,9 @@ class AttackObject : Objects {
     
     var attackDamage : Int
 
-    init(name : String, attackDamage: Int) {
+    init(name : String, attackDamage: Int, type : String) {
         
         self.attackDamage = attackDamage
-        super.init(name: name, attack: attackDamage, magic: 0)
+        super.init(name: name, attack: attackDamage, magic: 0, defense: 0, type : type)
     }
 }

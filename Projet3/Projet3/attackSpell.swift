@@ -8,7 +8,7 @@ class AttackSpell : Spell {
     init(name : String, magicPointCost : Int, attackSpellDamage : Int) {
         
         self.attackSpellDamage = attackSpellDamage
-        super.init(name: name, magicPointCost: magicPointCost, attack : attackSpellDamage)
+        super.init(name: name, magicPointCost: magicPointCost, attack : attackSpellDamage, defense : 0)
     }
     
 }

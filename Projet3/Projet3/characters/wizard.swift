@@ -7,16 +7,16 @@ class Wizard : Character {
     func heals (playerOne : Player , playerTwo : Player , characterOneSelected: Character) {
         
         var characterneedHeals : Any = ""
-        var characterTwo : Any = ""
         
         while characterneedHeals is String {
-            print("voulez vous soigner un de vos personnage ou attaquer ?")
+            print("voulez vous soigner un de vos personnage ou attaquer ?"
+                + "\n1. soigner"
+                + "\n2. attaquer")
             
-            print("si oui répondez 1 ou Oui")
             
             if let choiceAction = readLine() {
                 
-                if choiceAction == "1" || choiceAction == "oui" {
+                if choiceAction == "1" || choiceAction == "soigner" {
                     
                     repeat {
                         print("quel personnage voulez vous soigner :")
@@ -27,7 +27,7 @@ class Wizard : Character {
                     
                     if let characterTwoSelected = characterneedHeals as? Character {
                         
-                        let characterHealthMax = characterTwoSelected.charactersHealth()
+                        let characterHealthMax = characterTwoSelected.healthMax
                         
                         characterTwoSelected.health += 20
                         characterOneSelected.magic -= 20
@@ -43,31 +43,19 @@ class Wizard : Character {
                     }
                     
                     
-                } else if choiceAction == "1" || choiceAction == "attaquer" {
+                } else if choiceAction == "2" || choiceAction == "attaquer" {
+                    
+                    characterneedHeals = true
                     
                     characterOneSelected.castSpell(playerTwo: playerTwo)
                     
-                    if characterTwo is String {
-                        
-                        repeat {
-                            
-                            characterTwo = Tools.select(wantSelect: playerTwo)
-                            
-                        } while characterTwo is Bool
-                        
-                        if let characterTwoSelected = characterTwo as? Character {
-                            characterOneSelected.attackPhase(characterTwo: characterTwoSelected)
-                        }
-                    }
-                    
                 }
-                
             }
         }
     }
 
     init(){
-        super.init(health: 60, attack: 2, magic: 100, magicMax : 100)
+        super.init(health: 60, attack: 2, magic: 100, magicMax : 100, type : "mage", healthMax: 60)
         
         self.magic = magic
         

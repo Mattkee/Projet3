@@ -63,7 +63,7 @@ class Game {
             print("pour l'équipe de \(player.teamName) voici la liste des personnages :")
             print("")
             for character in player.teamCharacter {
-                print("\(character.characterNumber + 1). le personnage \(character.name) qui est un \(character.findTypeCharacter()) et il a \(character.health) pt de vie et a \(character.calculateDamage())pt d'attack total et \(character.magic) pt de magie.")
+                print("\(character.characterNumber + 1). \(character.name) est un \(character.type), il a \(character.health) pt de vie, \(character.calculateDamage())pt d'attack total, \(character.calculateDefense())pt de défense total et \(character.magic) pt de magie.")
             }
         }
     }
@@ -103,20 +103,19 @@ class Game {
             if characterOneSelected is Wizard {
                 
                 if let wizard = characterOneSelected as? Wizard {
+                    
+                    characterTwo = true
                     wizard.heals(playerOne: playerOne, playerTwo: playerTwo, characterOneSelected: wizard)
                     remove()
-                    characterTwo = true
+                    
                 }
             }
             
-            if characterOneSelected.spell.count > 0 {
+            if characterOneSelected.spells.count > 0 && characterTwo is String {
                 
                 characterOneSelected.castSpell(playerTwo: playerTwo)
-                characterTwo = true
                 
-            }
-            
-            if characterTwo is String {
+            } else if characterTwo is String {
                 
                 repeat {
                 
@@ -158,9 +157,12 @@ class Game {
                 
                 print("c'est au tour de \(playerDefender.teamName) de jouer")
                 battlePhase(playerOne: playerDefender, playerTwo: playerAttack)
+                
                 if players.count == 1 {
                    print("\(players[0].teamName) vous gagnez le jeu.")
+                    
                 }
+                
             } else {
                     
                 print("\(players[0].teamName) vous gagnez le jeu.")
@@ -189,10 +191,10 @@ class Game {
                 let typeChestContain = Int(arc4random_uniform(UInt32(2)))
                 
                 if typeChestContain == 1 {
-                    characterSelected.addCharacterThings(things: "object")
+                    characterSelected.addCharacterObject()
                     
                 } else {
-                    characterSelected.addCharacterThings(things: "spell")
+                    characterSelected.addCharacterSpell()
                 }
                 
             } else {
@@ -204,6 +206,7 @@ class Game {
     
     // this method will allow to remove a character or player when this character's health is less than 1 or player team character is 0.
     func remove() {
+        
         for player in players {
             var characterNumber = 0
             for character in player.teamCharacter {

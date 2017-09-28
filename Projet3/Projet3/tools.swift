@@ -43,32 +43,38 @@ class Tools {
     static func checkThings (character : Character, things : Any) {
         
         if things is Objects {
-            for object in character.objects {
             
-                if let attackObject = object as? AttackObject {
+            if let attackObject = things as? AttackObject {
                 
-                    print("\(character.name) reçoit l'objet \(character.objects[0].name) qui lui donne \(attackObject.attackDamage)")
+                    print("\(character.name) reçoit l'objet \(attackObject.name) qui lui donne \(attackObject.attackDamage)")
                     print("")
                 
-                } else if let magicObject = object as? MagicObject {
+            } else if let magicObject = things as? MagicObject {
                 
                     character.magicMax += magicObject.magicPoint
                 
-                    print("\(character.name) reçoit l'objet \(character.objects[0].name) qui lui donne \(magicObject.magicPoint)")
+                    print("\(character.name) reçoit l'objet \(magicObject.name) qui lui donne \(magicObject.magicPoint)")
                     print("")
                 
-                }
+            } else if let defenseObject = things as? DefenseObject {
+                
+                print("\(character.name) reçoit l'objet \(defenseObject.name) qui lui donne \(defenseObject.defensePoint) de défense.")
+                print("")
             }
         } else {
-            
-            for spell in character.spell {
                 
-                if let attackSpell = spell as? AttackSpell {
+            if let attackSpell = things as? AttackSpell {
                     
-                    print("\(character.name) reçoit le sort de combat \(spell.name) qui lui donne \(attackSpell.attackSpellDamage)")
+                    print("\(character.name) reçoit le sort de combat \(attackSpell.name) qui utilisé lui permettra d'infliger \(attackSpell.attackSpellDamage) pt de dommage à son adversaire.")
                     print("")
                     
-                }
+            }
+            
+            if let defenseSpell = things as? DefenseSpell {
+                
+                print("\(character.name) reçoit le sort de défense \(defenseSpell.name) qui utilisé ajoutera \(defenseSpell.defenseSpellProtection) à ses pts de défense.")
+                print("")
+                
             }
         }
     }
@@ -108,9 +114,9 @@ class Tools {
             
                 if let choiceSpell = readLine() {
                 
-                    for spell in character.spell {
+                    for (name , spell) in character.spells {
                     
-                        if choiceSpell == spell.name || choiceSpell == String(spell.spellNumber) {
+                        if choiceSpell == name || choiceSpell == String(spell.spellNumber) {
                             return spell
                         }
                     }
@@ -123,29 +129,34 @@ class Tools {
     }
     
     // this propertie contains lot of attack objet for the random choice of the chest.
-    static let listAttackObjects = [
-        AttackObject(name: "épée simple", attackDamage: 10),
-        AttackObject(name: "hache simple", attackDamage: 20),
-        AttackObject(name: "épée lourde", attackDamage: 20),
-        AttackObject(name: "lance", attackDamage: 15),
-        AttackObject(name: "hache lourde", attackDamage: 50),
-        AttackObject(name: "sabre", attackDamage: 25),
+    static let listObjects = [
+        AttackObject(name: "épée simple", attackDamage: 15, type: "arme"),
+        AttackObject(name: "hache simple", attackDamage: 20, type: "arme"),
+        AttackObject(name: "épée lourde", attackDamage: 20, type: "arme"),
+        AttackObject(name: "lance", attackDamage: 15, type: "arme"),
+        AttackObject(name: "hache lourde", attackDamage: 50, type: "arme"),
+        AttackObject(name: "sabre", attackDamage: 25, type: "arme"),
+        MagicObject(name: "baguette", magicPoint: 30, type: "magie"),
+        MagicObject(name: "baguette d'ébene", magicPoint: 40, type: "magie"),
+        MagicObject(name: "baguette lumineuse", magicPoint: 50, type: "magie"),
+        MagicObject(name: "baguette de feu", magicPoint: 45, type: "magie"),
+        MagicObject(name: "baguette de glace", magicPoint: 35, type: "magie"),
+        DefenseObject(name: "armure de cuir", defensePoint: 20, type: "armure"),
+        DefenseObject(name: "armure de fer", defensePoint: 30, type: "armure"),
+        DefenseObject(name: "armure d'acier", defensePoint: 40, type: "armure"),
+        DefenseObject(name: "armure d'or", defensePoint: 50, type: "armure")
         ]
     
-    // this propertie contains lot of magic objet for the random choice of the chest.
-    static let listHealsObjects = [
-        MagicObject(name: "baguette", magicPoint: 30),
-        MagicObject(name: "baguette d'ébene", magicPoint: 40),
-        MagicObject(name: "baguette lumineuse", magicPoint: 50),
-        MagicObject(name: "baguette de feu", magicPoint: 45),
-        MagicObject(name: "baguette de glace", magicPoint: 35)
-    ]
     
     // this array contain the list of different Attack spells.
-    static var listAttackSpell = [
+    static var listSpell = [
         AttackSpell(name: "boule de feu", magicPointCost: 20, attackSpellDamage: 25),
         AttackSpell(name: "éclair de glace", magicPointCost: 25, attackSpellDamage: 30),
         AttackSpell(name: "foudre", magicPointCost: 30, attackSpellDamage: 35),
-        AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40)
+        AttackSpell(name: "explosion", magicPointCost: 35, attackSpellDamage: 40),
+        DefenseSpell(name: "Armure magique", magicPointCost: 50, defenseSpellProtection: 25),
+        DefenseSpell(name: "gant magique", magicPointCost: 30, defenseSpellProtection: 5),
+        DefenseSpell(name: "casque magique", magicPointCost: 35, defenseSpellProtection: 10),
+        DefenseSpell(name: "bouclier magique", magicPointCost: 40, defenseSpellProtection: 20)
     ]
 }

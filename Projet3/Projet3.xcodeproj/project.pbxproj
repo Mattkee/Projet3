@@ -18,6 +18,8 @@
 		AF5929141F64AB38007B29F3 /* object.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF5929091F64AB38007B29F3 /* object.swift */; };
 		AF5929151F64AB38007B29F3 /* attackObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290A1F64AB38007B29F3 /* attackObject.swift */; };
 		AF5929161F64AB38007B29F3 /* magicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF59290B1F64AB38007B29F3 /* magicObject.swift */; };
+		AF85DD601F76BCB10000DA4B /* defenseSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF85DD5F1F76BCB10000DA4B /* defenseSpell.swift */; };
+		AF85DD621F76C1C10000DA4B /* defenseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF85DD611F76C1C10000DA4B /* defenseObject.swift */; };
 		AFBE3BAA1F730CC30012BDB2 /* tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFBE3BA91F730CC30012BDB2 /* tools.swift */; };
 		AFE1F6651F6663EB0057B71D /* spell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1F6641F6663EB0057B71D /* spell.swift */; };
 		AFE1F6671F666B7E0057B71D /* attackSpell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFE1F6661F666B7E0057B71D /* attackSpell.swift */; };
@@ -48,6 +50,8 @@
 		AF59290A1F64AB38007B29F3 /* attackObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attackObject.swift; sourceTree = "<group>"; };
 		AF59290B1F64AB38007B29F3 /* magicObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = magicObject.swift; sourceTree = "<group>"; };
 		AF7BD41A1F27B65A004C233C /* Projet3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Projet3; sourceTree = BUILT_PRODUCTS_DIR; };
+		AF85DD5F1F76BCB10000DA4B /* defenseSpell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defenseSpell.swift; sourceTree = "<group>"; };
+		AF85DD611F76C1C10000DA4B /* defenseObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defenseObject.swift; sourceTree = "<group>"; };
 		AFBE3BA91F730CC30012BDB2 /* tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = tools.swift; sourceTree = "<group>"; };
 		AFE1F6641F6663EB0057B71D /* spell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = spell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		AFE1F6661F666B7E0057B71D /* attackSpell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = attackSpell.swift; sourceTree = "<group>"; };
@@ -64,6 +68,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AF527DF11F7AF10E009E54E1 /* characters */ = {
+			isa = PBXGroup;
+			children = (
+				AF5929081F64AB38007B29F3 /* dwarf.swift */,
+				AF5929071F64AB38007B29F3 /* colossus.swift */,
+				AF5929061F64AB38007B29F3 /* wizard.swift */,
+				AF5929051F64AB38007B29F3 /* warrior.swift */,
+				AF5929041F64AB38007B29F3 /* character.swift */,
+			);
+			path = characters;
+			sourceTree = "<group>";
+		};
 		AF7BD4111F27B65A004C233C = {
 			isa = PBXGroup;
 			children = (
@@ -87,16 +103,14 @@
 				AF5929021F64AB38007B29F3 /* game.swift */,
 				AF5929031F64AB38007B29F3 /* player.swift */,
 				AFBE3BA91F730CC30012BDB2 /* tools.swift */,
-				AF5929041F64AB38007B29F3 /* character.swift */,
-				AF5929051F64AB38007B29F3 /* warrior.swift */,
-				AF5929061F64AB38007B29F3 /* wizard.swift */,
-				AF5929071F64AB38007B29F3 /* colossus.swift */,
-				AF5929081F64AB38007B29F3 /* dwarf.swift */,
+				AF527DF11F7AF10E009E54E1 /* characters */,
 				AF5929091F64AB38007B29F3 /* object.swift */,
 				AF59290A1F64AB38007B29F3 /* attackObject.swift */,
 				AF59290B1F64AB38007B29F3 /* magicObject.swift */,
+				AF85DD611F76C1C10000DA4B /* defenseObject.swift */,
 				AFE1F6641F6663EB0057B71D /* spell.swift */,
 				AFE1F6661F666B7E0057B71D /* attackSpell.swift */,
+				AF85DD5F1F76BCB10000DA4B /* defenseSpell.swift */,
 			);
 			path = Projet3;
 			sourceTree = "<group>";
@@ -128,12 +142,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Mattkee;
 				TargetAttributes = {
 					AF7BD4191F27B65A004C233C = {
 						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0830;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -163,6 +177,7 @@
 				AF5929151F64AB38007B29F3 /* attackObject.swift in Sources */,
 				AF59290C1F64AB38007B29F3 /* main.swift in Sources */,
 				AF59290E1F64AB38007B29F3 /* player.swift in Sources */,
+				AF85DD601F76BCB10000DA4B /* defenseSpell.swift in Sources */,
 				AF5929131F64AB38007B29F3 /* dwarf.swift in Sources */,
 				AF59290D1F64AB38007B29F3 /* game.swift in Sources */,
 				AF5929101F64AB38007B29F3 /* warrior.swift in Sources */,
@@ -174,6 +189,7 @@
 				AF5929111F64AB38007B29F3 /* wizard.swift in Sources */,
 				AF59290F1F64AB38007B29F3 /* character.swift in Sources */,
 				AF5929141F64AB38007B29F3 /* object.swift in Sources */,
+				AF85DD621F76C1C10000DA4B /* defenseObject.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,7 +206,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -198,7 +216,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -239,7 +261,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -247,7 +271,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -267,6 +295,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.12;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -278,7 +307,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -289,7 +319,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
