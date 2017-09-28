@@ -49,12 +49,13 @@ class Player{
         
         // this loop will allow to add new character to selected player while selected player'characters is not equal 3
         while self.teamCharacter.count < 3 {
-            print("")
-            print(" Joueur \(self.teamName) : Choisissez le personnage \(self.teamCharacter.count + 1) de votre équipe parmis les choix suivants : "
-                + "\n1. Combattant"
-                + "\n2. Mage"
-                + "\n3. Colosse"
-                + "\n4. Nain")
+            
+            print("Joueur \(self.teamName) : Choisissez le personnage \(self.teamCharacter.count + 1) de votre équipe parmis les choix suivants : "
+                + "\n"
+                + "\n1. Combattant        (100 pts de vie, 10 pts d'attaque + une épee)"
+                + "\n2. Mage         (60 pts de vie, 2 pts d'attaque, 100 pts de magie)"
+                + "\n3. Colosse         (500 pts de vie, 3 pts d'attaque)"
+                + "\n4. Nain         (30 pts de vie, 5 pts d'attaque + une hache)")
             print("quel est votre choix?")
             
             // the player will have to choose among four proposal for type of character and after add this character to player selected's array of characters.

@@ -40,6 +40,7 @@ class Game {
             
             print("Le joueur \(player.teamNumber + 1) s'appelle " + (player.teamName))
         }
+        print("")
     }
     
     // this method allow to define player name.
@@ -47,7 +48,6 @@ class Game {
         
         let player = Player()
         
-        print("")
         print("Joueur \(playerNumber + 1) Quel est le nom de votre equipe")
         
         player.teamName = Tools.choiceName(players: players)
