@@ -2,7 +2,7 @@ import Foundation
 
 // This class to set the properties and methods of the spells of the game.
 class Spell {
-    
+    // these are the properties of spell.
     var name : String
     var magicPointCost : Int
     var attack : Int

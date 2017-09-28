@@ -2,6 +2,7 @@ import Foundation
 
 // This class will allow to set the property to an object.
 class Objects {
+    // these are the properties of object.
     var name : String
     var attack : Int
     var defense : Int

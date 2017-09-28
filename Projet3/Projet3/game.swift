@@ -165,13 +165,13 @@ class Game {
                 
                 if players.count == 1 {
                    print("\(players[0].teamName) vous gagnez le jeu.")
-                    
+                   print("")
                 }
                 
             } else {
                     
                 print("\(players[0].teamName) vous gagnez le jeu.")
-                
+                print("")
             }
             
         } while players.count > 1
@@ -217,7 +217,9 @@ class Game {
             for character in player.teamCharacter {
                 
                 if character.health < 1 {
+                    print("")
                     print("\(character.name) est mort, il est retiré du jeu.")
+                    print("")
                     player.teamCharacter.remove(at: characterNumber)
                 }
                 characterNumber += 1
@@ -228,7 +230,8 @@ class Game {
             let numberCharacter = player.teamCharacter.count
             if numberCharacter == 0 {
                 players.remove(at: player.teamNumber)
-                print(" le joueur \(player.teamName) a perdu la partie")
+                print("le joueur \(player.teamName) a perdu la partie")
+                
             }
         }
     }

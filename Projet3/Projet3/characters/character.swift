@@ -14,7 +14,7 @@ class Character {
     var magicMinNeed : Bool = false
     var magicMax : Int
     var characterNumber : Int = 0
-    
+    // properties for character's object and spell.
     var objects = [String : Objects]()
     var spells = [String : Spell]()
     var spellSelected : Any = ""
